@@ -14,6 +14,7 @@
 		28A8840D1EF3FA250088F6CB /* Fire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A8840C1EF3FA250088F6CB /* Fire.swift */; };
 		28A8840F1EF410D50088F6CB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A8840E1EF410D50088F6CB /* SettingsViewController.swift */; };
 		28A884111EF4115F0088F6CB /* EditIconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A884101EF4115F0088F6CB /* EditIconViewController.swift */; };
+		28A884131EF4143A0088F6CB /* EditIconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A884121EF4143A0088F6CB /* EditIconTableViewCell.swift */; };
 		28E5B9C01EF3E8C4007CD81E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5B9BF1EF3E8C4007CD81E /* AppDelegate.swift */; };
 		28E5B9C51EF3E8C4007CD81E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E5B9C31EF3E8C4007CD81E /* Main.storyboard */; };
 		28E5B9C71EF3E8C4007CD81E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E5B9C61EF3E8C4007CD81E /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		28A8840C1EF3FA250088F6CB /* Fire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fire.swift; sourceTree = "<group>"; };
 		28A8840E1EF410D50088F6CB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		28A884101EF4115F0088F6CB /* EditIconViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditIconViewController.swift; sourceTree = "<group>"; };
+		28A884121EF4143A0088F6CB /* EditIconTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditIconTableViewCell.swift; sourceTree = "<group>"; };
 		28E5B9BC1EF3E8C4007CD81E /* productify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = productify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E5B9BF1EF3E8C4007CD81E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28E5B9C41EF3E8C4007CD81E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -64,6 +66,14 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
+		28A884141EF414440088F6CB /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				28A884121EF4143A0088F6CB /* EditIconTableViewCell.swift */,
+			);
+			name = CustomCells;
+			sourceTree = "<group>";
+		};
 		28E5B9B31EF3E8C4007CD81E = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +98,7 @@
 				28A884051EF3F0680088F6CB /* ViewControllers */,
 				28E5B9BF1EF3E8C4007CD81E /* AppDelegate.swift */,
 				28E5B9C31EF3E8C4007CD81E /* Main.storyboard */,
+				28A884141EF414440088F6CB /* CustomCells */,
 				28A8840C1EF3FA250088F6CB /* Fire.swift */,
 				28E5B9C61EF3E8C4007CD81E /* Assets.xcassets */,
 				28E5B9C81EF3E8C4007CD81E /* LaunchScreen.storyboard */,
@@ -238,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28A884131EF4143A0088F6CB /* EditIconTableViewCell.swift in Sources */,
 				28A8840D1EF3FA250088F6CB /* Fire.swift in Sources */,
 				28A884091EF3F0CF0088F6CB /* RegisterViewController.swift in Sources */,
 				28A884071EF3F0B10088F6CB /* SigninViewController.swift in Sources */,

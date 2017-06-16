@@ -9,6 +9,9 @@
 import UIKit
 
 class EditIconViewController: UIViewController {
+    
+    
+    let henk = ["Piet", "Klaas Vaak"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,14 +25,24 @@ class EditIconViewController: UIViewController {
     }
     
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+}
 
+extension EditIconViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return henk.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EditIconTableViewCell
+        
+        cell.nameLabel.text = henk[indexPath.row]
+        
+        return cell
+        
+    }
+    
 }
