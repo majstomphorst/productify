@@ -15,6 +15,8 @@ class MainViewController: UIViewController {
         // Check if user is signin or not
         if let userId = Auth.auth().currentUser?.uid {
             print(userId)
+            
+            Fire.shared.userId = userId
             // user is signin
         } else {
             // user is not signin

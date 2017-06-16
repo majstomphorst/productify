@@ -183,7 +183,6 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="7Zl-1c-wDe" secondAttribute="trailing" constant="8" id="4d9-j5-VKn"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="7Zl-1c-wDe" secondAttribute="trailing" constant="68" id="5kI-2d-46T"/>
                                     <constraint firstItem="i2E-cP-Nc5" firstAttribute="leading" secondItem="EEO-1A-PBs" secondAttribute="leading" id="P2Y-81-2Bj"/>
                                     <constraint firstItem="Nkf-OS-RPY" firstAttribute="top" secondItem="EEO-1A-PBs" secondAttribute="top" constant="8" id="QyL-B0-gCR"/>
                                     <constraint firstAttribute="bottom" secondItem="i2E-cP-Nc5" secondAttribute="bottom" id="Srt-zP-2pm"/>
@@ -205,6 +204,8 @@
                     </view>
                     <connections>
                         <outlet property="IconImage" destination="Nkf-OS-RPY" id="pSl-Ge-wyX"/>
+                        <outlet property="iconImage" destination="Nkf-OS-RPY" id="h49-Gr-q52"/>
+                        <outlet property="iconNameLabel" destination="7Zl-1c-wDe" id="c5j-aq-xvY"/>
                         <outlet property="popupView" destination="EEO-1A-PBs" id="a32-Vm-CLw"/>
                         <outlet property="saveButton" destination="i2E-cP-Nc5" id="OIQ-eG-Uab"/>
                     </connections>

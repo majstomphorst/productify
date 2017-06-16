@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class Fire {
     
@@ -17,5 +18,51 @@ class Fire {
     private init() {
         
     }
+    
+    /// save's a icon in the Firebase storage and saves the info in the database
+    func storeIcon(icon: UIImage, label: String) {
+        
+        print(self.userId)
+        
+        let storeRef = Storage.storage().reference().child("\(self.userId)/\(label).png")
+        let iconData = UIImagePNGRepresentation(icon)
+        
+        storeRef.putData(iconData!, metadata: nil) { (metadata, error) in
+            
+            // check for  error
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            
+            // saving icon is succes
+            DispatchQueue.main.async {
+                
+                let iconInfo = ["iconUrl": metadata?.downloadURL()?.absoluteString ,
+                                "label": label] as! [String: String]
+                
+                self.writeIconInfoDatabase(data: iconInfo as NSDictionary)
+                
+            }
+            
+        }
+        
+    }
+    
+    /// speciale function to write icon info to the database
+    private func writeIconInfoDatabase(data: NSDictionary) {
+        
+        let ref = Database.database().reference().child("pref").child(self.userId).childByAutoId()
+        
+        ref.updateChildValues(data as! [AnyHashable : Any]) { (error, DatabaseReference) in
+            
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            
+            // succes
+            
+        }
+    }
+    
     
 }

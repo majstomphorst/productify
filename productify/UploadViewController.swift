@@ -13,17 +13,19 @@ class UploadViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var IconImage: UIImageView!
+    @IBOutlet weak var iconNameLabel: UITextField!
+    @IBOutlet weak var iconImage: UIImageView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // making the ui nice
-        IconImage.layer.borderWidth = 1
-        IconImage.layer.masksToBounds = false
-        IconImage.layer.borderColor = UIColor.white.cgColor
-        IconImage.layer.cornerRadius = IconImage.frame.height / 2
-        IconImage.clipsToBounds = true
+        iconImage.layer.borderWidth = 1
+        iconImage.layer.masksToBounds = false
+        iconImage.layer.borderColor = UIColor.white.cgColor
+        iconImage.layer.cornerRadius = iconImage.frame.height / 2
+        iconImage.clipsToBounds = true
         popupView.layer.cornerRadius = 15
         saveButton.layer.cornerRadius = 10
         
@@ -38,19 +40,23 @@ class UploadViewController: UIViewController {
     
     @IBAction func SaveButtonPress(_ sender: Any) {
         
+        if iconNameLabel.text == "" {
+            alertUser(title: "no icon label", message: "provide a label")
+            return
+        }
+        
+        let icon = iconImage.image!
+        let label = iconNameLabel.text!
+        
+        Fire.shared.storeIcon(icon: icon, label: label)
+        
+        
+        
         self.dismiss(animated: true, completion: nil)
     }
-    
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -96,12 +102,12 @@ extension UploadViewController: UIImagePickerControllerDelegate, UINavigationCon
     }
     
     
-    // if a image is selected with the image picker
+    /// if a image is selected with the image picker
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
-            self.IconImage.image = image
+            self.iconImage.image = image
             
         }
         
