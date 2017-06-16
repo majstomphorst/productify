@@ -16,9 +16,13 @@ class EditIconViewController: UIViewController {
     
     var henk = [NSDictionary]()
     
-    override func viewWillAppear(_ animated: Bool) {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        Database.database().reference().child("pref/\(Fire.shared.userId)").observe(DataEventType.value, with: { (snapshot) in
+        Database.database().reference().child("pref/\(Fire.shared.userId)").queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
+            
+            self.henk = [NSDictionary]()
             
             if let value = snapshot.value as? NSDictionary {
                 
@@ -31,33 +35,18 @@ class EditIconViewController: UIViewController {
             }
             
             DispatchQueue.main.async {
-                print(self.henk)
-                
                 self.iconEditTableView.reloadData()
             }
             
             
-            
-            
         })
-        
-        
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 
     // MARK: - Navigation
-
     @IBAction func plus(_ sender: Any) {
         
         
@@ -67,12 +56,13 @@ class EditIconViewController: UIViewController {
 
 extension EditIconViewController: UITableViewDelegate, UITableViewDataSource {
     
+    
+    // returns the amount of cels needed
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print(henk.count)
         return henk.count
     }
     
+    // returns what is displayed in the cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EditIconTableViewCell
@@ -83,5 +73,20 @@ extension EditIconViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
         
     }
+    
+    // tels the table that every cell can de deleted
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    // handels the delete actions
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            
+            print("delete cell please!")
+        }
+    }
+    
+    
     
 }
