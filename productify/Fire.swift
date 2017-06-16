@@ -22,7 +22,10 @@ class Fire {
     /// save's a icon in the Firebase storage and saves the info in the database
     func storeIcon(icon: UIImage, label: String) {
         
-        print(self.userId)
+        if self.userId == "" {
+            self.userId = (Auth.auth().currentUser?.uid)!
+        }
+        
         
         let storeRef = Storage.storage().reference().child("\(self.userId)/\(label).png")
         let iconData = UIImagePNGRepresentation(icon)
