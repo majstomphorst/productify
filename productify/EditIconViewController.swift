@@ -10,7 +10,6 @@ import UIKit
 
 class EditIconViewController: UIViewController {
     
-    
     let henk = ["Piet", "Klaas Vaak"]
 
     override func viewDidLoad() {
@@ -27,6 +26,11 @@ class EditIconViewController: UIViewController {
 
     // MARK: - Navigation
 
+    @IBAction func plus(_ sender: Any) {
+        
+        
+        
+    }
 }
 
 extension EditIconViewController: UITableViewDelegate, UITableViewDataSource {

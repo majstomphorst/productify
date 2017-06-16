@@ -126,12 +126,97 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Mze-83-Hza">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="QD5-fj-ZXQ"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="QD5-fj-ZXQ">
+                            <connections>
+                                <action selector="plus:" destination="YTa-Ph-onj" id="SCg-ME-709"/>
+                                <segue destination="zLg-wO-9bB" kind="presentation" id="Hvr-Bw-4vr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="du4-Z5-Ct6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1364" y="702.99850074962524"/>
+        </scene>
+        <!--Upload View Controller-->
+        <scene sceneID="hWO-Fp-wlM">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="zLg-wO-9bB" customClass="UploadViewController" customModule="productify" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GB7-DG-Ag4"/>
+                        <viewControllerLayoutGuide type="bottom" id="bcJ-i0-e8I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ucu-4i-zKz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EEO-1A-PBs">
+                                <rect key="frame" x="67" y="243" width="240" height="180"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2E-cP-Nc5">
+                                        <rect key="frame" x="0.0" y="150" width="240" height="30"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="SaveButtonPress:" destination="zLg-wO-9bB" eventType="touchUpInside" id="Afd-9M-Did"/>
+                                        </connections>
+                                    </button>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="uploadIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Nkf-OS-RPY">
+                                        <rect key="frame" x="85.5" y="8" width="70" height="70"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="5nv-Vc-skN"/>
+                                            <constraint firstAttribute="width" constant="70" id="EfM-sc-sGc"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="lE6-85-jB0" appends="YES" id="hmY-qw-1E1"/>
+                                        </connections>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please label you're icon" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Zl-1c-wDe">
+                                        <rect key="frame" x="8" y="86" width="224" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="7Zl-1c-wDe" secondAttribute="trailing" constant="8" id="4d9-j5-VKn"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="7Zl-1c-wDe" secondAttribute="trailing" constant="68" id="5kI-2d-46T"/>
+                                    <constraint firstItem="i2E-cP-Nc5" firstAttribute="leading" secondItem="EEO-1A-PBs" secondAttribute="leading" id="P2Y-81-2Bj"/>
+                                    <constraint firstItem="Nkf-OS-RPY" firstAttribute="top" secondItem="EEO-1A-PBs" secondAttribute="top" constant="8" id="QyL-B0-gCR"/>
+                                    <constraint firstAttribute="bottom" secondItem="i2E-cP-Nc5" secondAttribute="bottom" id="Srt-zP-2pm"/>
+                                    <constraint firstAttribute="height" constant="180" id="a8i-y3-1PU"/>
+                                    <constraint firstItem="7Zl-1c-wDe" firstAttribute="leading" secondItem="EEO-1A-PBs" secondAttribute="leading" constant="8" id="eLO-P7-uPw"/>
+                                    <constraint firstItem="7Zl-1c-wDe" firstAttribute="leading" secondItem="EEO-1A-PBs" secondAttribute="leadingMargin" id="eqH-Z7-GnC"/>
+                                    <constraint firstAttribute="trailing" secondItem="i2E-cP-Nc5" secondAttribute="trailing" id="iNP-Ey-NcJ"/>
+                                    <constraint firstAttribute="width" constant="240" id="nxH-s9-7b5"/>
+                                    <constraint firstItem="7Zl-1c-wDe" firstAttribute="top" secondItem="Nkf-OS-RPY" secondAttribute="bottom" constant="8" id="p7A-ya-nmp"/>
+                                    <constraint firstItem="Nkf-OS-RPY" firstAttribute="centerX" secondItem="EEO-1A-PBs" secondAttribute="centerX" id="qNT-yJ-5Hd"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EEO-1A-PBs" firstAttribute="centerX" secondItem="ucu-4i-zKz" secondAttribute="centerX" id="X3O-8u-UN6"/>
+                            <constraint firstItem="EEO-1A-PBs" firstAttribute="centerY" secondItem="ucu-4i-zKz" secondAttribute="centerY" id="whG-YS-q89"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="IconImage" destination="Nkf-OS-RPY" id="pSl-Ge-wyX"/>
+                        <outlet property="popupView" destination="EEO-1A-PBs" id="a32-Vm-CLw"/>
+                        <outlet property="saveButton" destination="i2E-cP-Nc5" id="OIQ-eG-Uab"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="djc-Dh-PUp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="lE6-85-jB0">
+                    <connections>
+                        <action selector="handleTapWithRecognizer:" destination="zLg-wO-9bB" id="fXv-3G-HPc"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2056.8000000000002" y="702.99850074962524"/>
         </scene>
         <!--Signin View Controller-->
         <scene sceneID="zQv-lZ-gWL">
@@ -378,7 +463,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="lef-xW-zKg">
             <objects>
-                <tabBarController id="aTg-8N-fnX" sceneMemberID="viewController">
+                <tabBarController hidesBottomBarWhenPushed="YES" id="aTg-8N-fnX" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="WSR-dm-Qvh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -452,4 +537,7 @@
             <point key="canvasLocation" x="-298.39999999999998" y="702.99850074962524"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="uploadIcon" width="512" height="512"/>
+    </resources>
 </document>
