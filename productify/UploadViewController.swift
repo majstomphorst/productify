@@ -38,15 +38,9 @@ class UploadViewController: UIViewController {
     
     @IBAction func SaveButtonPress(_ sender: Any) {
         
-        
-        
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    @IBAction func handleTap(recognizer: UITapGestureRecognizer) {
-        print("taptap")
-    }
 
     /*
     // MARK: - Navigation
@@ -58,4 +52,60 @@ class UploadViewController: UIViewController {
     }
     */
 
+}
+
+extension UploadViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    @IBAction func handleTap(recognizer: UITapGestureRecognizer) {
+        
+        // Create the action sheet
+        let myActionSheet = UIAlertController(title: "Upload options", message: "How would you like to upload?", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        // blue action button
+        let upload = UIAlertAction(title: "Upload From Camararoll", style: UIAlertActionStyle.default) { (action) in
+            
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.allowsEditing = true
+            
+            picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            
+            self.present(picker, animated: true, completion: nil)
+            
+        }
+        
+        // red action button
+        let storages = UIAlertAction(title: "Pick one from the app", style: UIAlertActionStyle.default) { (action) in
+            
+            self.alertUser(title: "no implementation yet", message: "to bad")
+        }
+        
+        // cancel action button
+        let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (action) in
+            print("Cancel action button tapped")
+        }
+        
+        // add action buttons to action sheet
+        myActionSheet.addAction(upload)
+        myActionSheet.addAction(storages)
+        myActionSheet.addAction(cancel)
+        
+        // send user to the uiImage picerk view
+        self.present(myActionSheet, animated: true, completion: nil)
+        
+    }
+    
+    
+    // if a image is selected with the image picker
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            self.IconImage.image = image
+            
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
 }

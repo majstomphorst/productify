@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		282FC25D1EF41BA700EF173C /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282FC25C1EF41BA700EF173C /* UploadViewController.swift */; };
+		282FC25F1EF4270900EF173C /* ViewController+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282FC25E1EF4270900EF173C /* ViewController+Error.swift */; };
 		28A884041EF3ED0A0088F6CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28A884031EF3ED0A0088F6CB /* GoogleService-Info.plist */; };
 		28A884071EF3F0B10088F6CB /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A884061EF3F0B10088F6CB /* SigninViewController.swift */; };
 		28A884091EF3F0CF0088F6CB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A884081EF3F0CF0088F6CB /* RegisterViewController.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		282FC25C1EF41BA700EF173C /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		282FC25E1EF4270900EF173C /* ViewController+Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Error.swift"; sourceTree = "<group>"; };
 		28A884031EF3ED0A0088F6CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		28A884061EF3F0B10088F6CB /* SigninViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		28A884081EF3F0CF0088F6CB /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 		28A884051EF3F0680088F6CB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				282FC25E1EF4270900EF173C /* ViewController+Error.swift */,
 				28A884061EF3F0B10088F6CB /* SigninViewController.swift */,
 				28A884081EF3F0CF0088F6CB /* RegisterViewController.swift */,
 				28A8840A1EF3F1250088F6CB /* MainViewController.swift */,
@@ -255,6 +258,7 @@
 				28A884131EF4143A0088F6CB /* EditIconTableViewCell.swift in Sources */,
 				28A8840D1EF3FA250088F6CB /* Fire.swift in Sources */,
 				28A884091EF3F0CF0088F6CB /* RegisterViewController.swift in Sources */,
+				282FC25F1EF4270900EF173C /* ViewController+Error.swift in Sources */,
 				28A884071EF3F0B10088F6CB /* SigninViewController.swift in Sources */,
 				282FC25D1EF41BA700EF173C /* UploadViewController.swift in Sources */,
 				28E5B9C01EF3E8C4007CD81E /* AppDelegate.swift in Sources */,
