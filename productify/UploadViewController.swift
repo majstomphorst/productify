@@ -57,7 +57,10 @@ class UploadViewController: UIViewController {
     }
 
     // MARK: - Navigation
-
+    
+    @IBAction func dismissButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 
 }
 

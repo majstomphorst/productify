@@ -153,6 +153,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQm-Sf-813" userLabel="Dismiss view">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="dismissButton:" destination="zLg-wO-9bB" eventType="touchUpInside" id="zJ8-TX-zqf"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EEO-1A-PBs">
                                 <rect key="frame" x="67" y="243" width="240" height="180"/>
                                 <subviews>
@@ -201,7 +208,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ZQm-Sf-813" secondAttribute="trailing" id="1fY-bB-gYh"/>
+                            <constraint firstItem="ZQm-Sf-813" firstAttribute="leading" secondItem="ucu-4i-zKz" secondAttribute="leading" id="C9e-VE-Fs1"/>
+                            <constraint firstItem="bcJ-i0-e8I" firstAttribute="top" secondItem="ZQm-Sf-813" secondAttribute="bottom" id="SII-KF-OvB"/>
                             <constraint firstItem="EEO-1A-PBs" firstAttribute="centerX" secondItem="ucu-4i-zKz" secondAttribute="centerX" id="X3O-8u-UN6"/>
+                            <constraint firstItem="ZQm-Sf-813" firstAttribute="top" secondItem="ucu-4i-zKz" secondAttribute="top" id="nsp-C8-wFM"/>
                             <constraint firstItem="EEO-1A-PBs" firstAttribute="centerY" secondItem="ucu-4i-zKz" secondAttribute="centerY" id="whG-YS-q89"/>
                         </constraints>
                     </view>

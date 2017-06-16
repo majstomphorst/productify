@@ -15,9 +15,6 @@ class Fire {
     
     var userId = String()
     
-    private init() {
-        
-    }
     
     /// save's a icon in the Firebase storage and saves the info in the database
     func storeIcon(icon: UIImage, label: String) {
@@ -65,6 +62,46 @@ class Fire {
             // succes
             
         }
+    }
+    
+    /// remove's an icon from the storage's
+    func deleteIconStorage(name: String) {
+        
+        
+        let reff = Storage.storage().reference().child(self.userId).child("\(name).png")
+        
+        reff.delete { (error) in
+            print(error?.localizedDescription)
+            print("done")
+        }
+        
+        Database.database().reference().child("pref/\(Fire.shared.userId)").queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
+            
+            if let value = snapshot.value as? NSDictionary {
+                
+                for key in value.allKeys {
+                    
+                    let dict = value[key] as! NSDictionary
+                    
+                    if dict["label"] as! String == name {
+                        print(key)
+                        
+                        let ref = Database.database().reference().child("pref/\(Fire.shared.userId)").child(key as! String)
+                        
+                        ref.removeValue()
+                        print("removed!")
+                    }
+                    
+                    
+                    
+                }
+                
+            }
+            
+          
+            
+        })
+        
     }
     
     

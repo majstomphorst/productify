@@ -47,11 +47,7 @@ class EditIconViewController: UIViewController {
     
 
     // MARK: - Navigation
-    @IBAction func plus(_ sender: Any) {
-        
-        
-        
-    }
+    // @IBAction func plus(_ sender: Any) { }
 }
 
 extension EditIconViewController: UITableViewDelegate, UITableViewDataSource {
@@ -83,6 +79,9 @@ extension EditIconViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             
+            
+            Fire.shared.deleteIconStorage(name: henk[indexPath.row]["label"] as! String)
+            print(henk[indexPath.row])
             print("delete cell please!")
         }
     }
