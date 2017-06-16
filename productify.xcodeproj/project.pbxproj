@@ -12,6 +12,7 @@
 		28E5B9C51EF3E8C4007CD81E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E5B9C31EF3E8C4007CD81E /* Main.storyboard */; };
 		28E5B9C71EF3E8C4007CD81E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E5B9C61EF3E8C4007CD81E /* Assets.xcassets */; };
 		28E5B9CA1EF3E8C4007CD81E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E5B9C81EF3E8C4007CD81E /* LaunchScreen.storyboard */; };
+		9FDFDCAA9FBD5265D8D647F1 /* Pods_productify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A34B3BB8C5613986DB64828 /* Pods_productify.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		28E5B9C61EF3E8C4007CD81E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28E5B9C91EF3E8C4007CD81E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		28E5B9CB1EF3E8C4007CD81E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A34B3BB8C5613986DB64828 /* Pods_productify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_productify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86F2ABB5B883C94D7E1D11D7 /* Pods-productify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-productify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-productify/Pods-productify.debug.xcconfig"; sourceTree = "<group>"; };
+		FD715079097F5769B54C6D7D /* Pods-productify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-productify.release.xcconfig"; path = "Pods/Target Support Files/Pods-productify/Pods-productify.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FDFDCAA9FBD5265D8D647F1 /* Pods_productify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				28E5B9BE1EF3E8C4007CD81E /* productify */,
 				28E5B9BD1EF3E8C4007CD81E /* Products */,
+				DAF03F68A423AC2A5754E147 /* Pods */,
+				CA01CD41C454A5E96D715A73 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = productify;
 			sourceTree = "<group>";
 		};
+		CA01CD41C454A5E96D715A73 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4A34B3BB8C5613986DB64828 /* Pods_productify.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DAF03F68A423AC2A5754E147 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				86F2ABB5B883C94D7E1D11D7 /* Pods-productify.debug.xcconfig */,
+				FD715079097F5769B54C6D7D /* Pods-productify.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28E5B9CE1EF3E8C4007CD81E /* Build configuration list for PBXNativeTarget "productify" */;
 			buildPhases = (
+				2057ABB3D1CF60A11AAC9C1C /* [CP] Check Pods Manifest.lock */,
 				28E5B9B81EF3E8C4007CD81E /* Sources */,
 				28E5B9B91EF3E8C4007CD81E /* Frameworks */,
 				28E5B9BA1EF3E8C4007CD81E /* Resources */,
+				D384CDD324B47658F74D72D2 /* [CP] Embed Pods Frameworks */,
+				4C867E84A556931099728602 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2057ABB3D1CF60A11AAC9C1C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4C867E84A556931099728602 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-productify/Pods-productify-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D384CDD324B47658F74D72D2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-productify/Pods-productify-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		28E5B9B81EF3E8C4007CD81E /* Sources */ = {
@@ -260,6 +335,7 @@
 		};
 		28E5B9CF1EF3E8C4007CD81E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86F2ABB5B883C94D7E1D11D7 /* Pods-productify.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = productify/Info.plist;
@@ -272,6 +348,7 @@
 		};
 		28E5B9D01EF3E8C4007CD81E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD715079097F5769B54C6D7D /* Pods-productify.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = productify/Info.plist;
