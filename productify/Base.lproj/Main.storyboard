@@ -158,6 +158,9 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="dismissButton:" destination="zLg-wO-9bB" eventType="touchUpInside" id="zJ8-TX-zqf"/>
+                                    <segue destination="gjV-jE-a4p" kind="popoverPresentation" identifier="uploadFromApp" popoverAnchorView="ZQm-Sf-813" id="gAK-Nn-mJH">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EEO-1A-PBs">
@@ -232,6 +235,25 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2056.8000000000002" y="702.99850074962524"/>
+        </scene>
+        <!--Upload From App View Controller-->
+        <scene sceneID="jKf-iC-SNC">
+            <objects>
+                <viewController id="gjV-jE-a4p" customClass="UploadFromAppViewController" customModule="productify" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qll-6z-Lzn"/>
+                        <viewControllerLayoutGuide type="bottom" id="rNb-P1-Caz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NR1-RZ-2r5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FYH-zR-ihH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pkO-CI-SeH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2794" y="703"/>
         </scene>
         <!--Signin View Controller-->
         <scene sceneID="zQv-lZ-gWL">
@@ -479,12 +501,24 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" countDownDuration="1" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruy-4w-svF">
+                                <rect key="frame" x="8" y="148" width="359" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="A7d-YB-luT"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="519398089.74083602">
+                                    <!--2017-06-17 13:14:49 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ruy-4w-svF" firstAttribute="leading" secondItem="QtH-wR-HLd" secondAttribute="leading" constant="8" id="3gc-7A-S08"/>
                             <constraint firstItem="Hij-di-GIW" firstAttribute="leading" secondItem="3cG-3K-Kp4" secondAttribute="leading" id="3uF-s6-0X6"/>
                             <constraint firstItem="3cG-3K-Kp4" firstAttribute="top" secondItem="Hij-di-GIW" secondAttribute="bottom" constant="8" id="57e-rT-MMh"/>
+                            <constraint firstAttribute="trailing" secondItem="ruy-4w-svF" secondAttribute="trailing" constant="8" id="59R-5s-bVU"/>
                             <constraint firstItem="Hij-di-GIW" firstAttribute="trailing" secondItem="3cG-3K-Kp4" secondAttribute="trailing" id="F31-4H-dju"/>
+                            <constraint firstItem="ruy-4w-svF" firstAttribute="top" secondItem="3cG-3K-Kp4" secondAttribute="bottom" constant="8" id="dtq-zT-LtR"/>
                             <constraint firstItem="3cG-3K-Kp4" firstAttribute="leading" secondItem="QtH-wR-HLd" secondAttribute="leadingMargin" constant="8" id="ff3-92-Vgk"/>
                             <constraint firstItem="Hij-di-GIW" firstAttribute="top" secondItem="Yyi-Sf-Qoq" secondAttribute="bottom" constant="8" symbolic="YES" id="gKT-kM-Pyh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3cG-3K-Kp4" secondAttribute="trailing" constant="8" id="zQo-Tc-2CH"/>
@@ -500,12 +534,16 @@
                                     <action selector="button:" destination="nB4-bk-bfM" eventType="touchUpInside" id="mE2-A8-7NH"/>
                                 </connections>
                             </button>
+                            <connections>
+                                <action selector="signOutButton:" destination="nB4-bk-bfM" id="fYL-ZP-ycj"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="gOk-am-7DW" id="diB-VF-OXc"/>
                         <outlet property="startButton" destination="PwY-pn-mHs" id="cpq-lR-rPy"/>
                         <outlet property="timeLabel" destination="Hij-di-GIW" id="PlH-Vg-OZr"/>
+                        <outlet property="timePicker" destination="ruy-4w-svF" id="xwG-1K-xgd"/>
                         <segue destination="jCy-aY-bhs" kind="presentation" identifier="signinSegue" modalPresentationStyle="currentContext" modalTransitionStyle="crossDissolve" id="5Ig-E1-SJm"/>
                     </connections>
                 </viewController>

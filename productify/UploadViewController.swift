@@ -87,7 +87,9 @@ extension UploadViewController: UIImagePickerControllerDelegate, UINavigationCon
         // red action button
         let storages = UIAlertAction(title: "Pick one from the app", style: UIAlertActionStyle.default) { (action) in
             
-            self.alertUser(title: "no implementation yet", message: "to bad")
+            self.performSegue(withIdentifier: "uploadFromApp", sender: nil)
+            
+            // self.alertUser(title: "no implementation yet", message: "to bad")
         }
         
         // cancel action button

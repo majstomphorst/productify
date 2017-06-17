@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var timeLabel: UITextField!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var timePicker: UIDatePicker!
 
     
     
@@ -42,22 +43,8 @@ class MainViewController: UIViewController {
     }
     
 
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    @IBAction func button(_ sender: Any) {
-        
-        print("hello?")
-        
+    // MARK: - Actions
+    @IBAction func signOutButton(_ sender: Any) {
         do {
             try Auth.auth().signOut()
             
@@ -70,15 +57,17 @@ class MainViewController: UIViewController {
         }
     }
     
-    // MARK: - Actions
-    
+
     @IBAction func startButton(_ sender: Any) {
         
         if startButton.currentTitle == "Start" {
             
             startButton.setTitle("Pauze", for: UIControlState .normal)
             cancelButton.isEnabled = true
-            start(seconds: 30)
+            timePicker.isEnabled = false
+            
+            start(seconds: Int(timePicker.countDownDuration))
+            
             
             
         } else if startButton.currentTitle == "Pauze" {
@@ -103,11 +92,10 @@ class MainViewController: UIViewController {
         startButton.setTitle("Start", for: UIControlState .normal)
         cancelButton.isEnabled = false
         timeLabel.text = "00:00:00"
+        timePicker.isEnabled = true
         
     }
-    
-    
-    
+
     
     // MARK: - Navigation
     @IBAction func returnToMainView(segue: UIStoryboardSegue) {}
