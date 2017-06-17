@@ -71,7 +71,6 @@ class Fire {
         let reff = Storage.storage().reference().child(self.userId).child("\(name).png")
         
         reff.delete { (error) in
-            print(error?.localizedDescription)
             print("done")
         }
         

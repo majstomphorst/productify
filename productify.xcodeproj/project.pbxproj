@@ -166,6 +166,7 @@
 				TargetAttributes = {
 					28E5B9BB1EF3E8C4007CD81E = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 5QYLX323BC;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -390,6 +391,7 @@
 			baseConfigurationReference = 86F2ABB5B883C94D7E1D11D7 /* Pods-productify.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5QYLX323BC;
 				INFOPLIST_FILE = productify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.mprog.nl.productify;
@@ -403,6 +405,7 @@
 			baseConfigurationReference = FD715079097F5769B54C6D7D /* Pods-productify.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5QYLX323BC;
 				INFOPLIST_FILE = productify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.mprog.nl.productify;

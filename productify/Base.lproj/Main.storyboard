@@ -453,7 +453,42 @@
                     <view key="view" contentMode="scaleToFill" id="QtH-wR-HLd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="00:00:00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hij-di-GIW">
+                                <rect key="frame" x="24" y="72" width="327" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3cG-3K-Kp4">
+                                <rect key="frame" x="24" y="110" width="327" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOk-am-7DW">
+                                        <rect key="frame" x="0.0" y="0.0" width="159.5" height="30"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelButton:" destination="nB4-bk-bfM" eventType="touchUpInside" id="J4D-bM-J7S"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PwY-pn-mHs">
+                                        <rect key="frame" x="167.5" y="0.0" width="159.5" height="30"/>
+                                        <state key="normal" title="Start"/>
+                                        <connections>
+                                            <action selector="startButton:" destination="nB4-bk-bfM" eventType="touchUpInside" id="bt0-mT-4hv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Hij-di-GIW" firstAttribute="leading" secondItem="3cG-3K-Kp4" secondAttribute="leading" id="3uF-s6-0X6"/>
+                            <constraint firstItem="3cG-3K-Kp4" firstAttribute="top" secondItem="Hij-di-GIW" secondAttribute="bottom" constant="8" id="57e-rT-MMh"/>
+                            <constraint firstItem="Hij-di-GIW" firstAttribute="trailing" secondItem="3cG-3K-Kp4" secondAttribute="trailing" id="F31-4H-dju"/>
+                            <constraint firstItem="3cG-3K-Kp4" firstAttribute="leading" secondItem="QtH-wR-HLd" secondAttribute="leadingMargin" constant="8" id="ff3-92-Vgk"/>
+                            <constraint firstItem="Hij-di-GIW" firstAttribute="top" secondItem="Yyi-Sf-Qoq" secondAttribute="bottom" constant="8" symbolic="YES" id="gKT-kM-Pyh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3cG-3K-Kp4" secondAttribute="trailing" constant="8" id="zQo-Tc-2CH"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Main" id="aeC-Q3-Z3T">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="6Hu-7T-gVk">
@@ -468,6 +503,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="gOk-am-7DW" id="diB-VF-OXc"/>
+                        <outlet property="startButton" destination="PwY-pn-mHs" id="cpq-lR-rPy"/>
+                        <outlet property="timeLabel" destination="Hij-di-GIW" id="PlH-Vg-OZr"/>
                         <segue destination="jCy-aY-bhs" kind="presentation" identifier="signinSegue" modalPresentationStyle="currentContext" modalTransitionStyle="crossDissolve" id="5Ig-E1-SJm"/>
                     </connections>
                 </viewController>
