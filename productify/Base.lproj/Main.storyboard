@@ -300,7 +300,6 @@
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="gjV-jE-a4p" id="ysi-hF-UFU"/>
-                                    <outlet property="delegate" destination="gjV-jE-a4p" id="DQ3-zT-15d"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -590,21 +589,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="3cG-3K-Kp4" secondAttribute="trailing" constant="8" id="zQo-Tc-2CH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Main" id="aeC-Q3-Z3T">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="6Hu-7T-gVk">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0qK-fg-Xwl">
-                                <rect key="frame" x="16" y="7" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="sign out"/>
-                                <connections>
-                                    <action selector="button:" destination="nB4-bk-bfM" eventType="touchUpInside" id="mE2-A8-7NH"/>
-                                </connections>
-                            </button>
-                            <connections>
-                                <action selector="signOutButton:" destination="nB4-bk-bfM" id="fYL-ZP-ycj"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Main" id="aeC-Q3-Z3T"/>
                     <connections>
                         <outlet property="cancelButton" destination="gOk-am-7DW" id="diB-VF-OXc"/>
                         <outlet property="startButton" destination="PwY-pn-mHs" id="cpq-lR-rPy"/>

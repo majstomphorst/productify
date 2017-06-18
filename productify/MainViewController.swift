@@ -17,15 +17,11 @@ class MainViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var timePicker: UIDatePicker!
 
-    
-    
     // timer requirements
     var timer = Timer()
     var countseconds = Int()
     var countRunning = false
     var countPauzed = false
-    
-    
     
     override func viewDidAppear(_ animated: Bool) {
         // Check if user is signin or not
@@ -44,20 +40,6 @@ class MainViewController: UIViewController {
     
 
     // MARK: - Actions
-    @IBAction func signOutButton(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-            
-            self.performSegue(withIdentifier: "signinSegue", sender: nil)
-            
-            // if error this send a alert to the user with the reason why
-        } catch {
-            
-            // alertUser(title: "logout went wrong", message: error.localizedDescription)
-        }
-    }
-    
-
     @IBAction func startButton(_ sender: Any) {
         
         if startButton.currentTitle == "Start" {
@@ -67,8 +49,6 @@ class MainViewController: UIViewController {
             timePicker.isEnabled = false
             
             start(seconds: Int(timePicker.countDownDuration))
-            
-            
             
         } else if startButton.currentTitle == "Pauze" {
             

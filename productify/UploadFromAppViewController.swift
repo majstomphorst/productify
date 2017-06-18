@@ -9,15 +9,23 @@
 import UIKit
 
 protocol DataSendDelegate {
-    func userDidEnterData(data: String)
+    func userDidEnterData(data: UIImage)
 }
 
 class UploadFromAppViewController: UIViewController {
     
     var delegate: DataSendDelegate? = nil
+    var icons = [String]()
     
+    override func viewDidLoad() {
+        
+        for i in 0 ... 5 {
+            icons.append("\(i)")
+        }
+        
+    }
     
-    // MARK: - Navigation
+     // MARK: - Navigation
      @IBAction func Cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
      }
@@ -28,7 +36,7 @@ extension UploadFromAppViewController: UICollectionViewDelegate, UICollectionVie
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return icons.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -36,9 +44,7 @@ extension UploadFromAppViewController: UICollectionViewDelegate, UICollectionVie
         // get a reference to our storyboard cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath as IndexPath) as! SelectIconCollectionViewCell
         
-        cell.IconImage.image = UIImage(named: "1")
-        
-        print("hey")
+        cell.IconImage.image = UIImage(named: icons[indexPath.row])
         
         return cell
     }
@@ -46,17 +52,18 @@ extension UploadFromAppViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
         print("didSelect \(indexPath)")
-    
-        if delegate != nil {
-            let data = "send me and print me!"
+
+        let cell = collectionView.cellForItem(at: indexPath) as! SelectIconCollectionViewCell
+        
+        if let icon = cell.IconImage.image {
+            delegate?.userDidEnterData(data: icon)
+            self.dismiss(animated: true, completion: nil)
+        } else {
             
-            delegate?.userDidEnterData(data: data)
-            
-            
+            print("found nill")
         }
         
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath as IndexPath) as! SelectIconCollectionViewCell
-    
+        
     }
     
     

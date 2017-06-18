@@ -46,7 +46,7 @@ class EditIconViewController: UIViewController {
     
 
     // MARK: - Navigation
-    // @IBAction func plus(_ sender: Any) { }
+    @IBAction func plus(_ sender: Any) { }
 }
 
 extension EditIconViewController: UITableViewDelegate, UITableViewDataSource {

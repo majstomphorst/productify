@@ -123,8 +123,9 @@ extension UploadViewController: UIImagePickerControllerDelegate, UINavigationCon
 
 extension UploadViewController: DataSendDelegate {
     
-    func userDidEnterData(data: String) {
-        print(data)
+    func userDidEnterData(data: UIImage) {
+        print("yes working")
+        self.iconImage.image = data
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
