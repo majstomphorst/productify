@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol DataSendDelegate {
+    func userDidEnterData(data: String)
+}
+
 class UploadFromAppViewController: UIViewController {
+    
+    var delegate: DataSendDelegate? = nil
     
     
     // MARK: - Navigation
@@ -35,9 +41,23 @@ extension UploadFromAppViewController: UICollectionViewDelegate, UICollectionVie
         print("hey")
         
         return cell
-        
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       
+        print("didSelect \(indexPath)")
+    
+        if delegate != nil {
+            let data = "send me and print me!"
+            
+            delegate?.userDidEnterData(data: data)
+            
+            
+        }
+        
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath as IndexPath) as! SelectIconCollectionViewCell
+    
+    }
     
     
     

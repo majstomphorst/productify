@@ -16,7 +16,6 @@ class UploadViewController: UIViewController {
     @IBOutlet weak var iconNameLabel: UITextField!
     @IBOutlet weak var iconImage: UIImageView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -118,6 +117,21 @@ extension UploadViewController: UIImagePickerControllerDelegate, UINavigationCon
         }
         
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+extension UploadViewController: DataSendDelegate {
+    
+    func userDidEnterData(data: String) {
+        print(data)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "uploadFromApp" {
+            let sendingVC: UploadFromAppViewController = segue.destination as! UploadFromAppViewController
+            sendingVC.delegate = self
+        }
     }
     
 }
