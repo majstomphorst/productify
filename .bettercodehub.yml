@@ -1,0 +1,6 @@
+exclude:
+- /Pods/PopupDialog/PopupDialog/Classes/.*
+component_depth: 1
+languages:
+- ruby
+- swift
