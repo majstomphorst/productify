@@ -300,6 +300,7 @@
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="gjV-jE-a4p" id="ysi-hF-UFU"/>
+                                    <outlet property="delegate" destination="gjV-jE-a4p" id="c4z-Df-L8Y"/>
                                 </connections>
                             </collectionView>
                         </subviews>

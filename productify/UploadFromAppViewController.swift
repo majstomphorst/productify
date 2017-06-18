@@ -15,15 +15,8 @@ protocol DataSendDelegate {
 class UploadFromAppViewController: UIViewController {
     
     var delegate: DataSendDelegate? = nil
-    var icons = [String]()
+    var icons = ["0","1","2","3","4"]
     
-    override func viewDidLoad() {
-        
-        for i in 0 ... 5 {
-            icons.append("\(i)")
-        }
-        
-    }
     
      // MARK: - Navigation
      @IBAction func Cancel(_ sender: Any) {
@@ -50,21 +43,28 @@ extension UploadFromAppViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
-        print("didSelect \(indexPath)")
-
-        let cell = collectionView.cellForItem(at: indexPath) as! SelectIconCollectionViewCell
-        
-        if let icon = cell.IconImage.image {
-            delegate?.userDidEnterData(data: icon)
-            self.dismiss(animated: true, completion: nil)
-        } else {
-            
-            print("found nill")
-        }
-        
-        
+        print("taptap")
+        print(indexPath)
     }
+    
+    
+    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//       
+//        print("didSelect \(indexPath)")
+//
+//        let cell = collectionView.cellForItem(at: indexPath) as! SelectIconCollectionViewCell
+//        
+//        if let icon = cell.IconImage.image {
+//            delegate?.userDidEnterData(data: icon)
+//            self.dismiss(animated: true, completion: nil)
+//        } else {
+//            
+//            print("found nill")
+//        }
+//        
+//        
+//    }
     
     
     
