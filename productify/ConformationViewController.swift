@@ -70,8 +70,6 @@ class ConformationViewController: UIViewController {
         
         reff.updateChildValues(activityDict) { (error, DatabaseReference) in
             
-            print("done")
-            
         }
         
         
@@ -93,7 +91,7 @@ class ConformationViewController: UIViewController {
         let year = calendar.component(.year, from: date as Date)
         let week = calendar.component(.weekOfYear, from: date as Date)
         
-        return String(format: "%02i:%02i:%02i:%02i:%02i:%02i:%04i",
+        return String(format: "hour-%02i:minutes-%02i:seconds-%02i:day-%02i:week-%02i:month-%02i:year-%04i",
                       hours, minutes, seconds, day, week, month, year)
         
         

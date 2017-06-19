@@ -22,6 +22,8 @@
 		28A8840F1EF410D50088F6CB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A8840E1EF410D50088F6CB /* SettingsViewController.swift */; };
 		28A884111EF4115F0088F6CB /* EditIconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A884101EF4115F0088F6CB /* EditIconViewController.swift */; };
 		28A884131EF4143A0088F6CB /* EditIconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A884121EF4143A0088F6CB /* EditIconTableViewCell.swift */; };
+		28AA1F161EF83B69007BAD52 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AA1F151EF83B69007BAD52 /* HistoryViewController.swift */; };
+		28AA1F181EF8490D007BAD52 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AA1F171EF8490D007BAD52 /* HistoryTableViewCell.swift */; };
 		28E5B9C01EF3E8C4007CD81E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5B9BF1EF3E8C4007CD81E /* AppDelegate.swift */; };
 		28E5B9C51EF3E8C4007CD81E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E5B9C31EF3E8C4007CD81E /* Main.storyboard */; };
 		28E5B9CA1EF3E8C4007CD81E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E5B9C81EF3E8C4007CD81E /* LaunchScreen.storyboard */; };
@@ -44,6 +46,8 @@
 		28A8840E1EF410D50088F6CB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		28A884101EF4115F0088F6CB /* EditIconViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditIconViewController.swift; sourceTree = "<group>"; };
 		28A884121EF4143A0088F6CB /* EditIconTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditIconTableViewCell.swift; sourceTree = "<group>"; };
+		28AA1F151EF83B69007BAD52 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		28AA1F171EF8490D007BAD52 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		28E5B9BC1EF3E8C4007CD81E /* productify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = productify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E5B9BF1EF3E8C4007CD81E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28E5B9C41EF3E8C4007CD81E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -74,6 +78,7 @@
 				28A884081EF3F0CF0088F6CB /* RegisterViewController.swift */,
 				28A8840A1EF3F1250088F6CB /* MainViewController.swift */,
 				2871BDA21EF80A46009B03F2 /* ConformationViewController.swift */,
+				28AA1F151EF83B69007BAD52 /* HistoryViewController.swift */,
 				28A8840E1EF410D50088F6CB /* SettingsViewController.swift */,
 				28A884101EF4115F0088F6CB /* EditIconViewController.swift */,
 				282FC25C1EF41BA700EF173C /* UploadViewController.swift */,
@@ -89,6 +94,7 @@
 				28A884121EF4143A0088F6CB /* EditIconTableViewCell.swift */,
 				282E639B1EF6BDC500DAF0D7 /* SelectIconCollectionViewCell.swift */,
 				287584D61EF7BCD400764CD1 /* SelectActivitieIconCollectionViewCell.swift */,
+				28AA1F171EF8490D007BAD52 /* HistoryTableViewCell.swift */,
 			);
 			name = CustomCells;
 			sourceTree = "<group>";
@@ -271,12 +277,14 @@
 				28A884131EF4143A0088F6CB /* EditIconTableViewCell.swift in Sources */,
 				28A8840D1EF3FA250088F6CB /* Fire.swift in Sources */,
 				28A884091EF3F0CF0088F6CB /* RegisterViewController.swift in Sources */,
+				28AA1F161EF83B69007BAD52 /* HistoryViewController.swift in Sources */,
 				287584D71EF7BCD400764CD1 /* SelectActivitieIconCollectionViewCell.swift in Sources */,
 				282FC25F1EF4270900EF173C /* ViewController+Error.swift in Sources */,
 				2896C1911EF5683D0001440E /* UploadFromAppViewController.swift in Sources */,
 				282E639C1EF6BDC500DAF0D7 /* SelectIconCollectionViewCell.swift in Sources */,
 				28A884071EF3F0B10088F6CB /* SigninViewController.swift in Sources */,
 				282FC25D1EF41BA700EF173C /* UploadViewController.swift in Sources */,
+				28AA1F181EF8490D007BAD52 /* HistoryTableViewCell.swift in Sources */,
 				28E5B9C01EF3E8C4007CD81E /* AppDelegate.swift in Sources */,
 				2871BDA31EF80A46009B03F2 /* ConformationViewController.swift in Sources */,
 				28A8840B1EF3F1250088F6CB /* MainViewController.swift in Sources */,
