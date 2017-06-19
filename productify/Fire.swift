@@ -88,7 +88,8 @@ class Fire {
                     let ref = Database.database().reference().child("pref/\(Fire.shared.userId)").child(key as! String)
                     
                     ref.removeValue()
-                    print("removed!")
+                    
+                    
                 }
                 
             }

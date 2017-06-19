@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ConformationViewController: UIViewController {
     
@@ -59,6 +60,19 @@ class ConformationViewController: UIViewController {
         
         let timeStamp = getCurrentTime()
         
+        let reff = Database.database().reference().child(Fire.shared.userId).child(timeStamp)
+    
+        let activityDict = ["time": activity.time,
+                            "iconLabel": activity.iconLabel,
+                            "todo": activity.todo,
+                            "feeling": activity.feeling,
+                            "haveDone": activity.haveDone,] as [String : Any]
+        
+        reff.updateChildValues(activityDict) { (error, DatabaseReference) in
+            
+            print("done")
+            
+        }
         
         
         
