@@ -9,6 +9,24 @@
 import UIKit
 import Firebase
 
+struct ActivityInfo {
+    var time: Int
+    var iconLabel: String
+    var todo: String
+    var feeling: Int
+    var haveDone: String
+    
+    init() {
+        self.time = Int()
+        self.iconLabel = String()
+        self.todo = String()
+        self.feeling = Int()
+        self.haveDone = String()
+    }
+    
+}
+
+
 class MainViewController: UIViewController {
     
     //MARK: - Outlets
@@ -17,6 +35,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var activitySelector: UICollectionView!
+    @IBOutlet weak var todoField: UITextView!
     
     // timer requirements
     var timer = Timer()
@@ -25,6 +44,8 @@ class MainViewController: UIViewController {
     var countPauzed = false
     
     var sjaak = [NSDictionary]()
+    
+    var activity = ActivityInfo()
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,14 +79,6 @@ class MainViewController: UIViewController {
                 
             })
             
-            
-            
-            
-            
-            
-            
-            
-            
         } else {
             
             // user is not signin send them to the sigin page
@@ -77,6 +90,10 @@ class MainViewController: UIViewController {
     
     // MARK: - Actions
     
+    @IBAction func next(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "conformationSegue", sender: nil)
+    }
     // signs a user out and sends them to the sigin page
     @IBAction func signoutPress(_ sender: Any) {
         
@@ -96,6 +113,9 @@ class MainViewController: UIViewController {
     @IBAction func startButton(_ sender: Any) {
         
         if startButton.currentTitle == "Start" {
+            
+            // collect information for database
+            activity.time = Int(timePicker.countDownDuration)
             
             startButton.setTitle("Pauze", for: UIControlState .normal)
             cancelButton.isEnabled = true
@@ -128,9 +148,16 @@ class MainViewController: UIViewController {
         
     }
     
+    @IBAction func conformationSegue(_ sender: Any) {
+        print("segue")
+        performSegue(withIdentifier: "conformationSegue", sender: nil)
+        
+    }
+    
     // MARK: - Navigation
     @IBAction func returnToMainView(segue: UIStoryboardSegue) {}
 
+    
 
 }
 
@@ -222,6 +249,14 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.imageUrl = URL(string: sjaak[indexPath.row]["iconUrl"] as! String)
     
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! SelectActivitieIconCollectionViewCell
+        activity.iconLabel = cell.iconLabel.text!
+
+        
     }
 
 }
