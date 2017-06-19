@@ -23,6 +23,8 @@ class MainViewController: UIViewController {
     var countRunning = false
     var countPauzed = false
     
+    let sjaak = ["01","02"]
+    
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -177,6 +179,18 @@ extension MainViewController {
 }
 
 // collection view properties
-extension MainViewController {
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return sjaak.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath as IndexPath) as! SelectActivitieIconCollectionViewCell
+        
+        cell.IconLabel.text = sjaak[indexPath.row]
+    
+        return cell
+    }
 
 }

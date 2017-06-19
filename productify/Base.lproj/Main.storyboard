@@ -624,6 +624,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="nB4-bk-bfM" id="KBz-GK-Cot"/>
+                                    <outlet property="delegate" destination="nB4-bk-bfM" id="Dh5-TQ-rxg"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
