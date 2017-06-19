@@ -1,4 +1,4 @@
-# Readme - Proposal -  Producitfy
+# Readme - Proposal -  Productify
 [![BCH compliance](https://bettercodehub.com/edge/badge/majstomphorst/producitfy?branch=master)](https://bettercodehub.com/)
 ## Programmeerproject - Maxim Stomphorst - 11436727
 ### The problem to be solved.
