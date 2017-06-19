@@ -9,6 +9,10 @@
 import UIKit
 
 class ConformationViewController: UIViewController {
+    
+    
+    var activity = ActivityInfo()
+    
 
     @IBOutlet weak var mwaButton: UIButton!
     @IBOutlet weak var fineButton: UIButton!
@@ -18,6 +22,8 @@ class ConformationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("conformationSegue")
+        print(activity)
         // Do any additional setup after loading the view.
     }
 

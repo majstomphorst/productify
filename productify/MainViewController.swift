@@ -154,12 +154,20 @@ class MainViewController: UIViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "conformationSegue" {
+            let conformationVC = segue.destination as! ConformationViewController
+            conformationVC.activity = activity
+        }
+    }
+    
     // MARK: - Navigation
     @IBAction func returnToMainView(segue: UIStoryboardSegue) {}
 
     
 
 }
+
 
 
 // here all the timer ellements are handeld
