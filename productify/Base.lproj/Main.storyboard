@@ -619,8 +619,8 @@
                                             <constraint firstItem="nZj-EP-Tm7" firstAttribute="leading" secondItem="3Wf-eR-jmy" secondAttribute="leading" id="ag0-ZD-ddF"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="IconImage" destination="0aQ-zj-9Ck" id="Yh4-Ry-lAs"/>
-                                            <outlet property="IconLabel" destination="6UG-dm-XrQ" id="n9G-0w-tS2"/>
+                                            <outlet property="iconImage" destination="0aQ-zj-9Ck" id="eBk-Db-YWN"/>
+                                            <outlet property="iconLabel" destination="6UG-dm-XrQ" id="s43-j1-tRl"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -663,6 +663,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activitySelector" destination="2LI-7u-Z5i" id="0xM-fD-1Ib"/>
                         <outlet property="cancelButton" destination="gOk-am-7DW" id="diB-VF-OXc"/>
                         <outlet property="startButton" destination="PwY-pn-mHs" id="cpq-lR-rPy"/>
                         <outlet property="timeLabel" destination="Hij-di-GIW" id="PlH-Vg-OZr"/>

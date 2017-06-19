@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var timePicker: UIDatePicker!
+    @IBOutlet weak var activitySelector: UICollectionView!
     
     // timer requirements
     var timer = Timer()
@@ -23,7 +24,7 @@ class MainViewController: UIViewController {
     var countRunning = false
     var countPauzed = false
     
-    let sjaak = ["01","02"]
+    var sjaak = [NSDictionary]()
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -33,6 +34,37 @@ class MainViewController: UIViewController {
             
             // save userId for later use
             Fire.shared.userId = userId
+            
+            
+            Database.database().reference().child("pref/\(Fire.shared.userId)").queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
+                
+                self.sjaak = [NSDictionary]()
+                
+                if let value = snapshot.value as? NSDictionary {
+                    
+                    for key in value.allKeys {
+                        
+                        self.sjaak.append(value[key] as! NSDictionary)
+                        
+                    }
+                    
+                }
+                
+                DispatchQueue.main.async {
+                    
+                    self.activitySelector.reloadData()
+                }
+                
+                
+            })
+            
+            
+            
+            
+            
+            
+            
+            
             
         } else {
             
@@ -155,11 +187,9 @@ extension MainViewController {
         } else {
             
             self.countseconds -= 1
-            print(self.timeString(time: TimeInterval(self.countseconds)))
-            
             self.timeLabel.text = self.timeString(time: TimeInterval(self.countseconds))
-            
             return self.timeString(time: TimeInterval(self.countseconds))
+            
         }
         
         
@@ -188,7 +218,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath as IndexPath) as! SelectActivitieIconCollectionViewCell
         
-        cell.IconLabel.text = sjaak[indexPath.row]
+        cell.iconLabel.text = sjaak[indexPath.row]["label"] as? String
+        cell.imageUrl = URL(string: sjaak[indexPath.row]["iconUrl"] as! String)
     
         return cell
     }
