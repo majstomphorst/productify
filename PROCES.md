@@ -1,4 +1,4 @@
-# procesBook - Producitfy
+# procesBook - Productify
 ## Programmeerproject - Maxim Stomphorst - 11436727
 
 ### Day 01/19 - 06/06/17
