@@ -14,8 +14,7 @@ class Fire {
     static let shared = Fire()
     
     var userId = String()
-    
-    
+
     /// save's a icon in the Firebase storage and saves the info in the database
     func storeIcon(icon: UIImage, label: String) {
         
@@ -64,39 +63,35 @@ class Fire {
         }
     }
     
-    /// remove's an icon from the storage's
+    /// remove's an icon from the storages and out of the database
     func deleteIconStorage(name: String) {
-        
         
         let reff = Storage.storage().reference().child(self.userId).child("\(name).png")
         
         reff.delete { (error) in
-            print("done")
+            
         }
         
         Database.database().reference().child("pref/\(Fire.shared.userId)").queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
             
-            if let value = snapshot.value as? NSDictionary {
+            guard let value = snapshot.value as? NSDictionary else {
+                return
+            }
+            
                 
-                for key in value.allKeys {
+            for key in value.allKeys {
+                
+                let dict = value[key] as! NSDictionary
+                
+                if dict["label"] as! String == name {
                     
-                    let dict = value[key] as! NSDictionary
+                    let ref = Database.database().reference().child("pref/\(Fire.shared.userId)").child(key as! String)
                     
-                    if dict["label"] as! String == name {
-                        print(key)
-                        
-                        let ref = Database.database().reference().child("pref/\(Fire.shared.userId)").child(key as! String)
-                        
-                        ref.removeValue()
-                        print("removed!")
-                    }
-                    
-                    
-                    
+                    ref.removeValue()
+                    print("removed!")
                 }
                 
             }
-            
           
             
         })

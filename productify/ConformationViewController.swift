@@ -57,21 +57,35 @@ class ConformationViewController: UIViewController {
             activity.haveDone = haveDoneField.text!
         }
         
-        print(activity)
+        let timeStamp = getCurrentTime()
+        
+        
+        
+        
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    
+    /// a way to get a time stamp 
+    func getCurrentTime() -> String {
+        
+        let date = NSDate()
+        let calendar = NSCalendar.current
+        
+        let hours = calendar.component(.hour, from: date as Date)
+        let minutes = calendar.component(.minute, from: date as Date)
+        let seconds = calendar.component(.second, from: date as Date)
+        let day = calendar.component(.day, from: date as Date)
+        let month = calendar.component(.month, from: date as Date)
+        let year = calendar.component(.year, from: date as Date)
+        let week = calendar.component(.weekOfYear, from: date as Date)
+        
+        return String(format: "%02i:%02i:%02i:%02i:%02i:%02i:%04i",
+                      hours, minutes, seconds, day, week, month, year)
+        
+        
+        
+        
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    */
 
 }
