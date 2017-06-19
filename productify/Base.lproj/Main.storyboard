@@ -812,6 +812,7 @@
                     <connections>
                         <outlet property="fineButton" destination="agt-kC-Cw4" id="XuW-qx-rgK"/>
                         <outlet property="goodButton" destination="N56-Xr-SEj" id="6eg-4H-cK0"/>
+                        <outlet property="haveDoneField" destination="T5c-v0-Guc" id="GJZ-p9-9c9"/>
                         <outlet property="mwaButton" destination="UgW-Ha-mjr" id="g4U-23-FoD"/>
                     </connections>
                 </viewController>

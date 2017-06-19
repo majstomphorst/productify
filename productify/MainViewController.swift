@@ -92,6 +92,10 @@ class MainViewController: UIViewController {
     
     @IBAction func next(_ sender: Any) {
         
+        if todoField.text != nil {
+            activity.todo = todoField.text!
+        }
+        
         self.performSegue(withIdentifier: "conformationSegue", sender: nil)
     }
     // signs a user out and sends them to the sigin page
