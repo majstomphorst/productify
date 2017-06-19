@@ -16,46 +16,48 @@ class MainViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var timePicker: UIDatePicker!
-
+    
     // timer requirements
     var timer = Timer()
     var countseconds = Int()
     var countRunning = false
     var countPauzed = false
     
+    
     override func viewDidAppear(_ animated: Bool) {
+        
         // Check if user is signin or not
         if let userId = Auth.auth().currentUser?.uid {
             
-            print(userId)
-            
+            // save userId for later use
             Fire.shared.userId = userId
-            // user is signin
+            
         } else {
-            // user is not signin
-            print("segue")
+            
+            // user is not signin send them to the sigin page
             performSegue(withIdentifier: "signinSegue", sender: nil)
         }
+        
     }
     
     
     // MARK: - Actions
+    
+    // signs a user out and sends them to the sigin page
     @IBAction func signoutPress(_ sender: Any) {
-        print("hello" )
         
         do {
+    
             try Auth.auth().signOut()
-            
-            print("sigout")
             performSegue(withIdentifier: "signinSegue", sender: nil)
             
-            // if error this send a alert to the user with the reason why
         } catch {
+            
+            // if error this send a alert to the user with the reason why
             alertUser(title: "logout went wrong", message: error.localizedDescription)
         }
         
     }
-    
     
     @IBAction func startButton(_ sender: Any) {
         
@@ -82,7 +84,6 @@ class MainViewController: UIViewController {
         
     }
     
-    
     @IBAction func cancelButton(_ sender: Any) {
         
         cancel()
@@ -92,7 +93,6 @@ class MainViewController: UIViewController {
         timePicker.isEnabled = true
         
     }
-
     
     // MARK: - Navigation
     @IBAction func returnToMainView(segue: UIStoryboardSegue) {}
@@ -118,12 +118,13 @@ extension MainViewController {
         
     }
 
-    
     func resumePause() {
         
         if self.countPauzed {
             
-            self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(self.updateTimer)), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: 1, target: self,
+                                              selector: (#selector(self.updateTimer)),
+                                              userInfo: nil, repeats: true)
             
             self.countPauzed = false
             
@@ -136,10 +137,10 @@ extension MainViewController {
     }
     
     func cancel() {
+        
         self.countRunning = false
         self.timer.invalidate()
         self.timer = Timer()
-        
     }
     
     
@@ -162,7 +163,6 @@ extension MainViewController {
         
     }
     
-    
     private func timeString(time:TimeInterval) -> String {
         
         let hours = Int(time) / 3600
@@ -174,4 +174,9 @@ extension MainViewController {
         
     }
     
+}
+
+// collection view properties
+extension MainViewController {
+
 }

@@ -11,6 +11,7 @@
 		282E639C1EF6BDC500DAF0D7 /* SelectIconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E639B1EF6BDC500DAF0D7 /* SelectIconCollectionViewCell.swift */; };
 		282FC25D1EF41BA700EF173C /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282FC25C1EF41BA700EF173C /* UploadViewController.swift */; };
 		282FC25F1EF4270900EF173C /* ViewController+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282FC25E1EF4270900EF173C /* ViewController+Error.swift */; };
+		287584D71EF7BCD400764CD1 /* SelectActivitieIconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287584D61EF7BCD400764CD1 /* SelectActivitieIconCollectionViewCell.swift */; };
 		2896C1911EF5683D0001440E /* UploadFromAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896C1901EF5683D0001440E /* UploadFromAppViewController.swift */; };
 		28A884041EF3ED0A0088F6CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28A884031EF3ED0A0088F6CB /* GoogleService-Info.plist */; };
 		28A884071EF3F0B10088F6CB /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A884061EF3F0B10088F6CB /* SigninViewController.swift */; };
@@ -31,6 +32,7 @@
 		282E639B1EF6BDC500DAF0D7 /* SelectIconCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectIconCollectionViewCell.swift; sourceTree = "<group>"; };
 		282FC25C1EF41BA700EF173C /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		282FC25E1EF4270900EF173C /* ViewController+Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Error.swift"; sourceTree = "<group>"; };
+		287584D61EF7BCD400764CD1 /* SelectActivitieIconCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectActivitieIconCollectionViewCell.swift; sourceTree = "<group>"; };
 		2896C1901EF5683D0001440E /* UploadFromAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadFromAppViewController.swift; sourceTree = "<group>"; };
 		28A884031EF3ED0A0088F6CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		28A884061EF3F0B10088F6CB /* SigninViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			children = (
 				28A884121EF4143A0088F6CB /* EditIconTableViewCell.swift */,
 				282E639B1EF6BDC500DAF0D7 /* SelectIconCollectionViewCell.swift */,
+				287584D61EF7BCD400764CD1 /* SelectActivitieIconCollectionViewCell.swift */,
 			);
 			name = CustomCells;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				28A884131EF4143A0088F6CB /* EditIconTableViewCell.swift in Sources */,
 				28A8840D1EF3FA250088F6CB /* Fire.swift in Sources */,
 				28A884091EF3F0CF0088F6CB /* RegisterViewController.swift in Sources */,
+				287584D71EF7BCD400764CD1 /* SelectActivitieIconCollectionViewCell.swift in Sources */,
 				282FC25F1EF4270900EF173C /* ViewController+Error.swift in Sources */,
 				2896C1911EF5683D0001440E /* UploadFromAppViewController.swift in Sources */,
 				282E639C1EF6BDC500DAF0D7 /* SelectIconCollectionViewCell.swift in Sources */,
