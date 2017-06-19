@@ -39,21 +39,20 @@ class HistoryViewController: UIViewController {
         let month = String(format: "%02i",row + 1)
         
         Database.database().reference().child(Fire.shared.userId).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-           if let activity = snapshot.value as? NSDictionary {
-            
+
+            guard let activity = snapshot.value as? NSDictionary else {
+                return
+            }
             
             for key in activity.allKeys{
                 
-                if ((key as! String).range(of: "month-\(month)")) != nil {
+                if (key as! String).range(of: "month-\(month)") != nil {
                     print(key)
                 }
                 
                 
-                
             }
             
-           }
             
             
         })
