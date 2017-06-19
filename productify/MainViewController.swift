@@ -38,8 +38,25 @@ class MainViewController: UIViewController {
         }
     }
     
-
+    
     // MARK: - Actions
+    @IBAction func signoutPress(_ sender: Any) {
+        print("hello" )
+        
+        do {
+            try Auth.auth().signOut()
+            
+            print("sigout")
+            performSegue(withIdentifier: "signinSegue", sender: nil)
+            
+            // if error this send a alert to the user with the reason why
+        } catch {
+            alertUser(title: "logout went wrong", message: error.localizedDescription)
+        }
+        
+    }
+    
+    
     @IBAction func startButton(_ sender: Any) {
         
         if startButton.currentTitle == "Start" {
@@ -63,8 +80,8 @@ class MainViewController: UIViewController {
         }
         
         
-        
     }
+    
     
     @IBAction func cancelButton(_ sender: Any) {
         
@@ -100,7 +117,6 @@ extension MainViewController {
         }
         
     }
-    
 
     
     func resumePause() {
@@ -126,6 +142,7 @@ extension MainViewController {
         
     }
     
+    
     @objc func updateTimer() -> String {
         
         if countseconds < 1 {
@@ -144,6 +161,7 @@ extension MainViewController {
         
         
     }
+    
     
     private func timeString(time:TimeInterval) -> String {
         

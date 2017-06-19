@@ -17,7 +17,6 @@ class UploadFromAppViewController: UIViewController {
     var delegate: DataSendDelegate? = nil
     var icons = ["0","1","2","3","4"]
     
-    
      // MARK: - Navigation
      @IBAction func Cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -42,29 +41,23 @@ extension UploadFromAppViewController: UICollectionViewDelegate, UICollectionVie
         return cell
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("taptap")
-        print(indexPath)
+       
+        print("didSelect \(indexPath)")
+
+        let cell = collectionView.cellForItem(at: indexPath) as! SelectIconCollectionViewCell
+        
+        if let icon = cell.IconImage.image {
+            delegate?.userDidEnterData(data: icon)
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            
+            print("found nill")
+        }
+        
+        
     }
-    
-    
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//       
-//        print("didSelect \(indexPath)")
-//
-//        let cell = collectionView.cellForItem(at: indexPath) as! SelectIconCollectionViewCell
-//        
-//        if let icon = cell.IconImage.image {
-//            delegate?.userDidEnterData(data: icon)
-//            self.dismiss(animated: true, completion: nil)
-//        } else {
-//            
-//            print("found nill")
-//        }
-//        
-//        
-//    }
     
     
     

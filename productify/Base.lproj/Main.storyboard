@@ -590,7 +590,22 @@
                             <constraint firstAttribute="trailingMargin" secondItem="3cG-3K-Kp4" secondAttribute="trailing" constant="8" id="zQo-Tc-2CH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Main" id="aeC-Q3-Z3T"/>
+                    <navigationItem key="navigationItem" title="Main" id="aeC-Q3-Z3T">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="PCW-wT-StV">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OAl-av-NxI">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign out"/>
+                                <connections>
+                                    <action selector="signout:" destination="2qh-Xl-AST" eventType="touchUpInside" id="9bh-Qa-H2D"/>
+                                    <action selector="signoutPress:" destination="nB4-bk-bfM" eventType="touchUpInside" id="lti-NO-Oym"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <action selector="signout:" destination="nB4-bk-bfM" id="J6L-rd-q2H"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="gOk-am-7DW" id="diB-VF-OXc"/>
                         <outlet property="startButton" destination="PwY-pn-mHs" id="cpq-lR-rPy"/>
