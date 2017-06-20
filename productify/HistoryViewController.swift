@@ -10,10 +10,12 @@ import UIKit
 import Firebase
 
 class HistoryViewController: UIViewController {
+    
+    var filterdActivities = [NSDictionary]()
 
     // MARK: - Outlets
     @IBOutlet weak var monthPicker: UIPickerView!
-    
+    @IBOutlet weak var historyTableView: UITableView!
     
     var row = 0
     
@@ -36,23 +38,31 @@ class HistoryViewController: UIViewController {
     
     @IBAction func lookUp(_ sender: Any) {
         
+        
         let month = String(format: "%02i",row + 1)
         
         Database.database().reference().child(Fire.shared.userId).observeSingleEvent(of: .value, with: { (snapshot) in
 
-            guard let activity = snapshot.value as? NSDictionary else {
+            guard let keys = snapshot.value as? NSDictionary else {
                 return
             }
             
-            for key in activity.allKeys{
-                
+            // get a list of filterd key's where the activiies are stored
+            var keysFilter = [String]()
+            for key in keys.allKeys {
                 if (key as! String).range(of: "month-\(month)") != nil {
-                    print(key)
+                    keysFilter.append(key as! String)
                 }
-                
-                
             }
             
+            
+            guard let activities = snapshot.value as? NSDictionary else {
+                return
+            }
+            
+            self.filterdActivities.append((activities[keysFilter[0]] as? NSDictionary)!)
+
+            self.historyTableView.reloadData()
             
             
         })
@@ -85,13 +95,13 @@ extension HistoryViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pickerData.count
+        return filterdActivities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HistoryTableViewCell
-        cell.iconLabel.text = pickerData[indexPath.row]
+        cell.iconLabel.text = filterdActivities[indexPath.row]["iconLabel"] as! String
         
         return cell
     }
