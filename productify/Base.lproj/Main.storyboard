@@ -101,12 +101,15 @@
                     <navigationItem key="navigationItem" title="History" id="Hw8-wR-gcJ">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="hZC-YC-BNm">
                             <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="zhg-E9-Wt1">
-                                <rect key="frame" x="16" y="7" width="121" height="31"/>
+                                <rect key="frame" x="16" y="7" width="121" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Month"/>
                                     <segment title="Week"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentation:" destination="gTh-Aa-x6p" eventType="valueChanged" id="KBd-Ps-EHS"/>
+                                </connections>
                             </segmentedControl>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="DYe-7u-FQR">
@@ -123,6 +126,7 @@
                     <connections>
                         <outlet property="historyTableView" destination="CG9-Y0-fqT" id="ime-iU-GZo"/>
                         <outlet property="monthPicker" destination="Zh6-v2-tvp" id="kGu-HU-2cc"/>
+                        <outlet property="weekMonthOutlet" destination="zhg-E9-Wt1" id="E5b-TR-ZnC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ymh-aM-QdQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -16,10 +16,11 @@ class HistoryViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var monthPicker: UIPickerView!
     @IBOutlet weak var historyTableView: UITableView!
+    @IBOutlet weak var weekMonthOutlet: UISegmentedControl!
     
     var row = 0
     
-    let pickerData = ["January", "February", "March", "April",
+    var pickerData = ["January", "February", "March", "April",
                       "May", "June","July", "August",
                       "September", "October","November", "December"]
     
@@ -36,6 +37,28 @@ class HistoryViewController: UIViewController {
     
     // MARK: - Actions
     
+    @IBAction func segmentation(_ sender: Any) {
+        switch weekMonthOutlet.selectedSegmentIndex
+        {
+        case 0:
+            print("Month selected")
+            self.pickerData = ["January", "February", "March", "April",
+                              "May", "June","July", "August",
+                              "September", "October","November", "December"]
+            self.monthPicker.reloadAllComponents()
+            
+        //show popular view
+        case 1:
+            print("Week selected")
+            self.pickerData = ["week 01", "week 02"]
+            self.monthPicker.reloadAllComponents()
+            
+        //show history view
+        default:
+            break;
+        }
+        
+    }
     @IBAction func lookUp(_ sender: Any) {
         
         self.filterdActivities = [NSDictionary]()
