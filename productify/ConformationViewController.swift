@@ -72,8 +72,6 @@ class ConformationViewController: UIViewController {
             
         }
         
-        
-        
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -93,11 +91,7 @@ class ConformationViewController: UIViewController {
         
         return String(format: "hour-%02i:minutes-%02i:seconds-%02i:day-%02i:week-%02i:month-%02i:year-%04i",
                       hours, minutes, seconds, day, week, month, year)
-        
-        
-        
-        
-
+    
     }
 
 }

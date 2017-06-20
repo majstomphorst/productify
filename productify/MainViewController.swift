@@ -37,6 +37,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var activitySelector: UICollectionView!
     @IBOutlet weak var todoField: UITextView!
     
+    var selectedItem: IndexPath?
+    
     // timer requirements
     var timer = Timer()
     var countseconds = Int()
@@ -102,7 +104,6 @@ class MainViewController: UIViewController {
     @IBAction func signoutPress(_ sender: Any) {
         
         do {
-    
             try Auth.auth().signOut()
             performSegue(withIdentifier: "signinSegue", sender: nil)
             
@@ -240,7 +241,6 @@ extension MainViewController {
         let minutes = Int(time) / 60 % 60
         let seconds = Int(time) % 60
         
-        
         return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
         
     }
@@ -265,10 +265,26 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        
+        
+        if self.selectedItem != nil {
+            let cell1 = collectionView.cellForItem(at: self.selectedItem!) as! SelectActivitieIconCollectionViewCell
+            cell1.iconImage.backgroundColor = UIColor.clear
+        }
+        
+    
         let cell = collectionView.cellForItem(at: indexPath) as! SelectActivitieIconCollectionViewCell
         activity.iconLabel = cell.iconLabel.text!
+        cell.iconImage.backgroundColor = UIColor.blue
+        self.selectedItem = indexPath
+        
+        
+        
+        
 
         
     }
+    
+
 
 }

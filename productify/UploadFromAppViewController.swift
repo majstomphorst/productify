@@ -17,6 +17,18 @@ class UploadFromAppViewController: UIViewController {
     var delegate: DataSendDelegate? = nil
     var icons = ["0","1","2","3","4"]
     
+    
+    override func viewDidLoad() {
+        
+//        let fileManager = FileManager.default
+//        let bundleURL = Bundle.main.bundleURL
+//        
+//        print("me")
+//        print(bundleURL.path)
+//        print("end")
+        
+    }
+    
      // MARK: - Navigation
      @IBAction func Cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
