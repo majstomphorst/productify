@@ -99,6 +99,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="History" id="Hw8-wR-gcJ">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="hZC-YC-BNm">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="zhg-E9-Wt1">
+                                <rect key="frame" x="16" y="7" width="121" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Month"/>
+                                    <segment title="Week"/>
+                                </segments>
+                            </segmentedControl>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="DYe-7u-FQR">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PWX-wF-FsJ">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
