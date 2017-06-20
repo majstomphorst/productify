@@ -38,6 +38,8 @@ class HistoryViewController: UIViewController {
     
     @IBAction func lookUp(_ sender: Any) {
         
+        self.filterdActivities = [NSDictionary]()
+        
         
         let month = String(format: "%02i",row + 1)
         
@@ -60,7 +62,10 @@ class HistoryViewController: UIViewController {
                 return
             }
             
-            self.filterdActivities.append((activities[keysFilter[0]] as? NSDictionary)!)
+            for key in keysFilter {
+                self.filterdActivities.append((activities[key] as? NSDictionary)!)
+            }
+            
 
             self.historyTableView.reloadData()
             
@@ -101,7 +106,8 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HistoryTableViewCell
-        cell.iconLabel.text = filterdActivities[indexPath.row]["iconLabel"] as! String
+        cell.iconLabel.text = (filterdActivities[indexPath.row]["iconLabel"] as! String)
+        print(filterdActivities[indexPath.row])
         
         return cell
     }
