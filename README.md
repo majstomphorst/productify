@@ -1,5 +1,5 @@
 # Readme - Proposal -  Productify
-[![BCH compliance](https://bettercodehub.com/edge/badge/majstomphorst/producitfy?branch=master)](https://bettercodehub.com/)
+[![BCH compliance](https://bettercodehub.com/edge/badge/majstomphorst/productify?branch=master)](https://bettercodehub.com/)(https://bettercodehub.com/)
 ## Programmeerproject - Maxim Stomphorst - 11436727
 ### The problem to be solved.
 De behoeften om studie / werk activiteiten bij te houden. Om vervolgens een overzicht te bieden van de verrichten activiteiten per dag en of per week.
