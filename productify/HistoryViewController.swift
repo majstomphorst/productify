@@ -30,10 +30,6 @@ class HistoryViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - Actions
     
@@ -41,7 +37,6 @@ class HistoryViewController: UIViewController {
         switch weekMonthOutlet.selectedSegmentIndex
         {
         case 0:
-            print("Month selected")
             self.pickerData = ["January", "February", "March", "April",
                               "May", "June","July", "August",
                               "September", "October","November", "December"]
@@ -49,10 +44,8 @@ class HistoryViewController: UIViewController {
             
         //show popular view
         case 1:
-            print("Week selected")
             self.pickerData = ["week 01", "week 02"]
             self.monthPicker.reloadAllComponents()
-            
         //show history view
         default:
             break;
@@ -62,7 +55,6 @@ class HistoryViewController: UIViewController {
     @IBAction func lookUp(_ sender: Any) {
         
         self.filterdActivities = [NSDictionary]()
-        
         
         let month = String(format: "%02i",row + 1)
         
@@ -77,6 +69,7 @@ class HistoryViewController: UIViewController {
             for key in keys.allKeys {
                 if (key as! String).range(of: "month-\(month)") != nil {
                     keysFilter.append(key as! String)
+                    
                 }
             }
             
@@ -97,6 +90,7 @@ class HistoryViewController: UIViewController {
         
         
     }
+    
 
 }
 
@@ -135,6 +129,20 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         print(filterdActivities[indexPath.row])
         
         return cell
+    }
+    
+    // tels the table that every cell can de deleted
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    // handels the delete actions
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            
+           
+            
+        }
     }
     
     
