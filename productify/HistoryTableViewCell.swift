@@ -7,12 +7,58 @@
 //
 
 import UIKit
+import Firebase
 
 class HistoryTableViewCell: UITableViewCell {
 
 
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var iconLabel: UILabel!
+    
+    // if the value of imageUrl changes to the folowing
+    var imagName: String? {
+        didSet {
+            // Create a reference to the file you want to download
+            let refStore = Storage.storage().reference().child(Fire.shared.userId).child("\(imagName!).png")
+            
+            
+            // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+            refStore.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                if error != nil {
+                    // Uh-oh, an error occurred!
+                } else {
+                    // Data for "images/island.jpg" is returned
+                    self.iconImage.image = UIImage(data: data!)
+                }
+            }
+            
+            
+            
+            
+            
+            
+//            // start a task on a second thread, go to the imageUrl and extracts image data
+//            let task = URLSession.shared.dataTask(with: imageUrl!) { (data, response, error) in
+//                
+//                
+//                guard let data = data else {
+//                    return
+//                }
+//                        
+//                // on the main thread
+//                DispatchQueue.main.async {
+//                    // Assigning image data to Image placeholder
+//                    self.iconImage.image = UIImage(data: data)
+//                }
+//                
+//                
+//                
+//                
+//                
+//            }
+//            task.resume()
+        }
+    }
     
 
 }
