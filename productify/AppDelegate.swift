@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // define action for notifications
-        let timesUp = UNNotificationAction(identifier: "timesUp", title: "time is up1", options: [])
+        let timesUp = UNNotificationAction(identifier: "timesUp", title: "Let's save you're awesome work!", options: [])
         
         // add action to timesUp category
         let category = UNNotificationCategory(identifier: "timesUp", actions: [timesUp], intentIdentifiers: [], options: [])
@@ -42,15 +42,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func scheduleNotification() {
+    func scheduleNotification(countDown: Double, title: String, body: String) {
         
         // Alerts user after timeInterval (in seconds) it doest not repeat
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: countDown, repeats: false)
         
         // creating content of notification
         let content = UNMutableNotificationContent()
-        content.title = "Time is up!"
-        content.body = "Body text!"
+        content.title = title
+        content.body =  body
         content.sound = UNNotificationSound.default()
         content.categoryIdentifier = "timesUp"
         

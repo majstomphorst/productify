@@ -122,7 +122,11 @@ class MainViewController: UIViewController {
         
         if startButton.currentTitle == "Start" {
             
-            self.appDelegate?.scheduleNotification()
+            let countDown = Double(timePicker.countDownDuration)
+            
+            self.appDelegate?.scheduleNotification(countDown: countDown,
+                                                   title: "Title",
+                                                   body: "Body")
             
             // collect information for database
             activity.time = Int(timePicker.countDownDuration)
