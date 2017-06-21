@@ -58,7 +58,6 @@ class MainViewController: UIViewController {
             // save userId for later use
             Fire.shared.userId = userId
             
-            
             Database.database().reference().child("pref/\(Fire.shared.userId)").queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
                 
                 self.sjaak = [NSDictionary]()
@@ -73,8 +72,8 @@ class MainViewController: UIViewController {
                     
                 }
                 
+                // reload the activity selector on main thread
                 DispatchQueue.main.async {
-                    
                     self.activitySelector.reloadData()
                 }
                 
@@ -100,6 +99,7 @@ class MainViewController: UIViewController {
         
         self.performSegue(withIdentifier: "conformationSegue", sender: nil)
     }
+    
     // signs a user out and sends them to the sigin page
     @IBAction func signoutPress(_ sender: Any) {
         
@@ -154,7 +154,6 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func conformationSegue(_ sender: Any) {
-        print("segue")
         performSegue(withIdentifier: "conformationSegue", sender: nil)
         
     }
@@ -173,11 +172,10 @@ class MainViewController: UIViewController {
 
 }
 
-
-
+/*
 // here all the timer ellements are handeld
+*/
 extension MainViewController {
-    
     
     func start(seconds: Int) {
         
@@ -210,6 +208,7 @@ extension MainViewController {
         
     }
     
+    /// stops the timer and prepares of the next round
     func cancel() {
         
         self.countRunning = false
@@ -218,11 +217,13 @@ extension MainViewController {
     }
     
     
+    /// this updates the timer every secon and checks if the timer is done.
     @objc func updateTimer() -> String {
         
         if countseconds < 1 {
             //Send alert to indicate "time's up!"
             self.timer.invalidate()
+            self.performSegue(withIdentifier: "conformationSegue", sender: nil)
             return "Time is up"
         } else {
             
@@ -235,6 +236,7 @@ extension MainViewController {
         
     }
     
+    /// Creating a time stamp voor the timer to display
     private func timeString(time:TimeInterval) -> String {
         
         let hours = Int(time) / 3600
@@ -266,20 +268,17 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         
-        
+        // Deselect the previos selection if any
         if self.selectedItem != nil {
             let cell1 = collectionView.cellForItem(at: self.selectedItem!) as! SelectActivitieIconCollectionViewCell
             cell1.iconImage.backgroundColor = UIColor.clear
         }
         
-    
+        // select the touched cell
         let cell = collectionView.cellForItem(at: indexPath) as! SelectActivitieIconCollectionViewCell
         activity.iconLabel = cell.iconLabel.text!
         cell.iconImage.backgroundColor = UIColor.blue
         self.selectedItem = indexPath
-        
-        
-        
         
 
         

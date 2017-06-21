@@ -11,6 +11,7 @@ import Firebase
 
 class HistoryViewController: UIViewController {
     
+    
     var filterdActivities = [NSDictionary]()
 
     // MARK: - Outlets
@@ -158,6 +159,8 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     // handels the delete actions
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
+            
+            print(filterdActivities[indexPath.row])
             
            
             
