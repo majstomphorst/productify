@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,8 +20,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // starting firebase
         FirebaseApp.configure()
-        // Override point for customization after application launch.
+        
+        // send a request to allow notifications
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (authorized, error) in
+            
+            if !authorized  {
+              print("no auth notifications")
+            }
+            
+        }
+        
+        // define action for notifications
+        let timesUp = UNNotificationAction(identifier: "timesUp", title: "time is up1", options: [])
+        
+        // add action to timesUp category
+        let category = UNNotificationCategory(identifier: "timesUp", actions: [timesUp], intentIdentifiers: [], options: [])
+        
+        // add the timesUp category to the notification framework
+        UNUserNotificationCenter.current().setNotificationCategories([category])
+        
         return true
+    }
+    
+    func scheduleNotification() {
+        
+        // Alerts user after timeInterval (in seconds) it doest not repeat
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        // creating content of notification
+        let content = UNMutableNotificationContent()
+        content.title = "Time is up!"
+        content.body = "Body text!"
+        content.sound = UNNotificationSound.default()
+        content.categoryIdentifier = "timesUp"
+        
+        let request = UNNotificationRequest(identifier: "time is up notification", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            
+        }
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

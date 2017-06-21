@@ -49,6 +49,9 @@ class MainViewController: UIViewController {
     
     var activity = ActivityInfo()
     
+    // get to the notification function in AppDelegate
+    var appDelegate = UIApplication.shared.delegate as? AppDelegate
+    
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -118,6 +121,8 @@ class MainViewController: UIViewController {
     @IBAction func startButton(_ sender: Any) {
         
         if startButton.currentTitle == "Start" {
+            
+            self.appDelegate?.scheduleNotification()
             
             // collect information for database
             activity.time = Int(timePicker.countDownDuration)

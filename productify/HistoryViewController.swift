@@ -146,8 +146,6 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         cell.iconLabel.text = (filterdActivities[indexPath.row]["iconLabel"] as! String)
         cell.imagName = (filterdActivities[indexPath.row]["iconLabel"] as! String)
         
-        print(filterdActivities[indexPath.row])
-        
         return cell
     }
     
