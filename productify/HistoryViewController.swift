@@ -19,6 +19,7 @@ class HistoryViewController: UIViewController {
     @IBOutlet weak var weekMonthOutlet: UISegmentedControl!
     
     var row = 0
+    var monthSelected = true
     
     var pickerData = ["January", "February", "March", "April",
                       "May", "June","July", "August",
@@ -37,15 +38,26 @@ class HistoryViewController: UIViewController {
         switch weekMonthOutlet.selectedSegmentIndex
         {
         case 0:
+            
             self.pickerData = ["January", "February", "March", "April",
                               "May", "June","July", "August",
                               "September", "October","November", "December"]
             self.monthPicker.reloadAllComponents()
             
+            self.monthSelected = true
+            
+            
         //show popular view
         case 1:
-            self.pickerData = ["week 01", "week 02"]
+            self.pickerData = []
+            
+            for i in 1...52 {
+                self.pickerData.append(String(format: "week %02i", i))
+            }
+            
             self.monthPicker.reloadAllComponents()
+            self.monthSelected = false
+            
         //show history view
         default:
             break;
@@ -55,8 +67,15 @@ class HistoryViewController: UIViewController {
     @IBAction func lookUp(_ sender: Any) {
         
         self.filterdActivities = [NSDictionary]()
+        var filter = String()
         
-        let month = String(format: "%02i",row + 1)
+        
+        if self.monthSelected == true {
+            filter = String(format: "month-%02i",row + 1)
+        } else {
+            filter = String(format: "week-%02i",row + 1)
+        }
+        
         
         Database.database().reference().child(Fire.shared.userId).observeSingleEvent(of: .value, with: { (snapshot) in
 
@@ -67,7 +86,7 @@ class HistoryViewController: UIViewController {
             // get a list of filterd key's where the activiies are stored
             var keysFilter = [String]()
             for key in keys.allKeys {
-                if (key as! String).range(of: "month-\(month)") != nil {
+                if (key as! String).range(of: filter) != nil {
                     keysFilter.append(key as! String)
                     
                 }
