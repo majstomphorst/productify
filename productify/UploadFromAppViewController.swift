@@ -18,17 +18,6 @@ class UploadFromAppViewController: UIViewController {
     var icons = ["0","1","2","3","4"]
     
     
-    override func viewDidLoad() {
-        
-//        let fileManager = FileManager.default
-//        let bundleURL = Bundle.main.bundleURL
-//        
-//        print("me")
-//        print(bundleURL.path)
-//        print("end")
-        
-    }
-    
      // MARK: - Navigation
      @IBAction func Cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -56,7 +45,6 @@ extension UploadFromAppViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
-        print("didSelect \(indexPath)")
 
         let cell = collectionView.cellForItem(at: indexPath) as! SelectIconCollectionViewCell
         
@@ -65,7 +53,6 @@ extension UploadFromAppViewController: UICollectionViewDelegate, UICollectionVie
             self.dismiss(animated: true, completion: nil)
         } else {
             
-            print("found nill")
         }
         
         
