@@ -233,7 +233,8 @@ extension MainViewController {
             
             
             self.todoField.text = ""
-            self.cancelButton(self)
+            self.cancelButton(self
+            )
 
             
             

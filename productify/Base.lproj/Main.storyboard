@@ -274,7 +274,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="du4-Z5-Ct6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="484" y="703"/>
+            <point key="canvasLocation" x="449" y="703"/>
         </scene>
         <!--Upload View Controller-->
         <scene sceneID="hWO-Fp-wlM">
@@ -369,7 +369,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2056.8000000000002" y="702.99850074962524"/>
+            <point key="canvasLocation" x="1156" y="703"/>
         </scene>
         <!--Upload From App View Controller-->
         <scene sceneID="jKf-iC-SNC">
@@ -1014,6 +1014,7 @@
         <!--Navigation Controller-->
         <scene sceneID="SzK-oC-wLC">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uuO-qI-yDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VHu-kk-sfO" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="more" id="U1c-0B-chP"/>
                     <toolbarItems/>
@@ -1023,12 +1024,11 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="YTa-Ph-onj" kind="show" action="showDetailViewController:sender:" id="vtY-hn-ahD"/>
+                        <segue destination="YTa-Ph-onj" kind="relationship" relationship="rootViewController" id="b9L-Vm-r9z"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uuO-qI-yDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-298.39999999999998" y="702.99850074962524"/>
+            <point key="canvasLocation" x="-238" y="703"/>
         </scene>
     </scenes>
     <resources>
