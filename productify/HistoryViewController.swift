@@ -143,8 +143,13 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HistoryTableViewCell
-        cell.iconLabel.text = (filterdActivities[indexPath.row]["iconLabel"] as! String)
-        cell.imagName = (filterdActivities[indexPath.row]["iconLabel"] as! String)
+        
+        cell.iconLabel.text = filterdActivities[indexPath.row]["iconLabel"] as? String
+        cell.imagName = filterdActivities[indexPath.row]["iconLabel"] as? String
+        cell.todoField.text = ("What you wanted to do: \r\n\(String(describing: filterdActivities[indexPath.row]["todo"]!))")
+        cell.haveDoneField.text = ("What you really did do: \r\n\(String(describing: filterdActivities[indexPath.row]["haveDone"]!))")
+        cell.timeLabel.text = ("\(String(describing: filterdActivities[indexPath.row]["time"]!))")
+        cell.feelingLabel.text = ("\(String(describing: filterdActivities[indexPath.row]["feeling"]!))")
         
         return cell
     }
