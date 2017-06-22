@@ -194,36 +194,7 @@
             </objects>
             <point key="canvasLocation" x="592.79999999999995" y="20.239880059970016"/>
         </scene>
-        <!--Settings-->
-        <scene sceneID="iQA-cC-aOX">
-            <objects>
-                <viewController id="2qh-Xl-AST" customClass="SettingsViewController" customModule="productify" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="d4Y-Ef-53I"/>
-                        <viewControllerLayoutGuide type="bottom" id="arq-UO-MWD"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xW5-RC-0fs">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypo-Id-BUe">
-                                <rect key="frame" x="164" y="318" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="YTa-Ph-onj" kind="show" id="neE-zd-8Pk"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Settings" id="8GE-Yv-cso"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hLo-7o-KhQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="640.79999999999995" y="702.99850074962524"/>
-        </scene>
-        <!--Edit Icon View Controller-->
+        <!--Change icons-->
         <scene sceneID="pik-nf-1Q9">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="YTa-Ph-onj" customClass="EditIconViewController" customModule="productify" customModuleProvider="target" sceneMemberID="viewController">
@@ -289,7 +260,7 @@
                             <constraint firstItem="t2o-UF-0Lk" firstAttribute="top" secondItem="exb-rm-owk" secondAttribute="bottom" id="hjY-Et-LEw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Mze-83-Hza">
+                    <navigationItem key="navigationItem" title="Change icons" id="Mze-83-Hza">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="QD5-fj-ZXQ">
                             <connections>
                                 <action selector="plus:" destination="YTa-Ph-onj" id="SCg-ME-709"/>
@@ -303,7 +274,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="du4-Z5-Ct6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1364" y="702.99850074962524"/>
+            <point key="canvasLocation" x="484" y="703"/>
         </scene>
         <!--Upload View Controller-->
         <scene sceneID="hWO-Fp-wlM">
@@ -849,7 +820,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign out"/>
                                 <connections>
-                                    <action selector="signout:" destination="2qh-Xl-AST" eventType="touchUpInside" id="9bh-Qa-H2D"/>
                                     <action selector="signoutPress:" destination="nB4-bk-bfM" eventType="touchUpInside" id="lti-NO-Oym"/>
                                 </connections>
                             </button>
@@ -1053,7 +1023,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="2qh-Xl-AST" kind="relationship" relationship="rootViewController" id="0Oo-W0-Nnl"/>
+                        <segue destination="YTa-Ph-onj" kind="show" action="showDetailViewController:sender:" id="vtY-hn-ahD"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uuO-qI-yDY" userLabel="First Responder" sceneMemberID="firstResponder"/>

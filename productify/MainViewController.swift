@@ -177,8 +177,6 @@ class MainViewController: UIViewController {
     // MARK: - Navigation
     @IBAction func returnToMainView(segue: UIStoryboardSegue) {}
 
-    
-
 }
 
 /*
@@ -232,6 +230,13 @@ extension MainViewController {
         if countseconds < 1 {
             //Send alert to indicate "time's up!"
             self.timer.invalidate()
+            
+            
+            self.todoField.text = ""
+            self.cancelButton(self)
+
+            
+            
             self.performSegue(withIdentifier: "conformationSegue", sender: nil)
             return "Time is up"
         } else {
