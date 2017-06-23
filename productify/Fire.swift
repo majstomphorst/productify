@@ -24,7 +24,7 @@ class Fire {
         
         
         let storeRef = Storage.storage().reference().child("\(self.userId)/\(label).png")
-        let iconData = UIImagePNGRepresentation(icon)
+        let iconData = UIImageJPEGRepresentation(icon,0.1)
         
         storeRef.putData(iconData!, metadata: nil) { (metadata, error) in
             
