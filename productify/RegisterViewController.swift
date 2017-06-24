@@ -18,10 +18,13 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var password2Field: UITextField!
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        // setting up UI
         headerLabel.text = "Register"
         emailField.text = ""
         passwordField.text = ""
         password2Field.text = ""
+        
     }
     
     
@@ -52,9 +55,9 @@ class RegisterViewController: UIViewController {
             // if error
             if error != nil {
                 
-                // Alert user
+                self.alertUser(title: "Registraion error!",
+                               message: "System report: /r/n\(error!.localizedDescription)")
                 
-                // no error
             } else {
                 
                 // user most be present else error has to run

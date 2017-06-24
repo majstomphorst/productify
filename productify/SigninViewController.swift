@@ -50,12 +50,13 @@ class SigninViewController: UIViewController {
             if error != nil{
              
                 // Alert user
+                self.alertUser(title: "Signin error!",
+                               message: "System report: /r/n\(error!.localizedDescription)")
                 
             // no error
             } else {
                 
-                // user most be present else error has to run
-                // save the userId
+                // save the userId (converting type user to string
                 Fire.shared.userId = "\(user!)"
                 
                 // send user to mainViewController
