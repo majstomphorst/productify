@@ -43,8 +43,6 @@ class MainViewController: UIViewController {
     // timer requirements
     var timer = Timer()
     var countseconds = Int()
-    var countRunning = false
-    var countPauzed = false
     
     var sjaak = [NSDictionary]()
     
@@ -53,45 +51,6 @@ class MainViewController: UIViewController {
     // get to the notification function in AppDelegate
     var appDelegate = UIApplication.shared.delegate as? AppDelegate
     
-    
-    @objc func applicationDidBecomeActive() {
-        
-        // get date
-        let date = Date()
-        
-        let timeStampResign = UserDefaults.standard.double(forKey: "resignTime")
-        let countseconds = UserDefaults.standard.double(forKey: "countseconds")
-        let timeStampActive = date.timeIntervalSince1970
-        
-        print("Resign: \(timeStampResign) ctive: \(timeStampActive)")
-        print(timeStampActive - timeStampResign)
-        
-        print("active")
-        
-        
-        if timeStampActive - timeStampResign <= countseconds {
-            print("time not up")
-            
-        } else {
-            print("time up")
-            
-        }
-        
-        
-        // handle event
-    }
-    
-    @objc func applicationWillResignActive() {
-        
-        // get date
-        let date = Date()
-        
-        let timeStamp = date.timeIntervalSince1970
-        
-        UserDefaults.standard.set(timeStamp, forKey: "resignTime")
-        UserDefaults.standard.set(countseconds, forKey: "countseconds")
-        
-    }
     
     override func viewDidAppear(_ animated: Bool) {
     
@@ -182,7 +141,14 @@ class MainViewController: UIViewController {
             cancelButton.isEnabled = true
             timePicker.isEnabled = false
             
-            start(seconds: Int(timePicker.countDownDuration))
+            
+            self.countseconds = Int(timePicker.countDownDuration)
+            
+            // Timer is not running
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self,
+                                         selector: (#selector(self.updateTimer)),
+                                         userInfo: nil, repeats: true)
+            
             
         } else if startButton.currentTitle == "Pauze" {
             
@@ -209,7 +175,10 @@ class MainViewController: UIViewController {
                                                   name: .UIApplicationWillResignActive,
                                                   object: nil)
         
-        cancel()
+        self.timer.invalidate()
+        self.timer = Timer()
+        
+        
         startButton.setTitle("Start", for: UIControlState .normal)
         cancelButton.isEnabled = false
         timeLabel.text = "00:00:00"
@@ -222,64 +191,49 @@ class MainViewController: UIViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "conformationSegue" {
-            let conformationVC = segue.destination as! ConformationViewController
-            conformationVC.activity = activity
-        }
-    }
+    // MARK: - Functions
     
-    // MARK: - Navigation
-    @IBAction func returnToMainView(segue: UIStoryboardSegue) {}
-
-}
-
-/*
-// here all the timer ellements are handeld
-*/
-extension MainViewController {
-    
-    func start(seconds: Int) {
+    ///
+    @objc func applicationDidBecomeActive() {
         
-        self.countseconds = seconds
+        // get date
+        let date = Date()
         
-        if countRunning == false {
-            // Timer is not running
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self,
-                                         selector: (#selector(self.updateTimer)),
-                                         userInfo: nil, repeats: true)
-            countRunning = true
-            
-        }
+        let timeStampResign = UserDefaults.standard.double(forKey: "resignTime")
+        let countseconds = UserDefaults.standard.double(forKey: "countseconds")
+        let timeStampActive = date.timeIntervalSince1970
         
-    }
-
-    func resumePause() {
+        print("Resign: \(timeStampResign) ctive: \(timeStampActive)")
+        print(timeStampActive - timeStampResign)
         
-        if self.countPauzed {
-            
-            self.timer = Timer.scheduledTimer(timeInterval: 1, target: self,
-                                              selector: (#selector(self.updateTimer)),
-                                              userInfo: nil, repeats: true)
-            
-            self.countPauzed = false
+        print("active")
+        
+        
+        if timeStampActive - timeStampResign <= countseconds {
+            print("time not up")
             
         } else {
+            print("time up")
             
-            self.timer.invalidate()
-            self.countPauzed = true
         }
         
-    }
-    
-    /// stops the timer and prepares of the next round
-    func cancel() {
         
-        self.countRunning = false
-        self.timer.invalidate()
-        self.timer = Timer()
+        // handle event
     }
     
+    
+    ///
+    @objc func applicationWillResignActive() {
+        
+        // get date
+        let date = Date()
+        
+        let timeStamp = date.timeIntervalSince1970
+        
+        UserDefaults.standard.set(timeStamp, forKey: "resignTime")
+        UserDefaults.standard.set(countseconds, forKey: "countseconds")
+        
+    }
     
     /// this updates the timer every secon and checks if the timer is done.
     @objc func updateTimer() -> String {
@@ -288,12 +242,8 @@ extension MainViewController {
             //Send alert to indicate "time's up!"
             self.timer.invalidate()
             
-            
             self.todoField.text = ""
-            self.cancelButton(self
-            )
-
-            
+            self.cancelButton(self)
             
             self.performSegue(withIdentifier: "conformationSegue", sender: nil)
             return "Time is up"
@@ -319,7 +269,19 @@ extension MainViewController {
         
     }
     
+    // MARK: - Navigation
+    @IBAction func returnToMainView(segue: UIStoryboardSegue) {}
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "conformationSegue" {
+            let conformationVC = segue.destination as! ConformationViewController
+            conformationVC.activity = activity
+        }
+    }
+
 }
+
 
 // collection view properties
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
