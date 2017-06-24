@@ -15,7 +15,6 @@ class SelectActivitieIconCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var iconLabel: UILabel!
     
-    
     // if the value of imageUrl changes to the folowing
     var imageUrl: URL? {
         didSet {

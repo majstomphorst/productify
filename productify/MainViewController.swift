@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import NotificationCenter
 
 struct ActivityInfo {
     var time: Int
@@ -53,8 +54,19 @@ class MainViewController: UIViewController {
     var appDelegate = UIApplication.shared.delegate as? AppDelegate
     
     
+    @objc func applicationDidBecomeActive() {
+        cancelButton(self)
+        
+        print("active")
+        // handle event
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         
+        // 
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: .UIApplicationDidBecomeActive, object: nil)
+        
+    
         // Check if user is signin or not
         if let userId = Auth.auth().currentUser?.uid {
             
@@ -150,6 +162,16 @@ class MainViewController: UIViewController {
         }
         
         
+    }
+    
+    
+    
+    func ccancel() {
+        cancel()
+        startButton.setTitle("Start", for: UIControlState .normal)
+        cancelButton.isEnabled = false
+        timeLabel.text = "00:00:00"
+        timePicker.isEnabled = true
     }
     
     @IBAction func cancelButton(_ sender: Any) {
