@@ -61,11 +61,11 @@ class MainViewController: UIViewController {
         // handle event
     }
     
+    @objc func applicationWillResignActive() {
+        print("not active")
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
-        
-        // 
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: .UIApplicationDidBecomeActive, object: nil)
-        
     
         // Check if user is signin or not
         if let userId = Auth.auth().currentUser?.uid {
@@ -76,16 +76,18 @@ class MainViewController: UIViewController {
             Database.database().reference().child("pref/\(Fire.shared.userId)").queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
                 
                 self.sjaak = [NSDictionary]()
-                
-                if let value = snapshot.value as? NSDictionary {
                     
-                    for key in value.allKeys {
-                        
-                        self.sjaak.append(value[key] as! NSDictionary)
-                        
-                    }
+                guard let value = snapshot.value as? NSDictionary else {
+                    return
+                }
+                
+                    
+                for key in value.allKeys {
+                    
+                    self.sjaak.append(value[key] as! NSDictionary)
                     
                 }
+                    
                 
                 // reload the activity selector on main thread
                 DispatchQueue.main.async {
@@ -134,6 +136,12 @@ class MainViewController: UIViewController {
         
         if startButton.currentTitle == "Start" {
             
+            // placing a observer on this view and when it becomes active it calls a function
+            NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: .UIApplicationDidBecomeActive, object: nil)
+            // placing a observer on this view and when it becomes active it calls a function
+            NotificationCenter.default.addObserver(self, selector: #selector(applicationWillResignActive), name: .UIApplicationWillResignActive, object: nil)
+            
+            
             let countDown = Double(timePicker.countDownDuration)
             
             self.appDelegate?.scheduleNotification(countDown: countDown,
@@ -163,8 +171,6 @@ class MainViewController: UIViewController {
         
         
     }
-    
-    
     
     func ccancel() {
         cancel()
