@@ -55,14 +55,42 @@ class MainViewController: UIViewController {
     
     
     @objc func applicationDidBecomeActive() {
-        cancelButton(self)
+        
+        // get date
+        let date = Date()
+        
+        let timeStampResign = UserDefaults.standard.double(forKey: "resignTime")
+        let countseconds = UserDefaults.standard.double(forKey: "countseconds")
+        let timeStampActive = date.timeIntervalSince1970
+        
+        print("Resign: \(timeStampResign) ctive: \(timeStampActive)")
+        print(timeStampActive - timeStampResign)
         
         print("active")
+        
+        
+        if timeStampActive - timeStampResign <= countseconds {
+            print("time not up")
+            
+        } else {
+            print("time up")
+            
+        }
+        
+        
         // handle event
     }
     
     @objc func applicationWillResignActive() {
-        print("not active")
+        
+        // get date
+        let date = Date()
+        
+        let timeStamp = date.timeIntervalSince1970
+        
+        UserDefaults.standard.set(timeStamp, forKey: "resignTime")
+        UserDefaults.standard.set(countseconds, forKey: "countseconds")
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -141,9 +169,8 @@ class MainViewController: UIViewController {
             // placing a observer on this view and when it becomes active it calls a function
             NotificationCenter.default.addObserver(self, selector: #selector(applicationWillResignActive), name: .UIApplicationWillResignActive, object: nil)
             
-            
             let countDown = Double(timePicker.countDownDuration)
-            
+
             self.appDelegate?.scheduleNotification(countDown: countDown,
                                                    title: "Title",
                                                    body: "Body")
@@ -172,15 +199,15 @@ class MainViewController: UIViewController {
         
     }
     
-    func ccancel() {
-        cancel()
-        startButton.setTitle("Start", for: UIControlState .normal)
-        cancelButton.isEnabled = false
-        timeLabel.text = "00:00:00"
-        timePicker.isEnabled = true
-    }
-    
     @IBAction func cancelButton(_ sender: Any) {
+        
+        NotificationCenter.default.removeObserver(self,
+                                                  name: .UIApplicationDidBecomeActive,
+                                                  object: nil)
+        
+        NotificationCenter.default.removeObserver(self,
+                                                  name: .UIApplicationWillResignActive,
+                                                  object: nil)
         
         cancel()
         startButton.setTitle("Start", for: UIControlState .normal)
@@ -218,7 +245,9 @@ extension MainViewController {
         
         if countRunning == false {
             // Timer is not running
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(self.updateTimer)), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self,
+                                         selector: (#selector(self.updateTimer)),
+                                         userInfo: nil, repeats: true)
             countRunning = true
             
         }
