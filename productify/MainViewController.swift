@@ -38,13 +38,16 @@ class MainViewController: UIViewController {
     @IBOutlet weak var activitySelector: UICollectionView!
     @IBOutlet weak var todoField: UITextView!
     
+    //
     var selectedItem: IndexPath?
     
     // timer requirements
     var timer = Timer()
+    // timer is running? update every second (-1)
     var countseconds = Int()
     
-    var sjaak = [NSDictionary]()
+    //
+    var usersIcons = [NSDictionary]()
     
     var activity = ActivityInfo()
     
@@ -60,9 +63,13 @@ class MainViewController: UIViewController {
             // save userId for later use
             Fire.shared.userId = userId
             
-            Database.database().reference().child("pref/\(Fire.shared.userId)").queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
+            
+            // this load's all the user's activity icons and labels
+            Database.database().reference().child("pref/\(Fire.shared.userId)")
+                .queryOrderedByKey().observe(DataEventType.value, with:
+                    { (snapshot) in
                 
-                self.sjaak = [NSDictionary]()
+                self.usersIcons = [NSDictionary]()
                     
                 guard let value = snapshot.value as? NSDictionary else {
                     return
@@ -70,11 +77,8 @@ class MainViewController: UIViewController {
                 
                     
                 for key in value.allKeys {
-                    
-                    self.sjaak.append(value[key] as! NSDictionary)
-                    
+                    self.usersIcons.append(value[key] as! NSDictionary)
                 }
-                    
                 
                 // reload the activity selector on main thread
                 DispatchQueue.main.async {
@@ -119,46 +123,60 @@ class MainViewController: UIViewController {
         
     }
     
+    //
     @IBAction func startButton(_ sender: Any) {
         
         if startButton.currentTitle == "Start" {
             
             // placing a observer on this view and when it becomes active it calls a function
-            NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: .UIApplicationDidBecomeActive, object: nil)
-            // placing a observer on this view and when it becomes active it calls a function
-            NotificationCenter.default.addObserver(self, selector: #selector(applicationWillResignActive), name: .UIApplicationWillResignActive, object: nil)
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(applicationDidBecomeActive),
+                                                   name: .UIApplicationDidBecomeActive, object: nil)
             
-            let countDown = Double(timePicker.countDownDuration)
-
-            self.appDelegate?.scheduleNotification(countDown: countDown,
+            // placing a observer on this view and when it becomes active it calls a function
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(applicationWillResignActive),
+                                                   name: .UIApplicationWillResignActive, object: nil)
+            
+            // get's the countdown for scheduling a notificaion
+            self.countseconds = Int(timePicker.countDownDuration)
+            self.appDelegate?.scheduleNotification(countDown: Double(self.countseconds),
                                                    title: "Title",
                                                    body: "Body")
             
             // collect information for database
             activity.time = Int(timePicker.countDownDuration)
+
             
+            // running the timer
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self,
+                                         selector: (#selector(self.updateTimer)),
+                                         userInfo: nil, repeats: true)
+            
+            // update UI
             startButton.setTitle("Pauze", for: UIControlState .normal)
             cancelButton.isEnabled = true
             timePicker.isEnabled = false
             
             
-            self.countseconds = Int(timePicker.countDownDuration)
-            
-            // Timer is not running
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self,
-                                         selector: (#selector(self.updateTimer)),
-                                         userInfo: nil, repeats: true)
-            
             
         } else if startButton.currentTitle == "Pauze" {
             
+            // pauze's the timer
             self.timer.invalidate()
+            
+            // update UI
             startButton.setTitle("Resume", for: UIControlState .normal)
             
         } else {
-        // is resume is pressed
-            self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(self.updateTimer)), userInfo: nil, repeats: true)
+            // is resume is pressed
             
+            // start up the timer again with the remaing time (stored in countSeconds
+            self.timer = Timer.scheduledTimer(timeInterval: 1, target: self,
+                                              selector: (#selector(self.updateTimer)),
+                                              userInfo: nil, repeats: true)
+            
+            // update UI
             startButton.setTitle("Pauze", for: UIControlState .normal)
         }
         
@@ -193,15 +211,17 @@ class MainViewController: UIViewController {
     
     // MARK: - Functions
     
-    ///
+    /// if a timer is running this wil get called when app becomes active
     @objc func applicationDidBecomeActive() {
         
-        // get date
+        // get time
         let date = Date()
         
+        // retrieving stored information
         let timeStampResign = UserDefaults.standard.double(forKey: "resignTime")
         let countseconds = UserDefaults.standard.double(forKey: "countseconds")
         let timeStampActive = date.timeIntervalSince1970
+        
         
         print("Resign: \(timeStampResign) ctive: \(timeStampActive)")
         print(timeStampActive - timeStampResign)
@@ -217,12 +237,10 @@ class MainViewController: UIViewController {
             
         }
         
-        
-        // handle event
     }
     
     
-    ///
+    /// if a timer is running this wil get called when app resigns active
     @objc func applicationWillResignActive() {
         
         // get date
@@ -259,7 +277,7 @@ class MainViewController: UIViewController {
     }
     
     /// Creating a time stamp voor the timer to display
-    private func timeString(time:TimeInterval) -> String {
+    func timeString(time:TimeInterval) -> String {
         
         let hours = Int(time) / 3600
         let minutes = Int(time) / 60 % 60
@@ -272,7 +290,7 @@ class MainViewController: UIViewController {
     // MARK: - Navigation
     @IBAction func returnToMainView(segue: UIStoryboardSegue) {}
     
-    
+    // sends the activity information to the conformation screen to be stored
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "conformationSegue" {
             let conformationVC = segue.destination as! ConformationViewController
@@ -287,14 +305,14 @@ class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sjaak.count
+        return usersIcons.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath as IndexPath) as! SelectActivitieIconCollectionViewCell
         
-        cell.iconLabel.text = sjaak[indexPath.row]["label"] as? String
-        cell.imageUrl = URL(string: sjaak[indexPath.row]["iconUrl"] as! String)
+        cell.iconLabel.text = usersIcons[indexPath.row]["label"] as? String
+        cell.imageUrl = URL(string: usersIcons[indexPath.row]["iconUrl"] as! String)
     
         return cell
     }
