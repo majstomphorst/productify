@@ -54,7 +54,6 @@ class MainViewController: UIViewController {
     // get to the notification function in AppDelegate
     var appDelegate = UIApplication.shared.delegate as? AppDelegate
     
-    
     override func viewDidAppear(_ animated: Bool) {
     
         // Check if user is signin or not
@@ -62,7 +61,6 @@ class MainViewController: UIViewController {
             
             // save userId for later use
             Fire.shared.userId = userId
-            
             
             // this load's all the user's activity icons and labels
             Database.database().reference().child("pref/\(Fire.shared.userId)")
@@ -108,7 +106,7 @@ class MainViewController: UIViewController {
         self.performSegue(withIdentifier: "conformationSegue", sender: nil)
     }
     
-    // signs a user out and sends them to the sigin page
+    // signs a user out and send them to the sigin page
     @IBAction func signoutPress(_ sender: Any) {
         
         do {
@@ -133,7 +131,7 @@ class MainViewController: UIViewController {
                                                    selector: #selector(applicationDidBecomeActive),
                                                    name: .UIApplicationDidBecomeActive, object: nil)
             
-            // placing a observer on this view and when it becomes active it calls a function
+            // placing a observer on this view and when it becomes resigns active it calls a function
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(applicationWillResignActive),
                                                    name: .UIApplicationWillResignActive, object: nil)
@@ -196,7 +194,7 @@ class MainViewController: UIViewController {
         self.timer.invalidate()
         self.timer = Timer()
         
-        
+        // update UI
         startButton.setTitle("Start", for: UIControlState .normal)
         cancelButton.isEnabled = false
         timeLabel.text = "00:00:00"
@@ -214,25 +212,23 @@ class MainViewController: UIViewController {
     /// if a timer is running this wil get called when app becomes active
     @objc func applicationDidBecomeActive() {
         
-        // get time
-        let date = Date()
         
         // retrieving stored information
         let timeStampResign = UserDefaults.standard.double(forKey: "resignTime")
         let countseconds = UserDefaults.standard.double(forKey: "countseconds")
-        let timeStampActive = date.timeIntervalSince1970
+        let timeStampActive = Date().timeIntervalSince1970
         
         
-        print("Resign: \(timeStampResign) ctive: \(timeStampActive)")
-        print(timeStampActive - timeStampResign)
+        let newCountDownTime = countseconds - (timeStampActive - timeStampResign)
         
-        print("active")
-        
-        
-        if timeStampActive - timeStampResign <= countseconds {
+        if newCountDownTime >= 0  {
+            
+            
+            self.countseconds = Int(newCountDownTime)
             print("time not up")
             
         } else {
+            self.countseconds = 0
             print("time up")
             
         }
@@ -243,10 +239,8 @@ class MainViewController: UIViewController {
     /// if a timer is running this wil get called when app resigns active
     @objc func applicationWillResignActive() {
         
-        // get date
-        let date = Date()
-        
-        let timeStamp = date.timeIntervalSince1970
+        // getting the current time
+        let timeStamp = Date().timeIntervalSince1970
         
         UserDefaults.standard.set(timeStamp, forKey: "resignTime")
         UserDefaults.standard.set(countseconds, forKey: "countseconds")
