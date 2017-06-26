@@ -35,7 +35,7 @@ class Fire {
             
             // saving icon is succes
             DispatchQueue.main.async {
-                
+            
                 let iconInfo = ["iconUrl": metadata?.downloadURL()?.absoluteString ,
                                 "label": label] as! [String: String]
                 

@@ -81,46 +81,6 @@ class HistoryViewController: UIViewController {
         
     }
     
-  
-    
-    
-    
-    
-        
-        
-//    Database.database().reference().child(Fire.shared.userId).observeSingleEvent(of: .value, with: { (snapshot) in
-//
-//        guard let keys = snapshot.value as? NSDictionary else {
-//            return
-//        }
-//        
-//        // get a list of filterd key's where the activiies are stored
-//        var keysFilter = [String]()
-//        for key in keys.allKeys {
-//            if (key as! String).range(of: filter) != nil {
-//                keysFilter.append(key as! String)
-//                
-//            }
-//        }
-//        
-//        
-//        guard let activities = snapshot.value as? NSDictionary else {
-//            return
-//        }
-//        
-//        for key in keysFilter {
-//            self.filterdActivities.append((activities[key] as? NSDictionary)!)
-//        }
-//        
-//
-//        self.historyTableView.reloadData()
-//        
-//        
-//    })
-    
-        
-    
-
 }
 
 
@@ -148,9 +108,15 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             
-            // print(filterdActivities[indexPath.row])
+            // bad ass type casting for reason
+            let deletekey = "\(filterdActivities[indexPath.row]["key"] as! Int)"
             
-           
+            
+            let reff = Database.database().reference().child(Fire.shared.userId).child(deletekey)
+            
+            reff.removeValue()
+            self.historyTableView.reloadData()
+    
             
         }
     }
