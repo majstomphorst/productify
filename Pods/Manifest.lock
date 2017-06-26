@@ -1,4 +1,5 @@
 PODS:
+  - DatePickerDialog (1.1.7)
   - Firebase/Auth (4.0.0):
     - Firebase/Core
     - FirebaseAuth (= 4.0.0)
@@ -40,16 +41,16 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.10)
-  - PopupDialog (0.5.4)
 
 DEPENDENCIES:
+  - DatePickerDialog
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
-  - PopupDialog
 
 SPEC CHECKSUMS:
+  DatePickerDialog: bd5e7e92e4da2c6a8966b28d5f5d8f335d6c2c63
   Firebase: 284eea779b73fdff309791817da7c68bff8dd572
   FirebaseAnalytics: 6f08e746f7d66f5452931bc2e822b5df9c66b64a
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
@@ -59,8 +60,7 @@ SPEC CHECKSUMS:
   FirebaseStorage: 8110a1ed2034c8fbfd83890d2acc9cdbbd99afec
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
-  PopupDialog: 75cf955693590b0cb2fdde00223fb65d99c57247
 
-PODFILE CHECKSUM: 6430ff3972ac1b6e4ca7869ac4a3e0c7178483a8
+PODFILE CHECKSUM: 8678e40f3ac68e231c51a822033854840b2d7a96
 
 COCOAPODS: 1.2.1

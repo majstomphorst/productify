@@ -11,6 +11,7 @@ import Firebase
 import NotificationCenter
 import UserNotifications
 
+
 struct ActivityInfo {
     var time: Int
     var iconLabel: String

@@ -8,23 +8,21 @@
 
 import UIKit
 import Firebase
+import DatePickerDialog
 
 class HistoryViewController: UIViewController {
     
     
     var filterdActivities = [NSDictionary]()
+    var startFilter = 0
+    var endFilter = 0
 
     // MARK: - Outlets
-    @IBOutlet weak var monthPicker: UIPickerView!
+    @IBOutlet weak var startFilterField: UITextField!
+    @IBOutlet weak var endFilterField: UITextField!
+    
+    
     @IBOutlet weak var historyTableView: UITableView!
-    @IBOutlet weak var weekMonthOutlet: UISegmentedControl!
-    
-    var row = 0
-    var monthSelected = true
-    
-    var pickerData = ["January", "February", "March", "April",
-                      "May", "June","July", "August",
-                      "September", "October","November", "December"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,105 +32,97 @@ class HistoryViewController: UIViewController {
 
     
     // MARK: - Actions
-    
-    @IBAction func segmentation(_ sender: Any) {
-        switch weekMonthOutlet.selectedSegmentIndex
-        {
-        case 0:
-            
-            self.pickerData = ["January", "February", "March", "April",
-                              "May", "June","July", "August",
-                              "September", "October","November", "December"]
-            self.monthPicker.reloadAllComponents()
-            
-            self.monthSelected = true
-            
-            
-        //show popular view
-        case 1:
-            self.pickerData = []
-            
-            for i in 1...52 {
-                self.pickerData.append(String(format: "week %02i", i))
-            }
-            
-            self.monthPicker.reloadAllComponents()
-            self.monthSelected = false
-            
-        //show history view
-        default:
-            break;
+    @IBAction func startFilterPress(_ sender: Any) {
+        
+        DatePickerDialog().show(title: "DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
+            (date) -> Void in
+            self.startFilter = Int((date?.timeIntervalSince1970)!)
+            self.startFilterField.text = date!.description
         }
         
     }
-    @IBAction func lookUp(_ sender: Any) {
+    @IBAction func endFilterPress(_ sender: Any) {
         
-        self.filterdActivities = [NSDictionary]()
-        var filter = String()
-        
-        
-        if self.monthSelected == true {
-            filter = String(format: "month-%02i",row + 1)
-        } else {
-            filter = String(format: "week-%02i",row + 1)
+        DatePickerDialog().show(title: "DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
+            (date) -> Void in
+            self.endFilter = Int((date?.timeIntervalSince1970)!)
+            self.endFilterField.text = date?.description
         }
         
         
-        Database.database().reference().child(Fire.shared.userId).observeSingleEvent(of: .value, with: { (snapshot) in
+    }
 
+    @IBAction func lookUp(_ sender: Any) {
+        
+        // startDateField
+        
+        
+        Database.database().reference().child(Fire.shared.userId).observeSingleEvent(of: .value, with: { (snapshot) in
+            
             guard let keys = snapshot.value as? NSDictionary else {
                 return
             }
             
-            // get a list of filterd key's where the activiies are stored
-            var keysFilter = [String]()
+            
             for key in keys.allKeys {
-                if (key as! String).range(of: filter) != nil {
-                    keysFilter.append(key as! String)
+                
+                let k = Int("\(key)")
+                
+                if k! > self.startFilter || k! < self.endFilter {
                     
+                    self.filterdActivities.append((keys[key] as? NSDictionary)!)
                 }
             }
             
-            
-            guard let activities = snapshot.value as? NSDictionary else {
-                return
-            }
-            
-            for key in keysFilter {
-                self.filterdActivities.append((activities[key] as? NSDictionary)!)
-            }
-            
-
             self.historyTableView.reloadData()
             
             
         })
         
+    }
+    
+  
+    
+    
+    
+    
         
-    }
+        
+//    Database.database().reference().child(Fire.shared.userId).observeSingleEvent(of: .value, with: { (snapshot) in
+//
+//        guard let keys = snapshot.value as? NSDictionary else {
+//            return
+//        }
+//        
+//        // get a list of filterd key's where the activiies are stored
+//        var keysFilter = [String]()
+//        for key in keys.allKeys {
+//            if (key as! String).range(of: filter) != nil {
+//                keysFilter.append(key as! String)
+//                
+//            }
+//        }
+//        
+//        
+//        guard let activities = snapshot.value as? NSDictionary else {
+//            return
+//        }
+//        
+//        for key in keysFilter {
+//            self.filterdActivities.append((activities[key] as? NSDictionary)!)
+//        }
+//        
+//
+//        self.historyTableView.reloadData()
+//        
+//        
+//    })
+    
+        
     
 
 }
 
-extension HistoryViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.row = row
-    }
-    
-}
 
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -145,11 +135,6 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HistoryTableViewCell
         
         cell.iconLabel.text = filterdActivities[indexPath.row]["iconLabel"] as? String
-        cell.imagName = filterdActivities[indexPath.row]["iconLabel"] as? String
-        cell.todoField.text = ("What you wanted to do: \r\n\(String(describing: filterdActivities[indexPath.row]["todo"]!))")
-        cell.haveDoneField.text = ("What you really did do: \r\n\(String(describing: filterdActivities[indexPath.row]["haveDone"]!))")
-        cell.timeLabel.text = ("\(String(describing: filterdActivities[indexPath.row]["time"]!))")
-        cell.feelingLabel.text = ("\(String(describing: filterdActivities[indexPath.row]["feeling"]!))")
         
         return cell
     }
@@ -163,7 +148,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             
-            print(filterdActivities[indexPath.row])
+            // print(filterdActivities[indexPath.row])
             
            
             
