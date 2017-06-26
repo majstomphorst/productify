@@ -19,7 +19,6 @@
 		28A884091EF3F0CF0088F6CB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A884081EF3F0CF0088F6CB /* RegisterViewController.swift */; };
 		28A8840B1EF3F1250088F6CB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A8840A1EF3F1250088F6CB /* MainViewController.swift */; };
 		28A8840D1EF3FA250088F6CB /* Fire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A8840C1EF3FA250088F6CB /* Fire.swift */; };
-		28A8840F1EF410D50088F6CB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A8840E1EF410D50088F6CB /* SettingsViewController.swift */; };
 		28A884111EF4115F0088F6CB /* EditIconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A884101EF4115F0088F6CB /* EditIconViewController.swift */; };
 		28A884131EF4143A0088F6CB /* EditIconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A884121EF4143A0088F6CB /* EditIconTableViewCell.swift */; };
 		28AA1F161EF83B69007BAD52 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AA1F151EF83B69007BAD52 /* HistoryViewController.swift */; };
@@ -43,7 +42,6 @@
 		28A884081EF3F0CF0088F6CB /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		28A8840A1EF3F1250088F6CB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		28A8840C1EF3FA250088F6CB /* Fire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fire.swift; sourceTree = "<group>"; };
-		28A8840E1EF410D50088F6CB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		28A884101EF4115F0088F6CB /* EditIconViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditIconViewController.swift; sourceTree = "<group>"; };
 		28A884121EF4143A0088F6CB /* EditIconTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditIconTableViewCell.swift; sourceTree = "<group>"; };
 		28AA1F151EF83B69007BAD52 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 				28A8840A1EF3F1250088F6CB /* MainViewController.swift */,
 				2871BDA21EF80A46009B03F2 /* ConformationViewController.swift */,
 				28AA1F151EF83B69007BAD52 /* HistoryViewController.swift */,
-				28A8840E1EF410D50088F6CB /* SettingsViewController.swift */,
 				28A884101EF4115F0088F6CB /* EditIconViewController.swift */,
 				282FC25C1EF41BA700EF173C /* UploadViewController.swift */,
 				2896C1901EF5683D0001440E /* UploadFromAppViewController.swift */,
@@ -293,7 +290,6 @@
 				28E5B9C01EF3E8C4007CD81E /* AppDelegate.swift in Sources */,
 				2871BDA31EF80A46009B03F2 /* ConformationViewController.swift in Sources */,
 				28A8840B1EF3F1250088F6CB /* MainViewController.swift in Sources */,
-				28A8840F1EF410D50088F6CB /* SettingsViewController.swift in Sources */,
 				28A884111EF4115F0088F6CB /* EditIconViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

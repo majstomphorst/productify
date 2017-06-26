@@ -32,11 +32,7 @@ class UploadViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+    //MARK: - Actions
     @IBAction func SaveButtonPress(_ sender: Any) {
         
         if iconNameLabel.text == "" {
@@ -63,6 +59,9 @@ class UploadViewController: UIViewController {
 
 }
 
+/*
+//
+*/
 extension UploadViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBAction func handleTap(recognizer: UITapGestureRecognizer) {
@@ -121,6 +120,10 @@ extension UploadViewController: UIImagePickerControllerDelegate, UINavigationCon
     
 }
 
+
+/*
+//
+*/
 extension UploadViewController: DataSendDelegate {
     
     func userDidEnterData(data: UIImage) {

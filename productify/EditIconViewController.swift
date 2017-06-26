@@ -40,7 +40,6 @@ class EditIconViewController: UIViewController {
             
         })
 
-        // Do any additional setup after loading the view.
     }
 
     
@@ -49,6 +48,10 @@ class EditIconViewController: UIViewController {
     @IBAction func plus(_ sender: Any) { }
 }
 
+
+/*
+//
+*/
 extension EditIconViewController: UITableViewDelegate, UITableViewDataSource {
     
     

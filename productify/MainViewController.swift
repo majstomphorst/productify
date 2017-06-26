@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import NotificationCenter
+import UserNotifications
 
 struct ActivityInfo {
     var time: Int
@@ -160,6 +161,17 @@ class MainViewController: UIViewController {
             
         } else if startButton.currentTitle == "Pauze" {
             
+            // kill observers
+            NotificationCenter.default.removeObserver(self,
+                                                      name: .UIApplicationDidBecomeActive,
+                                                      object: nil)
+            
+            NotificationCenter.default.removeObserver(self,
+                                                      name: .UIApplicationWillResignActive,
+                                                      object: nil)
+            
+            UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+            
             // pauze's the timer
             self.timer.invalidate()
             
@@ -173,6 +185,21 @@ class MainViewController: UIViewController {
             self.timer = Timer.scheduledTimer(timeInterval: 1, target: self,
                                               selector: (#selector(self.updateTimer)),
                                               userInfo: nil, repeats: true)
+            
+            // placing observers
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(applicationDidBecomeActive),
+                                                   name: .UIApplicationDidBecomeActive, object: nil)
+        
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(applicationWillResignActive),
+                                                   name: .UIApplicationWillResignActive, object: nil)
+            
+            // schedul new notification
+            self.appDelegate?.scheduleNotification(countDown: Double(self.countseconds),
+                                                   title: "Title",
+                                                   body: "Body")
+            
             
             // update UI
             startButton.setTitle("Pauze", for: UIControlState .normal)
@@ -223,7 +250,6 @@ class MainViewController: UIViewController {
         
         if newCountDownTime >= 0  {
             
-            
             self.countseconds = Int(newCountDownTime)
             print("time not up")
             
@@ -247,18 +273,22 @@ class MainViewController: UIViewController {
         
     }
     
-    /// this updates the timer every secon and checks if the timer is done.
+    /// this updates the timer every second and checks if the timer is done
     @objc func updateTimer() -> String {
         
+        // if time is up
         if countseconds < 1 {
-            //Send alert to indicate "time's up!"
-            self.timer.invalidate()
             
-            self.todoField.text = ""
+            // simulates a cancel press so that the timer can be rerun if de user returns
             self.cancelButton(self)
             
+            // cleaning UI
+            self.todoField.text = ""
+            
+            // send user to the conformation screen
             self.performSegue(withIdentifier: "conformationSegue", sender: nil)
-            return "Time is up"
+            
+            return "00:00:00"
         } else {
             
             self.countseconds -= 1
@@ -269,6 +299,7 @@ class MainViewController: UIViewController {
         
         
     }
+    
     
     /// Creating a time stamp voor the timer to display
     func timeString(time:TimeInterval) -> String {
@@ -282,6 +313,8 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Navigation
+    
+    // Creates a way to unwind a segue
     @IBAction func returnToMainView(segue: UIStoryboardSegue) {}
     
     // sends the activity information to the conformation screen to be stored
