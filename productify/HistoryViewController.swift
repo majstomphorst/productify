@@ -54,8 +54,7 @@ class HistoryViewController: UIViewController {
 
     @IBAction func lookUp(_ sender: Any) {
         
-        // startDateField
-        
+        filterdActivities = [NSDictionary]()
         
         Database.database().reference().child(Fire.shared.userId).observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -63,13 +62,11 @@ class HistoryViewController: UIViewController {
                 return
             }
             
-            
             for key in keys.allKeys {
                 
                 let k = Int("\(key)")
-                
-                if k! > self.startFilter || k! < self.endFilter {
-                    
+        
+                if k! > self.startFilter && k! < self.endFilter {
                     self.filterdActivities.append((keys[key] as? NSDictionary)!)
                 }
             }
