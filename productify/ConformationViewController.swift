@@ -56,15 +56,17 @@ class ConformationViewController: UIViewController {
             activity.haveDone = haveDoneField.text!
         }
         
-        let timeStamp = getCurrentTime()
+        // making it a int because firebase doesnt want '.' value's in the key
+        let timeStamp = Int(Date().timeIntervalSince1970)
         
-        let reff = Database.database().reference().child(Fire.shared.userId).child(timeStamp)
+        let reff = Database.database().reference().child(Fire.shared.userId).child(String(timeStamp))
     
         let activityDict = ["time": activity.time,
                             "iconLabel": activity.iconLabel,
                             "todo": activity.todo,
                             "feeling": activity.feeling,
-                            "haveDone": activity.haveDone,] as [String : Any]
+                            "haveDone": activity.haveDone,
+                            "key": timeStamp] as [String : Any]
         
         reff.updateChildValues(activityDict) { (error, DatabaseReference) in
             
