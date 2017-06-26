@@ -14,10 +14,7 @@ class HistoryTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var iconImage: UIImageView!
     @IBOutlet weak var iconLabel: UILabel!
-    @IBOutlet weak var todoField: UITextView!
-    @IBOutlet weak var haveDoneField: UITextView!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var feelingLabel: UILabel!
     
     // if the value of imageUrl changes to the folowing
     var imagName: String? {
