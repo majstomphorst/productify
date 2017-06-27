@@ -2,15 +2,15 @@
 [![BCH compliance](https://bettercodehub.com/edge/badge/majstomphorst/productify?branch=master)](https://bettercodehub.com/)(https://bettercodehub.com/)
 ## Programmeerproject - Maxim Stomphorst - 11436727
 ### The problem to be solved.
-De behoeften om studie / werk activiteiten bij te houden. Om vervolgens een overzicht te bieden van de verrichten activiteiten per dag en of per week.
+De behoeften om studie / werk activiteiten bij te houden. Om vervolgens een overzicht te krijgen van de verrichten activiteiten per tijds periode.
 
-Een manier om een gebruiker te stimuleren om productief te zijn. 
+Het hoger doel is om iemand te stimuleren productiever of gerichter zijn of haar taken te vervullen.
 
 ### What features will be available to solve the problem.
-- Een manier om studie activiteiten te bewerken/ maken/ veranderen/ verwijderen. (met plaatjes)
-- Een manier om activiteiten bij te houden (een activiteit te loggen).
-- Een activiteit handmatig toe voegen. (als je de app niet bij de hand hebt gehad.)
-- Een manier om je activiteiten terug te zien bij dag / week.
+- Registreren van studie activiteiten. 
+- Verwijderen van studie activiteiten.
+- Toevoegen van studie activiteiten met een icoon.(Wiskunde met een plaatje)
+- verwijderen van icoontjes.
 
 
 ### A sketch.
@@ -21,18 +21,14 @@ Een manier om een gebruiker te stimuleren om productief te zijn.
 De keuze die ik had was SQLlite of Firebase, na overleg met de staff is er gekozen voor <b>Firebase</b>. <br>
 Omdat dit direct de mogenlijkheid bied om informatie te synchroniseren ook is de API implenentatie van Firebae gemakenlijker dan die van sqlite in [`swift`](https://github.com/stephencelis/SQLite.swift) 
 
-
 ### What separate parts of the application can be defined.
 
 ##### 01 - Main
 Dit is de main controller waar je de activiteit kan starten.
 ##### 02 - Overview
-Is de terugblik op de dag of week. Zodat je kan zien wat je hebt gedaan.
-##### 03 - Manual log
-Dit is een scherm waar je zelf activiteiten kan loggen zonder de timer te laten lopen. 
-##### 04 - Settings
-Hier kan je de isntellingen van de app aanpassen. 
-
+Is de terugblik op de geselecteerde periode. Zodat je kan zien wat je hebt gedaan.
+##### 03 - Settings
+Hier kan je de instellingen van de app aanpassen. 
 
 ### External components (online APIs, libraries etc.)
 - [Firebase](https://firebase.google.com/) 
@@ -64,9 +60,10 @@ Deze app geeft je enkele functies om een bepaalde tijdseenheid gefocust te werke
 3. Een manier om een overzicht te krijgen van de afgelopen activiteiten per dag.
  - Het zien van de notitie.
  - Het zien vah het activiteit's plaatje.
+4. Het uploaden van activiteit's plaatjes.
 
 ### Optional features
-1. Het uploaden van activiteit's plaatjes.
+
 2. Het maken van een bar chart en of pie chart.
 3. Syncronisatie mogenlijkheid.
 4. Een Manier om activiteiten na der hand aan te passen. 

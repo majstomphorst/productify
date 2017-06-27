@@ -82,6 +82,243 @@ En een online database is toch veel stoerder dan een suffe SQL database ;)
  
 # Git hub commits 
 ## much better representation of what I have done.
+commit 1805de038523a688f60c2523d4f7ef1c215fdad7
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Tue Jun 27 10:56:31 2017 +0200
+
+    moreActivity info viewcontroller
+
+commit ca2080449309239993d07bb0226e2701d7a12578
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Tue Jun 27 10:12:56 2017 +0200
+
+    fix cancel button
+
+commit cd6791ba9026a79c7a632abd9823ee0cb2d3c888
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Mon Jun 26 20:06:12 2017 +0200
+
+    UI improvements
+
+commit ad35de05609fb2ecbfe00f10e8e23b46d293093f
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Mon Jun 26 20:03:20 2017 +0200
+
+    UI fixing
+
+commit 578dca483f0816b68e63d890b9bce86f378c6139
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Mon Jun 26 19:32:37 2017 +0200
+
+    bug fixing
+
+commit 7214d2d1734c2ddfcecdddd663c2a872080bd8b6
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Mon Jun 26 19:09:10 2017 +0200
+
+    You can now remove activitie's
+
+commit 5743d3249b1c3a5ab6904f25fdf3a0726084efb5
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Mon Jun 26 15:30:22 2017 +0200
+
+    We created the filter options in History view
+
+commit a988ac4e932cd3de219f623d6caf6cd9a3aae9c8
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Mon Jun 26 13:38:19 2017 +0200
+
+    Playing with timestamp's (optimisation)
+
+commit 1efe94cc9fb4c110573a3a1815540342614e8c64
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Mon Jun 26 10:33:39 2017 +0200
+
+    Completed:
+    - Background notifications.
+    - Resume, Cancel, Start buttons now work 100% (i hope)
+
+commit ab8d702f570579258b58f9ab5c55d79488c38a92
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Sun Jun 25 14:52:29 2017 +0200
+
+    Background timer working
+    still buggy but working
+    I have to take the cancel button into account
+
+commit 679c6905218a7742be38bd255f963a385789ac79
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Sat Jun 24 19:42:51 2017 +0200
+
+    Cleaning up code
+
+commit 2ff1afddb492600138726c1124123ca205e657c6
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Sat Jun 24 19:36:06 2017 +0200
+
+    Small performance improvements and cleaning up the code
+
+commit 7d397b0d760eee2363482d37c14d1734be18c7bf
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Sat Jun 24 19:15:08 2017 +0200
+
+    Cleaned up the time functions (it was very redundant)
+
+commit 1869c3055376e09e7ce4a6187893fcac4dea86c6
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Sat Jun 24 18:50:29 2017 +0200
+
+    Resign and active in the works
+
+commit c19d202044e3d9bad6a25049491351efd410ce1b
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Sat Jun 24 13:25:34 2017 +0200
+
+    Expending on back from background
+
+commit 1f24280fae9f9223e8dd31affe5cd8f4fb6564b3
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Sat Jun 24 13:08:07 2017 +0200
+
+    Found a way to update the UI when returning from background
+
+commit 4d220aa6f3b6554b0839e4e6c51ee3816fe15af0
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Fri Jun 23 09:01:24 2017 +0200
+
+    compress images before uploading
+
+commit c8103d144b90de6ad62db30175f83d49bacfbee3
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Thu Jun 22 14:59:47 2017 +0200
+
+    remove redundant view controller
+
+commit 39f5de7dfd0005a0c64802eacd61bcf788d07209
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Thu Jun 22 14:53:27 2017 +0200
+
+    bug fixing
+
+commit cf6818c0d0b7cd37f26e190ca6cfe391d362f241
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Thu Jun 22 13:26:11 2017 +0200
+
+    bug fix
+
+commit b93c954b7d7aae375df014e7d8fa7a78e64214a0
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Thu Jun 22 13:19:25 2017 +0200
+
+    Updated the ui of historyview
+
+commit 1b644c3d76db71c29b4a5dab8b6e0f0d9fdc25c4
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 21 17:28:22 2017 +0200
+
+    app icon and notifications
+
+commit 97fc07763c06ff2f40310d7d77da6be9240c4183
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 21 14:16:06 2017 +0200
+
+    Created a basic notification
+
+commit 0d05d0d63ea425f1dbfb3755aefeb49a840359a9
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 21 10:00:47 2017 +0200
+
+    fixing bugs
+
+commit be47992327d6518693bf5b3a63e38ad472ac74af
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 21 09:40:27 2017 +0200
+
+    Created way to filter on month and on week.
+
+commit 3877dd445e5a4a17c83e81ef93e79e37d0599c94
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Tue Jun 20 17:23:51 2017 +0200
+
+    updated bage
+
+commit 0eaadac9002e677e8cdc7137cedcbfc9d863bd71
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Tue Jun 20 15:31:47 2017 +0200
+
+    bug fix
+
+commit 8f2c6a18f94996e5628ff2892a20a600c4184073
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Tue Jun 20 15:08:06 2017 +0200
+
+    changing UIPicker
+
+commit 9f87fd41d036e1be22267fe62d853bafc3fe53e7
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Tue Jun 20 14:54:26 2017 +0200
+
+    collection view selection
+
+commit 6263494a6965e963b6d662fed1efa2bf21727cf8
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Tue Jun 20 12:32:23 2017 +0200
+
+    horizonal picker ??
+
+commit 00e3e54fc5b44348e53f6496ff2fb64d06ec0c1f
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Tue Jun 20 11:55:33 2017 +0200
+
+    Filter function with icon's!
+
+commit 90caa81560ce7c6fa56ecbd99b04b33ea4d6e578
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Tue Jun 20 11:36:01 2017 +0200
+
+    filter function fully working!
+
+commit 1f0cdfb8a50f931e6c2dc606b2e3acc08b80b3d7
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Tue Jun 20 11:25:17 2017 +0200
+
+    created a way to filter data
+
+commit 28bb41d938621054366fb64b2a3233150e3111fa
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Mon Jun 19 21:13:18 2017 +0200
+
+    small change's
+
+commit a63c8f033c86597afb6e9515d321e53c98866cf0
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Mon Jun 19 21:10:53 2017 +0200
+
+    created a way to filter on month's
+
+commit ee31893b1e26c1fb55fbf85ff26cf75a7032dbaa
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Mon Jun 19 19:01:48 2017 +0200
+
+    lock device orientation. (portrait only)
+
+commit 1cdd1ea836a4a52d504d9022a7c66505522776cb
+Author: Maj <majstomphorst@users.noreply.github.com>
+Date:   Mon Jun 19 17:22:00 2017 +0200
+
+    Update README.md
+
+commit 760479b4c83f9c016333efdfc430ec8320939ef9
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Mon Jun 19 17:19:19 2017 +0200
+
+    producitfy -> productify
+
+commit 7669e161b4473376d90fdf9a102ac890671e62f3
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Mon Jun 19 17:13:41 2017 +0200
+
+    copyed and update all .md files
 
 commit ddc37cc11239749fa4c25691517a713ab87ffd82
 Author: Maj <maxim.stomphorst@student.uva.nl>
@@ -268,7 +505,3 @@ Author: Maj <maxim.stomphorst@student.uva.nl>
 Date:   Fri Jun 16 12:21:58 2017 +0200
 
     Initial Commit
-
-
- 
- 
