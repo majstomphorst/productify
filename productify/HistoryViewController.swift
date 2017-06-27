@@ -32,20 +32,28 @@ class HistoryViewController: UIViewController {
     // MARK: - Actions
     @IBAction func startFilterPress(_ sender: Any) {
         
-        DatePickerDialog().show(title: "DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
-            (date) -> Void in
-            self.startFilter = Int((date?.timeIntervalSince1970)!)
-            self.startFilterField.text = date!.description
+        
+        DatePickerDialog().show(title: "DatePickerDialog", doneButtonTitle: "Done", cancelButtonTitle: "Cancel",  datePickerMode: .date) { (date) in
+            if let date = date {
+                self.startFilter = Int((date.timeIntervalSince1970))
+                self.startFilterField.text = date.description
+            }
         }
+        
         
     }
     @IBAction func endFilterPress(_ sender: Any) {
         
-        DatePickerDialog().show(title: "DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
-            (date) -> Void in
-            self.endFilter = Int((date?.timeIntervalSince1970)!)
-            self.endFilterField.text = date?.description
+        
+        DatePickerDialog().show(title: "DatePickerDialog", doneButtonTitle: "Done", cancelButtonTitle: "Cancel",  datePickerMode: .date) { (date) in
+            if let date = date {
+                self.endFilter = Int((date.timeIntervalSince1970))
+                self.endFilterField.text = date.description
+            }
         }
+        
+        
+
         
         
     }
