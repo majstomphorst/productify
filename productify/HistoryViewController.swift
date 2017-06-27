@@ -16,6 +16,7 @@ class HistoryViewController: UIViewController {
     var filterdActivities = [NSDictionary]()
     var startFilter = 0
     var endFilter = 0
+    var indexSend = Int()
 
     // MARK: - Outlets
     @IBOutlet weak var startFilterField: UITextField!
@@ -33,7 +34,9 @@ class HistoryViewController: UIViewController {
     @IBAction func startFilterPress(_ sender: Any) {
         
         
-        DatePickerDialog().show(title: "DatePickerDialog", doneButtonTitle: "Done", cancelButtonTitle: "Cancel",  datePickerMode: .date) { (date) in
+        DatePickerDialog().show(title: "Picker", doneButtonTitle: "Done",
+                                cancelButtonTitle: "Cancel",
+                                datePickerMode: .date) { (date) in
             if let date = date {
                 self.startFilter = Int((date.timeIntervalSince1970))
                 self.startFilterField.text = date.description
@@ -45,16 +48,14 @@ class HistoryViewController: UIViewController {
     @IBAction func endFilterPress(_ sender: Any) {
         
         
-        DatePickerDialog().show(title: "DatePickerDialog", doneButtonTitle: "Done", cancelButtonTitle: "Cancel",  datePickerMode: .date) { (date) in
+        DatePickerDialog().show(title: "Picker", doneButtonTitle: "Done",
+                                cancelButtonTitle: "Cancel",
+                                datePickerMode: .date) { (date) in
             if let date = date {
                 self.endFilter = Int((date.timeIntervalSince1970))
                 self.endFilterField.text = date.description
             }
         }
-        
-        
-
-        
         
     }
 
@@ -83,6 +84,18 @@ class HistoryViewController: UIViewController {
         })
         
     }
+    
+    // MARK: - Navigation
+    
+    // sends the activity information to the conformation screen to be stored
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "moreInfoSegue" {
+            let moreInfoVC = segue.destination as! MoreActivityInfoUIviewViewController
+
+            moreInfoVC.activityInfo = filterdActivities[indexSend]
+        }
+    }
+    
     
 }
 
@@ -117,15 +130,17 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
             // bad ass type casting for reason
             let deletekey = "\(filterdActivities[indexPath.row]["key"] as! Int)"
             
-            
             let reff = Database.database().reference().child(Fire.shared.userId).child(deletekey)
             
             reff.removeValue()
             filterdActivities = [NSDictionary]()
             self.historyTableView.reloadData()
     
-            
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        indexSend = indexPath.row
     }
     
     /// Creating a time stamp voor the timer to display

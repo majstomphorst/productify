@@ -118,6 +118,7 @@
                                             <outlet property="iconImage" destination="S5w-Ya-JKc" id="tgX-Ln-KBl"/>
                                             <outlet property="iconLabel" destination="9aw-U5-ygn" id="R2r-3C-reA"/>
                                             <outlet property="timeLabel" destination="V1q-Ky-yy3" id="vE2-Hm-QnQ"/>
+                                            <segue destination="wEJ-ug-Sel" kind="show" identifier="moreInfoSegue" id="o8h-b1-WMo"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -162,6 +163,90 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ymh-aM-QdQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="592.79999999999995" y="20.239880059970016"/>
+        </scene>
+        <!--More Activity InfoU Iview View Controller-->
+        <scene sceneID="pub-qr-ACg">
+            <objects>
+                <viewController id="wEJ-ug-Sel" customClass="MoreActivityInfoUIviewViewController" customModule="productify" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LUd-FO-nEv"/>
+                        <viewControllerLayoutGuide type="bottom" id="nhY-me-9Wq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Iig-PT-DEW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lch-DF-gvX">
+                                <rect key="frame" x="137" y="72" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="6I8-8g-cxA"/>
+                                    <constraint firstAttribute="width" constant="100" id="bHU-9f-Kh0"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oi-3I-ldB">
+                                <rect key="frame" x="32" y="180" width="311" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ZA-qA-0Y2">
+                                <rect key="frame" x="32" y="217" width="311" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Todo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPA-s2-wNX">
+                                <rect key="frame" x="32" y="254" width="311" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B2T-or-Lbp">
+                                <rect key="frame" x="32" y="291" width="311" height="92"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Have done" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2B6-v0-q4X">
+                                <rect key="frame" x="32" y="391" width="311" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="t7t-3t-3Pu">
+                                <rect key="frame" x="32" y="428" width="311" height="92"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lch-DF-gvX" firstAttribute="centerX" secondItem="Iig-PT-DEW" secondAttribute="centerX" id="96r-Dm-LSq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5oi-3I-ldB" secondAttribute="trailing" constant="16" id="Et9-RH-Ehd"/>
+                            <constraint firstItem="lch-DF-gvX" firstAttribute="top" secondItem="LUd-FO-nEv" secondAttribute="bottom" constant="8" id="V6C-Aa-zAW"/>
+                            <constraint firstItem="5oi-3I-ldB" firstAttribute="leading" secondItem="Iig-PT-DEW" secondAttribute="leadingMargin" constant="16" id="bJO-JM-LsF"/>
+                            <constraint firstItem="5oi-3I-ldB" firstAttribute="top" secondItem="lch-DF-gvX" secondAttribute="bottom" constant="8" id="lGh-g4-l1z"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="haveDoneField" destination="t7t-3t-3Pu" id="zcA-Gn-278"/>
+                        <outlet property="iconImage" destination="lch-DF-gvX" id="72g-Ry-Kuw"/>
+                        <outlet property="iconLabel" destination="5oi-3I-ldB" id="VYc-AL-Bir"/>
+                        <outlet property="time" destination="8ZA-qA-0Y2" id="6YI-Xj-wJ9"/>
+                        <outlet property="todoField" destination="B2T-or-Lbp" id="gOD-U4-fed"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WG5-ts-VyN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1384.8" y="23.838080959520241"/>
         </scene>
         <!--Change icons-->
         <scene sceneID="pik-nf-1Q9">
@@ -423,7 +508,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkO-CI-SeH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2792.8000000000002" y="702.99850074962524"/>
+            <point key="canvasLocation" x="1865" y="703"/>
         </scene>
         <!--Signin View Controller-->
         <scene sceneID="zQv-lZ-gWL">

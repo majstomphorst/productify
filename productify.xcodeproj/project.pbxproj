@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2803D6581F024E1A003C4382 /* MoreActivityInfoUIviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2803D6571F024E1A003C4382 /* MoreActivityInfoUIviewViewController.swift */; };
 		282E639A1EF6BCAD00DAF0D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 282E63991EF6BCAD00DAF0D7 /* Assets.xcassets */; };
 		282E639C1EF6BDC500DAF0D7 /* SelectIconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282E639B1EF6BDC500DAF0D7 /* SelectIconCollectionViewCell.swift */; };
 		282FC25D1EF41BA700EF173C /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282FC25C1EF41BA700EF173C /* UploadViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2803D6571F024E1A003C4382 /* MoreActivityInfoUIviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreActivityInfoUIviewViewController.swift; sourceTree = "<group>"; };
 		282E63991EF6BCAD00DAF0D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		282E639B1EF6BDC500DAF0D7 /* SelectIconCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectIconCollectionViewCell.swift; sourceTree = "<group>"; };
 		282FC25C1EF41BA700EF173C /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				28A8840A1EF3F1250088F6CB /* MainViewController.swift */,
 				2871BDA21EF80A46009B03F2 /* ConformationViewController.swift */,
 				28AA1F151EF83B69007BAD52 /* HistoryViewController.swift */,
+				2803D6571F024E1A003C4382 /* MoreActivityInfoUIviewViewController.swift */,
 				28A884101EF4115F0088F6CB /* EditIconViewController.swift */,
 				282FC25C1EF41BA700EF173C /* UploadViewController.swift */,
 				2896C1901EF5683D0001440E /* UploadFromAppViewController.swift */,
@@ -285,6 +288,7 @@
 				2896C1911EF5683D0001440E /* UploadFromAppViewController.swift in Sources */,
 				282E639C1EF6BDC500DAF0D7 /* SelectIconCollectionViewCell.swift in Sources */,
 				28A884071EF3F0B10088F6CB /* SigninViewController.swift in Sources */,
+				2803D6581F024E1A003C4382 /* MoreActivityInfoUIviewViewController.swift in Sources */,
 				282FC25D1EF41BA700EF173C /* UploadViewController.swift in Sources */,
 				28AA1F181EF8490D007BAD52 /* HistoryTableViewCell.swift in Sources */,
 				28E5B9C01EF3E8C4007CD81E /* AppDelegate.swift in Sources */,
