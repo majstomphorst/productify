@@ -18,6 +18,7 @@ struct ActivityInfo {
     var todo: String
     var feeling: Int
     var haveDone: String
+    var key: Int
     
     init() {
         self.time = Int()
@@ -25,6 +26,20 @@ struct ActivityInfo {
         self.todo = String()
         self.feeling = Int()
         self.haveDone = String()
+        self.key = Int()
+    }
+    
+    func getDictonary() -> [String : Any] {
+      
+        let activityDict = ["time": self.time,
+                            "iconLabel": self.iconLabel,
+                            "todo": self.todo,
+                            "feeling": self.feeling,
+                            "haveDone": self.haveDone,
+                            "key": self.key] as [String : Any]
+        
+        return activityDict
+        
     }
     
 }
