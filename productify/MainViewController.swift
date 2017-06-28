@@ -148,6 +148,7 @@ class MainViewController: UIViewController {
             // collect information for database
             activity.time = Int(timePicker.countDownDuration)
             
+            countseconds = Int(timePicker.countDownDuration)
             // lissing for resign active and active
             observersOn()
             
@@ -272,17 +273,7 @@ class MainViewController: UIViewController {
     @objc func updateTimer() {
         
         // if time is not up
-        if countseconds >= 1 {
-            
-            // update timer minus 1
-            self.countseconds -= 1
-            // update the time label
-            self.timeLabel.text = timeString(time: TimeInterval(self
-                                                                .countseconds))
-            
-        } else {
-            // if time is up
-            
+        if countseconds < 1 {
             // simulates a cancel press so that the timer is reset
             self.cancelButton(self)
             
@@ -291,6 +282,16 @@ class MainViewController: UIViewController {
             
             // send user to the conformation screen
             self.performSegue(withIdentifier: "conformationSegue", sender: nil)
+            
+        } else {
+            // if time is not up
+            
+            // update timer minus 1
+            self.countseconds -= 1
+            // update the time label
+            self.timeLabel.text = timeString(time: TimeInterval(self
+                .countseconds))
+            
             
         }
         

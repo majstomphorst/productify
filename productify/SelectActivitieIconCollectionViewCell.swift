@@ -25,8 +25,6 @@ class SelectActivitieIconCollectionViewCell: UICollectionViewCell {
             
             self.iconImage.kf.setImage(with: imageUrl)
             
-            
-            
         }
     }
     
