@@ -4,12 +4,14 @@
 ## Programmeerproject - Maxim Stomphorst - 11436727
 
 #Table of contents
-1. [The problem] (#The-problem-to-solved.)
-2. [The min] (#min)
+ # Table of contents
+1. [Introduction](#introduction)
+2. [Some paragraph](#paragraph1)
+    1. [Sub paragraph](#subparagraph1)
+3. [Another paragraph](#paragraph2)
 
 
-
-## The problem to solved.
+## The problem to solved. 
 De behoeften om studie / werk activiteiten bij te houden. Om vervolgens een overzicht te krijgen van de verrichten activiteiten per tijds periode.
 
 Het hoger doel is om iemand te stimuleren productiever of gerichter zijn of haar taken te vervullen.
@@ -59,7 +61,7 @@ Is en app die enkel een timer bied om je te helpen met werken wel zitten er meer
 - [Miracle Timer](https://itunes.apple.com/us/app/miracle-timer-be-productive-perfect-for-work-study/id1083895559?mt=8)<br>
 Deze app geeft je enkele functies om een bepaalde tijdseenheid gefocust te werken maar heeft geen functie om bij te houden wat je hebt gedaan.
 
-# min
+# min <a name="introduction"></a>
 ### Minimum features
 1. Het selecteren van een activiteit.<br> 
 2. Het bijhouden van een studie/activiteit.<br>
