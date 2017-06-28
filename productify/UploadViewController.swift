@@ -29,10 +29,10 @@ class UploadViewController: UIViewController {
         saveButton.layer.cornerRadius = 10
         
         self.tabBarController?.tabBar.isHidden = true
-        // Do any additional setup after loading the view.
     }
 
-    //MARK: - Actions
+    // MARK: - Actions
+    
     @IBAction func SaveButtonPress(_ sender: Any) {
         
         if iconNameLabel.text == "" {
@@ -60,7 +60,7 @@ class UploadViewController: UIViewController {
 }
 
 /*
-//
+ Controls the image Picker
 */
 extension UploadViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -75,7 +75,6 @@ extension UploadViewController: UIImagePickerControllerDelegate, UINavigationCon
             let picker = UIImagePickerController()
             picker.delegate = self
             picker.allowsEditing = true
-            
             picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
             
             self.present(picker, animated: true, completion: nil)
@@ -122,12 +121,11 @@ extension UploadViewController: UIImagePickerControllerDelegate, UINavigationCon
 
 
 /*
-//
+ This provides a way to recieve information from the YploadFromAppViewController
 */
 extension UploadViewController: DataSendDelegate {
     
     func userDidEnterData(data: UIImage) {
-        print("yes working")
         self.iconImage.image = data
     }
     

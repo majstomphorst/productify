@@ -8,11 +8,14 @@
 
 import UIKit
 
+
+/// provides a way to send data back to UploadViewController
 protocol DataSendDelegate {
     func userDidEnterData(data: UIImage)
 }
 
 class UploadFromAppViewController: UIViewController {
+    
     
     var delegate: DataSendDelegate? = nil
     var icons = ["0","1","2","3","4"]

@@ -21,11 +21,11 @@ class RegisterViewController: UIViewController {
     
     @IBAction func registerButton(_ sender: Any) {
         
+        setLoadingView(message: "registration...")
+        
         // collect user input
         let email = emailField.text!
         let password = passwordField.text!
-        
-        
         
         // check user input
         if passwordField.text! == passwordField.text! {
@@ -47,8 +47,12 @@ class RegisterViewController: UIViewController {
                 // save the userId
                 Fire.share.userId = "\(user!)"
                 
-                // send user to mainViewController
-                self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+                // save the presenting ViewController
+                let registerView: UIViewController = self.presentingViewController!
+                self.dismiss(animated: true) {
+                    // go back to MainMenuView as the eyes of the user
+                    registerView.dismiss(animated: true, completion: nil)
+                }
             }
             
         }
