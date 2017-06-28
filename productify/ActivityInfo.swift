@@ -25,7 +25,7 @@ struct ActivityInfo {
         self.key = Int()
     }
     
-    mutating func importDictionary(dict: NSDictionary) {
+    init(dict: NSDictionary) {
         self.time = dict["time"] as! Int
         self.iconLabel = dict["iconLabel"] as! String
         self.todo = dict["todo"] as! String
@@ -43,7 +43,6 @@ struct ActivityInfo {
                             "feeling": self.feeling,
                             "haveDone": self.haveDone,
                             "key": self.key] as [String : Any]
-        
         return activityDict
     }
     

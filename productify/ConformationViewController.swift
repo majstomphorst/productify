@@ -13,12 +13,10 @@ class ConformationViewController: UIViewController {
     
     var activity = ActivityInfo()
     
-    // MARK: - Outlets
     @IBOutlet weak var mwaButton: UIButton!
     @IBOutlet weak var fineButton: UIButton!
     @IBOutlet weak var goodButton: UIButton!
     @IBOutlet weak var haveDoneField: UITextView!
-    
     
     // MARK: - Actions
 
@@ -56,6 +54,7 @@ class ConformationViewController: UIViewController {
         let reff = Database.database().reference().child(Fire.shared.userId).child(String(timeStamp))
     
         let activityDict = activity.getDictonary()
+        
         
         reff.updateChildValues(activityDict) { (error, DatabaseReference) in
             

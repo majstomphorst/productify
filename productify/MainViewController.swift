@@ -90,7 +90,7 @@ class MainViewController: UIViewController {
         self.performSegue(withIdentifier: "conformationSegue", sender: nil)
     }
     
-    // signs a user out and send them to the sigin page
+    /// signs a user out and send them to the sigin page
     @IBAction func signoutPress(_ sender: Any) {
         
         do {
@@ -105,25 +105,66 @@ class MainViewController: UIViewController {
         
     }
     
+    /*
+    // Turn a observer on: on 
+    // - UIApplicationDidBecomeActive
+    // - UIApplicationWillResignActive
+    */
+    func observersOn() {
+        
+        let notification = NotificationCenter.default
+        
+        // observs this view if actie it calls func didBecomeActive
+        notification.addObserver(self, selector: #selector(didBecomeActive),
+                                 name: .UIApplicationDidBecomeActive,
+                                 object: nil)
+        
+        // observs this view if Resign active it calls func willResignActive
+        notification.addObserver(self, selector: #selector(willResignActive),
+                                 name: .UIApplicationWillResignActive,
+                                 object: nil)
+        
+    }
+    
+    /*
+    // Turn a observer off: on
+    // - UIApplicationDidBecomeActive
+    // - UIApplicationWillResignActive
+    */
+    func observersOff() {
+        
+        let notification = NotificationCenter.default
+        
+        notification.removeObserver(self, name: .UIApplicationDidBecomeActive,
+                                    object: nil)
+        
+        notification.removeObserver(self, name: .UIApplicationWillResignActive,
+                                    object: nil)
+    }
+    
+    
+    /*
+    // This ubtton has 3 state's
+    // - Start
+    // - Pauze
+    // - Resume
     //
+    // The goal is to manage the timer and notifications.
+    // this is done by observers
+    */
     @IBAction func startButton(_ sender: Any) {
         
         if startButton.currentTitle == "Start" {
             
-            // placing a observer on this view and when it becomes active it calls a function
-            NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(didBecomeActive),
-                                                   name: .UIApplicationDidBecomeActive, object: nil)
-            
-            // placing a observer on this view and when it becomes resigns active it calls a function
-            NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(willResignActive),
-                                                   name: .UIApplicationWillResignActive, object: nil)
+            // lissing for resign active and active again
+            observersOn()
             
             // get's the countdown for scheduling a notificaion
             self.countseconds = Int(timePicker.countDownDuration)
-            self.appDelegate?.scheduleNotification(countDown: Double(self.countseconds),
-                                                   title: "Title",
+            
+            
+            self.appDelegate?.setNotification(countDown: Double(self.countseconds),
+                                                   title: "You ar done",
                                                    body: "Body")
             
             // collect information for database
@@ -145,13 +186,8 @@ class MainViewController: UIViewController {
         } else if startButton.currentTitle == "Pauze" {
             
             // kill observers
-            NotificationCenter.default.removeObserver(self,
-                                                      name: .UIApplicationDidBecomeActive,
-                                                      object: nil)
+            observersOff()
             
-            NotificationCenter.default.removeObserver(self,
-                                                      name: .UIApplicationWillResignActive,
-                                                      object: nil)
             // kill all notifications
             UNUserNotificationCenter.current().removeAllDeliveredNotifications()
             
@@ -164,22 +200,15 @@ class MainViewController: UIViewController {
         } else {
             // is resume is pressed
             
+            observersOn()
+            
             // start up the timer again with the remaing time (stored in countSeconds
             self.timer = Timer.scheduledTimer(timeInterval: 1, target: self,
                                               selector: (#selector(self.updateTimer)),
                                               userInfo: nil, repeats: true)
             
-            // placing observers
-            NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(didBecomeActive),
-                                                   name: .UIApplicationDidBecomeActive, object: nil)
-        
-            NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(willResignActive),
-                                                   name: .UIApplicationWillResignActive, object: nil)
-            
             // schedul new notification
-            self.appDelegate?.scheduleNotification(countDown: Double(self.countseconds),
+            self.appDelegate?.setNotification(countDown: Double(self.countseconds),
                                                    title: "Title",
                                                    body: "Body")
             
@@ -193,13 +222,8 @@ class MainViewController: UIViewController {
     @IBAction func cancelButton(_ sender: Any) {
         
         // kill all observers
-        NotificationCenter.default.removeObserver(self,
-                                                  name: .UIApplicationDidBecomeActive,
-                                                  object: nil)
-        
-        NotificationCenter.default.removeObserver(self,
-                                                  name: .UIApplicationWillResignActive,
-                                                  object: nil)
+        observersOff()
+
         // stops the timer
         self.timer.invalidate()
         self.timer = Timer()
@@ -228,12 +252,12 @@ class MainViewController: UIViewController {
         let timeStampActive = Date().timeIntervalSince1970
         
         // calculate new time
-        let newCountDownTime = countseconds - (timeStampActive - timeStampResign)
+        let newTime = countseconds - (timeStampActive - timeStampResign)
         
         // if timer is greater than 0 update it to the new time
-        if newCountDownTime >= 0  {
+        if newTime >= 0  {
             
-            self.countseconds = Int(newCountDownTime)
+            self.countseconds = Int(newTime)
             print("time not up")
             
         } else {
@@ -262,10 +286,18 @@ class MainViewController: UIViewController {
     /// this updates the timer every second and checks if the timer is done
     @objc func updateTimer() {
         
-        // if time is up
-        if countseconds < 1 {
+        // if time is not up
+        if countseconds >= 1 {
             
-            // simulates a cancel press so that the timer can be rerun if de user returns
+            // update timer minus 1
+            self.countseconds -= 1
+            // update the time label
+            self.timeLabel.text = timeString(time: TimeInterval(self.countseconds))
+            
+        } else {
+            // if time is up
+            
+            // simulates a cancel press so that the timer is reset
             self.cancelButton(self)
             
             // cleaning UI
@@ -273,14 +305,6 @@ class MainViewController: UIViewController {
             
             // send user to the conformation screen
             self.performSegue(withIdentifier: "conformationSegue", sender: nil)
-            
-        } else {
-            // if time is not up
-            
-            // update timer minus 1
-            self.countseconds -= 1
-            // update the time label
-            self.timeLabel.text = timeString(time: TimeInterval(self.countseconds))
             
         }
         

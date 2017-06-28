@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /// this sets up a notification that wil be scheduled
-    func scheduleNotification(countDown: Double, title: String, body: String) {
+    func setNotification(countDown: Double, title: String, body: String) {
         
         // Alerts user after timeInterval (in seconds) it doest not repeat
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: countDown, repeats: false)
