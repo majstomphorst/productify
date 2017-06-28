@@ -30,7 +30,9 @@ class MoreActivityInfoUIviewViewController: UIViewController {
         
         
         // Create a reference to the file you want to download
-        let refStore = Storage.storage().reference().child(Fire.shared.userId).child("\(iconLabel.text!).png")
+        var refStore = Storage.storage().reference().child(Fire.shared.userId)
+        refStore = refStore.child("\(iconLabel.text!).png")
+        
         
         refStore.getMetadata { (metadata, error) in
             

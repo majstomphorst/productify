@@ -19,7 +19,10 @@ class EditIconViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Database.database().reference().child("pref/\(Fire.shared.userId)").queryOrderedByKey().observe(DataEventType.value, with: { (snapshot) in
+        let reff = Database.database().reference().child("pref/\(Fire.shared.userId)")
+        
+        reff.queryOrderedByKey().observe(DataEventType.value, with:
+            { (snapshot) in
             
             self.henk = [NSDictionary]()
             
@@ -41,8 +44,6 @@ class EditIconViewController: UIViewController {
         })
 
     }
-
-    
 
     // MARK: - Navigation
     @IBAction func plus(_ sender: Any) { }
