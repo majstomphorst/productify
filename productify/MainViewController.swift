@@ -14,7 +14,7 @@ import UserNotifications
 
 class MainViewController: UIViewController {
     
-    //MARK: - Outlets
+    // MARK: - Outlets
     @IBOutlet weak var timeLabel: UITextField!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
@@ -40,7 +40,7 @@ class MainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
     
-        // Check if user is signin or not
+        // check if user is signin or not
         if let userId = Auth.auth().currentUser?.uid {
             
             // save userId for later use
@@ -81,6 +81,8 @@ class MainViewController: UIViewController {
     
     // MARK: - Actions
     
+    
+    
     @IBAction func next(_ sender: Any) {
         
         if todoField.text != nil {
@@ -106,7 +108,7 @@ class MainViewController: UIViewController {
     }
     
     /*
-    // Turn a observer on: on 
+    // Sets a observer on:
     // - UIApplicationDidBecomeActive
     // - UIApplicationWillResignActive
     */
@@ -158,14 +160,10 @@ class MainViewController: UIViewController {
             
             // lissing for resign active and active again
             observersOn()
-            
-            // get's the countdown for scheduling a notificaion
-            self.countseconds = Int(timePicker.countDownDuration)
-            
-            
-            self.appDelegate?.setNotification(countDown: Double(self.countseconds),
-                                                   title: "You ar done",
-                                                   body: "Body")
+        
+            self.appDelegate?.setNotification(countDown: Double(timePicker.countDownDuration),
+                                              title: "You ar done",
+                                              body: "Body")
             
             // collect information for database
             activity.time = Int(timePicker.countDownDuration)
