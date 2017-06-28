@@ -12,7 +12,6 @@ import DatePickerDialog
 
 class HistoryViewController: UIViewController {
     
-    
     var filterdActivities = [NSDictionary]()
     var startFilter = 0
     var endFilter = 0
@@ -22,17 +21,10 @@ class HistoryViewController: UIViewController {
     @IBOutlet weak var startFilterField: UITextField!
     @IBOutlet weak var endFilterField: UITextField!
     @IBOutlet weak var historyTableView: UITableView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-    }
 
     
     // MARK: - Actions
     @IBAction func startFilterPress(_ sender: Any) {
-        
         
         DatePickerDialog().show(title: "Picker", doneButtonTitle: "Done",
                                 cancelButtonTitle: "Cancel",
@@ -45,8 +37,8 @@ class HistoryViewController: UIViewController {
         
         
     }
+    
     @IBAction func endFilterPress(_ sender: Any) {
-        
         
         DatePickerDialog().show(title: "Picker", doneButtonTitle: "Done",
                                 cancelButtonTitle: "Cancel",

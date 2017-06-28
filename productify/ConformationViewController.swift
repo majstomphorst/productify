@@ -13,19 +13,12 @@ class ConformationViewController: UIViewController {
     
     var activity = ActivityInfo()
     
+    // MARK: - Outlets
     @IBOutlet weak var mwaButton: UIButton!
     @IBOutlet weak var fineButton: UIButton!
     @IBOutlet weak var goodButton: UIButton!
     @IBOutlet weak var haveDoneField: UITextView!
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        
-        // Do any additional setup after loading the view.
-    }
-
     
     // MARK: - Actions
 
@@ -64,7 +57,6 @@ class ConformationViewController: UIViewController {
     
         let activityDict = activity.getDictonary()
         
-        
         reff.updateChildValues(activityDict) { (error, DatabaseReference) in
             
         }
@@ -72,23 +64,5 @@ class ConformationViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    /// a way to get a time stamp 
-    func getCurrentTime() -> String {
-        
-        let date = NSDate()
-        let calendar = NSCalendar.current
-        
-        let hours = calendar.component(.hour, from: date as Date)
-        let minutes = calendar.component(.minute, from: date as Date)
-        let seconds = calendar.component(.second, from: date as Date)
-        let day = calendar.component(.day, from: date as Date)
-        let month = calendar.component(.month, from: date as Date)
-        let year = calendar.component(.year, from: date as Date)
-        let week = calendar.component(.weekOfYear, from: date as Date)
-        
-        return String(format: "hour-%02i:minutes-%02i:seconds-%02i:day-%02i:week-%02i:month-%02i:year-%04i",
-                      hours, minutes, seconds, day, week, month, year)
-    
-    }
 
 }

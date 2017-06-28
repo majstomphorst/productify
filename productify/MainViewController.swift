@@ -29,6 +29,8 @@ struct ActivityInfo {
         self.key = Int()
     }
     
+    
+    /// for firebase to create a dictionary
     func getDictonary() -> [String : Any] {
       
         let activityDict = ["time": self.time,
@@ -39,8 +41,9 @@ struct ActivityInfo {
                             "key": self.key] as [String : Any]
         
         return activityDict
-        
     }
+    
+    
     
 }
 
@@ -145,12 +148,12 @@ class MainViewController: UIViewController {
             
             // placing a observer on this view and when it becomes active it calls a function
             NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(applicationDidBecomeActive),
+                                                   selector: #selector(didBecomeActive),
                                                    name: .UIApplicationDidBecomeActive, object: nil)
             
             // placing a observer on this view and when it becomes resigns active it calls a function
             NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(applicationWillResignActive),
+                                                   selector: #selector(willResignActive),
                                                    name: .UIApplicationWillResignActive, object: nil)
             
             // get's the countdown for scheduling a notificaion
@@ -204,11 +207,11 @@ class MainViewController: UIViewController {
             
             // placing observers
             NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(applicationDidBecomeActive),
+                                                   selector: #selector(didBecomeActive),
                                                    name: .UIApplicationDidBecomeActive, object: nil)
         
             NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(applicationWillResignActive),
+                                                   selector: #selector(willResignActive),
                                                    name: .UIApplicationWillResignActive, object: nil)
             
             // schedul new notification
@@ -253,7 +256,7 @@ class MainViewController: UIViewController {
     // MARK: - Functions
     
     /// if a timer is running this wil get called when app becomes active
-    @objc func applicationDidBecomeActive() {
+    @objc func didBecomeActive() {
         
         // retrieving stored information
         let timeStampResign = UserDefaults.standard.double(forKey: "resignTime")
@@ -281,7 +284,7 @@ class MainViewController: UIViewController {
     
     
     /// if a timer is running this wil get called when app resigns active
-    @objc func applicationWillResignActive() {
+    @objc func willResignActive() {
         
         // getting the current time
         let timeStamp = Date().timeIntervalSince1970
