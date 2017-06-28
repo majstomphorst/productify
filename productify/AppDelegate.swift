@@ -31,41 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         
-        // define action for notifications
-        let timesUp = UNNotificationAction(identifier: "timesUp", title: "Let's save you're awesome work!", options: [])
-        
-        // add action to timesUp category
-        let category = UNNotificationCategory(identifier: "timesUp", actions: [timesUp], intentIdentifiers: [], options: [])
-        
-        // add the timesUp category to the notification framework
-        UNUserNotificationCenter.current().setNotificationCategories([category])
-        
         return true
-    }
-    
-    /// this sets up a notification that wil be scheduled
-    func setNotification(countDown: Double, title: String, body: String) {
-        
-        // Alerts user after timeInterval (in seconds) it doest not repeat
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: countDown, repeats: false)
-        
-        // creating content of notification
-        let content = UNMutableNotificationContent()
-        content.title = title
-        content.body =  body
-        content.sound = UNNotificationSound.default()
-        content.categoryIdentifier = "timesUp"
-        
-        let request = UNNotificationRequest(identifier: "time is up notification", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-        UNUserNotificationCenter.current().add(request) { (error) in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            
-        }
-        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

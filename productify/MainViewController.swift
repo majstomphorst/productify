@@ -161,7 +161,7 @@ class MainViewController: UIViewController {
             // lissing for resign active and active again
             observersOn()
         
-            self.appDelegate?.setNotification(countDown: Double(timePicker.countDownDuration),
+            setNotification(countDown: Double(timePicker.countDownDuration),
                                               title: "You ar done",
                                               body: "Body")
             
@@ -206,7 +206,7 @@ class MainViewController: UIViewController {
                                               userInfo: nil, repeats: true)
             
             // schedul new notification
-            self.appDelegate?.setNotification(countDown: Double(self.countseconds),
+            setNotification(countDown: Double(self.countseconds),
                                                    title: "Title",
                                                    body: "Body")
             
