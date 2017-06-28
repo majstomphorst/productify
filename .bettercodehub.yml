@@ -1,4 +1,5 @@
 exclude:
+- /Pods/.*
 - /Pods/PopupDialog/PopupDialog/Classes/.*
 component_depth: 1
 languages:
