@@ -149,13 +149,16 @@ class MainViewController: UIViewController {
             activity.time = Int(timePicker.countDownDuration)
             
             countseconds = Int(timePicker.countDownDuration)
+            
             // lissing for resign active and active
             observersOn()
             
+            self.appDelegate?.scheduleNotification()
+            
             // Scheduling location
-            setNotification(countDown: timePicker.countDownDuration,
-                                              title: "You are done! with:",
-                                              body: activity.iconLabel)
+//            setNotification(countDown: timePicker.countDownDuration,
+//                                              title: "You are done! with:",
+//                                              body: activity.iconLabel)
             
             // running the timer
             timer = Timer.scheduledTimer(timeInterval: 1, target: self,

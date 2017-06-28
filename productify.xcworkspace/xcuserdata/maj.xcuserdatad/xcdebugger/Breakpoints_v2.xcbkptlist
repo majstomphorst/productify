@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "productify/MainViewController.swift"
-            timestampString = "520379074.145743"
+            filePath = "productify/AppDelegate.swift"
+            timestampString = "520381388.214176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
-            landmarkName = "updateTimer()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "productify/MainViewController.swift"
-            timestampString = "520379074.145743"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "279"
-            endingLineNumber = "279"
-            landmarkName = "updateTimer()"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "scheduleNotification()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

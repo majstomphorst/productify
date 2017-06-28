@@ -18,6 +18,7 @@
 import Foundation
 import UIKit
 import UserNotifications
+import UserNotificationsUI
 
 extension UIViewController {
     
@@ -25,13 +26,13 @@ extension UIViewController {
     func setNotification(countDown: Double, title: String, body: String) {
         
         // define action for notifications
-        let timesUp = UNNotificationAction(identifier: "title",
+        let up = UNNotificationAction(identifier: "time",
                                            title: "body",
                                            options: [])
         
         // add action to timesUp category
-        let category = UNNotificationCategory(identifier: "timesUp",
-                                              actions: [timesUp],
+        let category = UNNotificationCategory(identifier: "time",
+                                              actions: [up],
                                               intentIdentifiers: [],
                                               options: [])
         
@@ -39,7 +40,7 @@ extension UIViewController {
         UNUserNotificationCenter.current().setNotificationCategories([category])
         
         // Alerts user after timeInterval (in seconds)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: countDown,
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5,
                                                         repeats: false)
         
         // creating content of notification
@@ -47,13 +48,13 @@ extension UIViewController {
         content.title = title
         content.body =  body
         content.sound = UNNotificationSound.default()
-        content.categoryIdentifier = "timesUp"
+        content.categoryIdentifier = "time"
         
-        let request = UNNotificationRequest(identifier: "time is up",
-                                            content: content,
-                                            trigger: trigger)
         
-        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        let request = UNNotificationRequest(identifier: "time", content: content, trigger: trigger)
+        
+        
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         
         UNUserNotificationCenter.current().add(request) {
             (error) in
@@ -65,7 +66,6 @@ extension UIViewController {
         }
         
     }
-    
     
     /// This creates a alert message for the user to give them feedback to tel them,
     /// what is happening in the background especially our messages
