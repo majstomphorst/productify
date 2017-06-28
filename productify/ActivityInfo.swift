@@ -6,6 +6,19 @@
 //  Copyright © 2017 Maxim Stomphorst. All rights reserved.
 //
 
+/*
+ This struct house the activity information
+ - time = the time in seconds that the user has worked on a task
+ - iconLabel =  the name associated with the icon
+ - todo = a description of what user wanted to do
+ - feeling = keep track of how the activity went -1 bad 1 = fine 2 = good
+   0 is nil if the user doesnt give a value
+ - haveDone: a description of what the user really did in the spend time
+ - key: The value of its note (easy for deletion of the activity)
+ */
+
+
+
 import Foundation
 
 struct ActivityInfo {

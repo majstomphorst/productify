@@ -6,13 +6,18 @@
 //  Copyright © 2017 Maxim Stomphorst. All rights reserved.
 //
 
+/*
+ 
+*/
+
 import UIKit
 import Firebase
 
 class MoreActivityInfoUIviewViewController: UIViewController {
     
     var activityInfo = NSDictionary()
-
+    
+    // Mark: - Outlets
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var iconLabel: UILabel!
     @IBOutlet weak var time: UILabel!
@@ -30,20 +35,20 @@ class MoreActivityInfoUIviewViewController: UIViewController {
         
         
         // Create a reference to the file you want to download
-        var refStore = Storage.storage().reference().child(Fire.share.userId)
-        refStore = refStore.child("\(iconLabel.text!).png")
+        let storRef = Fire.share.storRef
         
+        storRef.child(Fire.share.userId).child("\(iconLabel.text!).png")
         
-        refStore.getMetadata { (metadata, error) in
+        storRef.getMetadata {
+            (metadata, error) in
             
             DispatchQueue.main.async {
                 
                 self.iconImage.kf.setImage(with: metadata?.downloadURL())
                 
-                
             }
+            
         }
-        
         
     }
 

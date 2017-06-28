@@ -7,6 +7,18 @@
 //
 
 
+/*
+ This class house all Firebase related functions
+ - writing to the database
+ - writing to storage
+ - removing data from database
+ - removing files from storage
+ 
+ It alsows stores:
+ - the user id
+ - a refference (dataRef) to the root of the firebase data structure
+ - a refference (storeRef) to the root of the reibase storage structure
+*/
 
 
 import Foundation
@@ -14,15 +26,16 @@ import Firebase
 
 class Fire {
     
-    // singelton
     static let share = Fire()
     
     // keeping track of the current signed in user
     var userId = String()
-    
+
+    // creating frequently used reffrences (to the root database/storage)
     let dataRef = Database.database().reference()
     let storRef = Storage.storage().reference()
 
+    
     /// saves a icon in storages and calls writeIconInfoDatabase
     func storeIcon(icon: UIImage, label: String) {
         
@@ -31,13 +44,13 @@ class Fire {
             self.userId = (Auth.auth().currentUser?.uid)!
         }
         
-        // create a reffrence where to store the icon
+        // reffrence where to store icon
         let storeRef = storRef.child("\(self.userId)/\(label).png")
         
-        // compress image
-        let iconData = UIImageJPEGRepresentation(icon,0.1)
+        // compress icon
+        let iconData = UIImageJPEGRepresentation(icon, 0.1)
         
-        // store image
+        // store icon
         storeRef.putData(iconData!, metadata: nil) {
             (metadata, error) in
             
@@ -46,14 +59,16 @@ class Fire {
                 print(error!.localizedDescription)
             }
             
-            // saving icon is succes
+            // saving icon succes (no error)
+            
+            // on the main thread
             DispatchQueue.main.async {
                 
                 // collect location information for later use
                 let iconInfo = ["iconUrl": metadata?.downloadURL()?.absoluteString ,
                                 "label": label] as! [String: String]
                 
-                // store the information in the database
+                // store the icon information in the database
                 self.writeIconInfoDatabase(data: iconInfo)
                 
             }
@@ -62,53 +77,68 @@ class Fire {
         
     }
     
-    /// speciale function to write icon info to the database
+    /// speciale function to write icon information to the database
     private func writeIconInfoDatabase(data: [String : String]) {
         
         // create a reffrence where to save the information
-        let ref = dataRef.child("pref").child(self.userId).childByAutoId()
+        let dataref = dataRef.child("pref").child(self.userId).childByAutoId()
         
         // store the information
-        ref.updateChildValues(data ) {
-            (error, DatabaseReference) in
+        dataref.updateChildValues(data) {
+            (error, reffrence) in
             
             if error != nil {
                 print(error!.localizedDescription)
             }
             
-            // succes
+            // succes (no error)
             
         }
     }
     
-    /// remove's an icon from the storages and out of the database
+    /// removes an icon from the storages and database
     func deleteIconStorage(name: String) {
         
-        let reff = Storage.storage().reference().child(self.userId).child("\(name).png")
+        let storeReff = Storage.storage().reference().child(self.userId).child("\(name).png")
         
-        reff.delete { (error) in
+        storeReff.delete {
+            (error) in
+            
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            
+            // succes (no error)
             
         }
         
-        let ref = dataRef.child("pref/\(Fire.share.userId)")
+        let dataRef = self.dataRef.child("pref/\(Fire.share.userId)")
         
-        ref.queryOrderedByKey().observe(DataEventType.value, with: {
+        dataRef.queryOrderedByKey().observe(DataEventType.value, with: {
             (snapshot) in
             
+            // convert value check guard again error
             guard let value = snapshot.value as? NSDictionary else {
                 return
             }
             
-                
+            // go through every key
             for key in value.allKeys {
                 
+                // convert the value behind the key in a dictionary
                 let dict = value[key] as! NSDictionary
                 
+                // scan for where label name is equal to tobe delete iconname
                 if dict["label"] as! String == name {
                     
-                    let ref = self.dataRef.child("pref/\(Fire.share.userId)").child(key as! String)
+                    let dataRef = self.dataRef
+                                      .child("pref/\(Fire.share.userId)")
+                                      .child(key as! String)
                     
-                    ref.removeValue()
+                    dataRef.removeValue()
+                    
+                    // if value is found searches done
+                    return
                     
                 }
                 

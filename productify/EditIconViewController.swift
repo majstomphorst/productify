@@ -6,6 +6,10 @@
 //  Copyright © 2017 Maxim Stomphorst. All rights reserved.
 //
 
+/*
+ 
+*/
+
 import UIKit
 import Firebase
 
@@ -19,9 +23,10 @@ class EditIconViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let reff = Database.database().reference().child("pref/\(Fire.share.userId)")
+        var dataRef = Fire.share.dataRef
+        dataRef = dataRef.child("pref/\(Fire.share.userId)")
         
-        reff.queryOrderedByKey().observe(DataEventType.value, with:
+        dataRef.queryOrderedByKey().observe(DataEventType.value, with:
             { (snapshot) in
             
             self.henk = [NSDictionary]()

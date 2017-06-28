@@ -6,6 +6,16 @@
 //  Copyright © 2017 Maxim Stomphorst. All rights reserved.
 //
 
+/*
+ controls the sign in proces 
+ - user wants sign in:
+ -- send to main view
+ 
+ - user wants to register:
+ -- send to register view
+*/
+
+
 import UIKit
 import Firebase
 
@@ -48,7 +58,7 @@ class SigninViewController: UIViewController {
              
                 // Alert user
                 self.alertUser(title: "Signin error!",
-                               message: "System report: /r/n\(error!.localizedDescription)")
+                               message: (error?.localizedDescription)!)
                 
             // no error
             } else {
@@ -57,16 +67,14 @@ class SigninViewController: UIViewController {
                 Fire.share.userId = "\(user!)"
                 
                 // save the presenting ViewController
-                let presentingViewController: UIViewController = self.presentingViewController!
+                let siginView: UIViewController = self.presentingViewController!
                 
                 self.dismiss(animated: true) {
                     // go back to MainMenuView as the eyes of the user
-                    presentingViewController.dismiss(animated: true, completion: nil)
+                    siginView.dismiss(animated: true, completion: nil)
                 }
                 
-                
             }
-            
             
             
         }

@@ -6,6 +6,10 @@
 //  Copyright © 2017 Maxim Stomphorst. All rights reserved.
 //
 
+/*
+ 
+*/
+
 import UIKit
 
 class UploadViewController: UIViewController {
@@ -33,6 +37,7 @@ class UploadViewController: UIViewController {
 
     // MARK: - Actions
     
+    ///
     @IBAction func SaveButtonPress(_ sender: Any) {
         
         if iconNameLabel.text == "" {
@@ -52,7 +57,7 @@ class UploadViewController: UIViewController {
     }
 
     // MARK: - Navigation
-    
+
     @IBAction func dismissButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -62,15 +67,20 @@ class UploadViewController: UIViewController {
 /*
  Controls the image Picker
 */
-extension UploadViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension UploadViewController: UIImagePickerControllerDelegate,
+                                UINavigationControllerDelegate {
     
     @IBAction func handleTap(recognizer: UITapGestureRecognizer) {
         
         // Create the action sheet
-        let myActionSheet = UIAlertController(title: "Upload options", message: "How would you like to upload?", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let sheet = UIAlertController(title: "Upload options",
+                                      message: "How would you like to upload?",
+                            preferredStyle: UIAlertControllerStyle.actionSheet)
         
         // blue action button
-        let upload = UIAlertAction(title: "Upload From Camararoll", style: UIAlertActionStyle.default) { (action) in
+        let upload = UIAlertAction(title: "Upload From Camararoll",
+                                   style: UIAlertActionStyle.default) {
+            (action) in
             
             let picker = UIImagePickerController()
             picker.delegate = self
@@ -78,35 +88,36 @@ extension UploadViewController: UIImagePickerControllerDelegate, UINavigationCon
             picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
             
             self.present(picker, animated: true, completion: nil)
-            
         }
         
         // red action button
-        let storages = UIAlertAction(title: "Pick one from the app", style: UIAlertActionStyle.default) { (action) in
+        let storages = UIAlertAction(title: "Pick one from the app",
+                                     style: UIAlertActionStyle.default) {
+            (action) in
             
             self.performSegue(withIdentifier: "uploadFromApp", sender: nil)
-            
-            // self.alertUser(title: "no implementation yet", message: "to bad")
         }
         
         // cancel action button
-        let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (action) in
-            print("Cancel action button tapped")
+        let cancel = UIAlertAction(title: "Cancel",
+                                   style: UIAlertActionStyle.cancel) {
+            (action) in
         }
         
         // add action buttons to action sheet
-        myActionSheet.addAction(upload)
-        myActionSheet.addAction(storages)
-        myActionSheet.addAction(cancel)
+        sheet.addAction(upload)
+        sheet.addAction(storages)
+        sheet.addAction(cancel)
         
         // send user to the uiImage picerk view
-        self.present(myActionSheet, animated: true, completion: nil)
-        
+        self.present(sheet, animated: true, completion: nil)
     }
     
     
     /// if a image is selected with the image picker
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info:
+        [String : Any]) {
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
@@ -130,6 +141,7 @@ extension UploadViewController: DataSendDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
         if segue.identifier == "uploadFromApp" {
             let sendingVC: UploadFromAppViewController = segue.destination as! UploadFromAppViewController
             sendingVC.delegate = self

@@ -6,6 +6,10 @@
 //  Copyright © 2017 Maxim Stomphorst. All rights reserved.
 //
 
+/*
+ 
+*/
+
 import UIKit
 import Firebase
 
@@ -19,7 +23,8 @@ class ConformationViewController: UIViewController {
     @IBOutlet weak var haveDoneField: UITextView!
     
     // MARK: - Actions
-
+    
+    /// saves user's feeling and update's the UI
     @IBAction func mwaPress(_ sender: Any) {
         activity.feeling = -1
         mwaButton.isSelected = true
@@ -41,6 +46,7 @@ class ConformationViewController: UIViewController {
         goodButton.isSelected = true
     }
     
+    ///
     @IBAction func savePress(_ sender: Any) {
         
         if haveDoneField.text != nil {
@@ -53,13 +59,15 @@ class ConformationViewController: UIViewController {
         activity.key = timeStamp
         
         
+        var dataRef = Fire.share.dataRef
+        dataRef = dataRef.child(Fire.share.userId).child(String(timeStamp))
         
-        var reff = Database.database().reference()
-        reff = reff.child(Fire.share.userId).child(String(timeStamp))
-    
+        // converts ActivityStruct in a dictionary
         let activityDict = activity.getDictonary()
         
-        reff.updateChildValues(activityDict) { (error, DatabaseReference) in
+        // save the activity to the database
+        dataRef.updateChildValues(activityDict) {
+            (error, DatabaseReference) in
             
         }
         

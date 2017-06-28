@@ -6,8 +6,11 @@
 //  Copyright © 2017 Maxim Stomphorst. All rights reserved.
 //
 
-import UIKit
+/*
+ 
+*/
 
+import UIKit
 
 /// provides a way to send data back to UploadViewController
 protocol DataSendDelegate {
@@ -28,8 +31,12 @@ class UploadFromAppViewController: UIViewController {
 
 }
 
-extension UploadFromAppViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
+
+/*
+ Controls the
+*/
+extension UploadFromAppViewController: UICollectionViewDelegate,
+                                       UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return icons.count

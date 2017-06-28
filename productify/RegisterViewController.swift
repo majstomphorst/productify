@@ -6,6 +6,15 @@
 //  Copyright © 2017 Maxim Stomphorst. All rights reserved.
 //
 
+/*
+ controls the register proces
+ - user wants register is succes:
+ -- send to main view
+ 
+ - user wants to sign in:
+ -- send to sign in view
+ */
+
 import UIKit
 import Firebase
 

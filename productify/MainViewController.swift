@@ -6,6 +6,10 @@
 //  Copyright © 2017 Maxim Stomphorst. All rights reserved.
 //
 
+/*
+
+*/
+
 import UIKit
 import Firebase
 import NotificationCenter
@@ -80,9 +84,6 @@ class MainViewController: UIViewController {
     
     
     // MARK: - Actions
-    
-    
-    
     @IBAction func next(_ sender: Any) {
         
         if todoField.text != nil {
@@ -107,11 +108,8 @@ class MainViewController: UIViewController {
         
     }
     
-    /*
-    // Sets a observer on:
-    // - UIApplicationDidBecomeActive
-    // - UIApplicationWillResignActive
-    */
+    /// Sets a observer on:
+    /// - UIApplicationDidBecomeActive and UIApplicationWillResignActive
     func observersOn() {
         
         let notification = NotificationCenter.default
@@ -128,11 +126,8 @@ class MainViewController: UIViewController {
         
     }
     
-    /*
-    // Turn a observer off: on
-    // - UIApplicationDidBecomeActive
-    // - UIApplicationWillResignActive
-    */
+    /// Turn a observer off: on
+    /// - UIApplicationDidBecomeActive and UIApplicationWillResignActive
     func observersOff() {
         
         let notification = NotificationCenter.default
@@ -144,30 +139,22 @@ class MainViewController: UIViewController {
                                     object: nil)
     }
     
-    
-    /*
-    // This ubtton has 3 state's
-    // - Start
-    // - Pauze
-    // - Resume
-    //
-    // The goal is to manage the timer and notifications.
-    // this is done by observers
-    */
+    /// button has three states 1. Start 2. Pauze 3. Resume
+    /// managing timer and notification with assistance from observers
     @IBAction func startButton(_ sender: Any) {
         
         if startButton.currentTitle == "Start" {
             
-            // lissing for resign active and active again
-            observersOn()
-        
-            setNotification(countDown: Double(timePicker.countDownDuration),
-                                              title: "You ar done",
-                                              body: "Body")
-            
             // collect information for database
             activity.time = Int(timePicker.countDownDuration)
-
+            
+            // lissing for resign active and active
+            observersOn()
+            
+            // Scheduling location
+            setNotification(countDown: timePicker.countDownDuration,
+                                              title: "You are done! with:",
+                                              body: activity.iconLabel)
             
             // running the timer
             timer = Timer.scheduledTimer(timeInterval: 1, target: self,
@@ -198,17 +185,18 @@ class MainViewController: UIViewController {
         } else {
             // is resume is pressed
             
+            // timer is running again
             observersOn()
             
-            // start up the timer again with the remaing time (stored in countSeconds
+            // start up the timer with the remaing time (stored in countSeconds)
             self.timer = Timer.scheduledTimer(timeInterval: 1, target: self,
-                                              selector: (#selector(self.updateTimer)),
-                                              userInfo: nil, repeats: true)
+                                    selector: (#selector (self.updateTimer)),
+                                    userInfo: nil, repeats: true)
             
             // schedul new notification
             setNotification(countDown: Double(self.countseconds),
-                                                   title: "Title",
-                                                   body: "Body")
+                            title: "You are done! with:",
+                            body: activity.iconLabel)
             
             // update UI
             startButton.setTitle("Pauze", for: UIControlState .normal)
@@ -234,7 +222,7 @@ class MainViewController: UIViewController {
         
     }
     
-    
+    /// performs a segue way too the confirmation view
     @IBAction func conformationSegue(_ sender: Any) {
         performSegue(withIdentifier: "conformationSegue", sender: nil)
     }
@@ -245,24 +233,23 @@ class MainViewController: UIViewController {
     @objc func didBecomeActive() {
         
         // retrieving stored information
-        let timeStampResign = UserDefaults.standard.double(forKey: "resignTime")
-        let countseconds = UserDefaults.standard.double(forKey: "countseconds")
-        let timeStampActive = Date().timeIntervalSince1970
+        let saved = UserDefaults.standard
+        
+        let timeResign = saved.double(forKey: "resignTime")
+        let time = saved.double(forKey: "time")
+        let timeActive = Date().timeIntervalSince1970
         
         // calculate new time
-        let newTime = countseconds - (timeStampActive - timeStampResign)
+        let newTime = time - (timeActive - timeResign)
         
         // if timer is greater than 0 update it to the new time
         if newTime >= 0  {
             
             self.countseconds = Int(newTime)
-            print("time not up")
             
         } else {
             // if time is up set time to 0
-            
             self.countseconds = 0
-            print("time up")
             
         }
         
@@ -273,11 +260,11 @@ class MainViewController: UIViewController {
     @objc func willResignActive() {
         
         // getting the current time
-        let timeStamp = Date().timeIntervalSince1970
+        let time = Date().timeIntervalSince1970
         
         // saving current time and timer time for when the app returns
-        UserDefaults.standard.set(timeStamp, forKey: "resignTime")
-        UserDefaults.standard.set(countseconds, forKey: "countseconds")
+        UserDefaults.standard.set(time, forKey: "resignTime")
+        UserDefaults.standard.set(countseconds, forKey: "time")
         
     }
     
@@ -290,7 +277,8 @@ class MainViewController: UIViewController {
             // update timer minus 1
             self.countseconds -= 1
             // update the time label
-            self.timeLabel.text = timeString(time: TimeInterval(self.countseconds))
+            self.timeLabel.text = timeString(time: TimeInterval(self
+                                                                .countseconds))
             
         } else {
             // if time is up
@@ -311,10 +299,10 @@ class MainViewController: UIViewController {
     
     // MARK: - Navigation
     
-    // Creates a way to unwind a segue
+    /// Creates a way to unwind a segue
     @IBAction func returnToMainView(segue: UIStoryboardSegue) {}
     
-    // sends the activity information to the conformation screen to be stored
+    /// sends the activity information to the conformation screen to be stored
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "conformationSegue" {
             let conformationVC = segue.destination as! ConformationViewController
@@ -324,42 +312,54 @@ class MainViewController: UIViewController {
 
 }
 
-
-// collection view properties
+/*
+ collection view properties
+*/
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    /// number of cells needed
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return usersIcons.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath as IndexPath) as! SelectActivitieIconCollectionViewCell
+    /// provide cell content
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt
+                            index: IndexPath) -> UICollectionViewCell {
         
-        cell.iconLabel.text = usersIcons[indexPath.row]["label"] as? String
-        cell.imageUrl = URL(string: usersIcons[indexPath.row]["iconUrl"] as! String)
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
+                                                      for: index as IndexPath) as! SelectActivitieIconCollectionViewCell
+        
+        cell.iconLabel.text = usersIcons[index.row]["label"] as? String
+        cell.imageUrl = URL(string: usersIcons[index.row]["iconUrl"] as! String)
     
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+    /// if a cell is selected
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt index: IndexPath) {
         
         // Deselect the previos selection if any
         if self.selectedItem != nil {
-            let cell1 = collectionView.cellForItem(at: self.selectedItem!) as! SelectActivitieIconCollectionViewCell
+            let cell1 = collectionView.cellForItem(at: self.selectedItem!)
+                                       as! SelectActivitieIconCollectionViewCell
+            
+            
             cell1.iconImage?.backgroundColor = UIColor.clear
         }
         
         // select the touched cell
-        let cell = collectionView.cellForItem(at: indexPath) as! SelectActivitieIconCollectionViewCell
+        let cell = collectionView.cellForItem(at: index)
+                                       as! SelectActivitieIconCollectionViewCell
+        
+        
         activity.iconLabel = cell.iconLabel.text!
         cell.iconImage?.backgroundColor = UIColor.blue
-        self.selectedItem = indexPath
-        
-
+        self.selectedItem = index
+    
         
     }
     
-
 
 }

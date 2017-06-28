@@ -7,8 +7,11 @@
 //
 
 /*
- This extension create's a convincent way to create alert notifiaction too alert the user
- if any error occurs. 
+ create's 
+ - alert notifiaction
+ - loading screen
+ - schedules notification
+ - user-friendly time stamp converter
 */
 
 
