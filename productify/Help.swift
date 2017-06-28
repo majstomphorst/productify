@@ -62,7 +62,6 @@ extension UIViewController {
         }
         
     }
-
     
     
     /// This creates a alert message for the user to give them feedback to tel them,
@@ -92,7 +91,7 @@ extension UIViewController {
     }
     
     /// Display's a loading screen which you can trun on/off
-    func loadingView(onOff: Bool, message: String) {
+    func setLoadingView(onOff: Bool, message: String? = nil) {
         
         // if true aka loading: on
         if onOff {

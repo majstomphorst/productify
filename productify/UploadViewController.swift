@@ -43,7 +43,7 @@ class UploadViewController: UIViewController {
         let icon = iconImage.image!
         let label = iconNameLabel.text!
         
-        Fire.shared.storeIcon(icon: icon, label: label)
+        Fire.share.storeIcon(icon: icon, label: label)
         
         
         

@@ -55,7 +55,7 @@ class ConformationViewController: UIViewController {
         
         
         var reff = Database.database().reference()
-        reff = reff.child(Fire.shared.userId).child(String(timeStamp))
+        reff = reff.child(Fire.share.userId).child(String(timeStamp))
     
         let activityDict = activity.getDictonary()
         

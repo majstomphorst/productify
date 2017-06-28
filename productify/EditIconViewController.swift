@@ -19,7 +19,7 @@ class EditIconViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let reff = Database.database().reference().child("pref/\(Fire.shared.userId)")
+        let reff = Database.database().reference().child("pref/\(Fire.share.userId)")
         
         reff.queryOrderedByKey().observe(DataEventType.value, with:
             { (snapshot) in
@@ -82,7 +82,7 @@ extension EditIconViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             
-            Fire.shared.deleteIconStorage(name: henk[indexPath.row]["label"] as! String)
+            Fire.share.deleteIconStorage(name: henk[indexPath.row]["label"] as! String)
             
         }
     }

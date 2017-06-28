@@ -17,16 +17,6 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var password2Field: UITextField!
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        // setting up UI
-        headerLabel.text = "Register"
-        emailField.text = ""
-        passwordField.text = ""
-        password2Field.text = ""
-        
-    }
-    
     // MARK: - Actions
     
     @IBAction func registerButton(_ sender: Any) {
@@ -35,10 +25,6 @@ class RegisterViewController: UIViewController {
         let email = emailField.text!
         let password = passwordField.text!
         
-        headerLabel.text = "Buzzy...."
-        emailField.text = ""
-        passwordField.text = ""
-        password2Field.text = ""
         
         
         // check user input
@@ -59,7 +45,7 @@ class RegisterViewController: UIViewController {
                 
                 // user most be present else error has to run
                 // save the userId
-                Fire.shared.userId = "\(user!)"
+                Fire.share.userId = "\(user!)"
                 
                 // send user to mainViewController
                 self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)

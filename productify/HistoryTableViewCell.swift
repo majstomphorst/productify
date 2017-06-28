@@ -21,7 +21,7 @@ class HistoryTableViewCell: UITableViewCell {
         didSet {
             
             // Create a reference to the file you want to download
-            let refStore = Storage.storage().reference().child(Fire.shared.userId).child("\(imagName!).png")
+            let refStore = Storage.storage().reference().child(Fire.share.userId).child("\(imagName!).png")
             
             refStore.getMetadata { (metadata, error) in
                 

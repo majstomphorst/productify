@@ -19,7 +19,6 @@ class SigninViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         // setting up UI
-        headerLabel.text = "Sign in"
         emailField.isEnabled = true
         passwordField.isEnabled = true
         
@@ -28,19 +27,21 @@ class SigninViewController: UIViewController {
     // MARK: - Actions
     @IBAction func signinButton(_ sender: Any) {
         
+        setLoadingView(onOff: true, message: "Signin...")
+        
         // collecting info
         let email = emailField.text!
         let password = passwordField.text!
         
         // chaning UI
-        headerLabel.text = "Signin please wait."
         emailField.text = ""
         emailField.isEnabled = false
         passwordField.text = ""
         passwordField.isEnabled = false
         
         // signing the user
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+        Auth.auth().signIn(withEmail: email, password: password) {
+            (user, error) in
             
             // if error
             if error != nil{
@@ -52,9 +53,10 @@ class SigninViewController: UIViewController {
             // no error
             } else {
                 
-                // save the userId (converting type user to string
-                Fire.shared.userId = "\(user!)"
+                // save the userId
+                Fire.share.userId = "\(user!)"
                 
+                self.setLoadingView(onOff: false)
                 // send user to mainViewController
                 self.dismiss(animated: true, completion: nil)
             }
