@@ -11,7 +11,7 @@ import Firebase
 
 class HistoryTableViewCell: UITableViewCell {
 
-
+    //Mark: - Outlets
     @IBOutlet private weak var iconImage: UIImageView!
     @IBOutlet weak var iconLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!

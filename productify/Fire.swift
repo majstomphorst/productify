@@ -97,7 +97,6 @@ class Fire {
                     
                     ref.removeValue()
                     
-                    
                 }
                 
             }
@@ -106,6 +105,5 @@ class Fire {
         })
         
     }
-    
     
 }

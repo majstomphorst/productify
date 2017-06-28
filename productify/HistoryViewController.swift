@@ -18,9 +18,9 @@ class HistoryViewController: UIViewController {
     var indexSend = Int()
 
     // MARK: - Outlets
-    @IBOutlet weak var startFilterField: UITextField!
-    @IBOutlet weak var endFilterField: UITextField!
     @IBOutlet weak var historyTableView: UITableView!
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var endButton: UIButton!
 
     
     // MARK: - Actions
@@ -29,9 +29,12 @@ class HistoryViewController: UIViewController {
         DatePickerDialog().show(title: "Picker", doneButtonTitle: "Done",
                                 cancelButtonTitle: "Cancel",
                                 datePickerMode: .date) { (date) in
+                                    
+                                    
             if let date = date {
                 self.startFilter = Int((date.timeIntervalSince1970))
-                self.startFilterField.text = date.description
+                self.startButton.setTitle(date.description, for: .normal)
+                
             }
         }
         
@@ -45,7 +48,7 @@ class HistoryViewController: UIViewController {
                                 datePickerMode: .date) { (date) in
             if let date = date {
                 self.endFilter = Int((date.timeIntervalSince1970))
-                self.endFilterField.text = date.description
+                self.endButton.setTitle(date.description, for: .normal)
             }
         }
         

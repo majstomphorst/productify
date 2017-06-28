@@ -65,7 +65,7 @@ extension EditIconViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EditIconTableViewCell
         
-        cell.nameLabel.text = (henk[indexPath.row]["label"] as! String)
+        cell.nameLabel?.text = (henk[indexPath.row]["label"] as! String)
         cell.imageUrl = URL(string: henk[indexPath.row]["iconUrl"] as! String)
         
         return cell

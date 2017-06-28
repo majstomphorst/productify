@@ -10,13 +10,13 @@ import UIKit
 
 class SelectActivitieIconCollectionViewCell: UICollectionViewCell {
     
-    
     // MARK: - Outlets
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var iconLabel: UILabel!
     
     // if the value of imageUrl changes to the folowing
     var imageUrl: URL? {
+        
         didSet {
             
             self.iconImage.image = nil
@@ -38,6 +38,8 @@ class SelectActivitieIconCollectionViewCell: UICollectionViewCell {
                 }
             }
             task.resume()
+            
+            
         }
     }
     

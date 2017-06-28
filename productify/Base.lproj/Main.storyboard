@@ -29,14 +29,8 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fdR-KV-H5I">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gvl-fw-76f">
-                                                <rect key="frame" x="0.0" y="0.0" width="171.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BfS-gO-WKp">
-                                                <rect key="frame" x="171.5" y="0.0" width="171.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                                 <state key="normal" title="Start filter"/>
                                                 <connections>
                                                     <action selector="startFilterPress:" destination="gTh-Aa-x6p" eventType="touchUpInside" id="iGj-hQ-JbI"/>
@@ -47,14 +41,8 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uJW-Kr-tg3">
                                         <rect key="frame" x="0.0" y="30" width="343" height="30"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LoW-XE-VLk">
-                                                <rect key="frame" x="0.0" y="0.0" width="171.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kWj-y0-Jzg">
-                                                <rect key="frame" x="171.5" y="0.0" width="171.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                                 <state key="normal" title="End Filter"/>
                                                 <connections>
                                                     <action selector="endFilterPress:" destination="gTh-Aa-x6p" eventType="touchUpInside" id="nIj-p7-87b"/>
@@ -155,9 +143,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="endFilterField" destination="LoW-XE-VLk" id="IDD-BE-7FG"/>
+                        <outlet property="endButton" destination="kWj-y0-Jzg" id="4k4-hu-1Xn"/>
                         <outlet property="historyTableView" destination="CG9-Y0-fqT" id="ime-iU-GZo"/>
-                        <outlet property="startFilterField" destination="gvl-fw-76f" id="z4Z-ji-OJT"/>
+                        <outlet property="startButton" destination="BfS-gO-WKp" id="WJL-Qd-Y9p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ymh-aM-QdQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
