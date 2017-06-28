@@ -25,6 +25,15 @@ struct ActivityInfo {
         self.key = Int()
     }
     
+    mutating func importDictionary(dict: NSDictionary) {
+        self.time = dict["time"] as! Int
+        self.iconLabel = dict["iconLabel"] as! String
+        self.todo = dict["todo"] as! String
+        self.feeling = dict["Feeling"] as! Int
+        self.haveDone = dict["havedone"] as! String
+        self.key = dict["key"] as! Int
+    }
+    
     /// for firebase to create a dictionary
     func getDictonary() -> [String : Any] {
         

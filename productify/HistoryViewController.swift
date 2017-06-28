@@ -12,6 +12,7 @@ import DatePickerDialog
 
 class HistoryViewController: UIViewController {
     
+    var activity = [ActivityInfo]()
     var filterdActivities = [NSDictionary]()
     var startFilter = 0
     var endFilter = 0
@@ -69,6 +70,7 @@ class HistoryViewController: UIViewController {
                 let k = Int("\(key)")
         
                 if k! > self.startFilter && k! < self.endFilter {
+                    
                     self.filterdActivities.append((keys[key] as? NSDictionary)!)
                 }
             }

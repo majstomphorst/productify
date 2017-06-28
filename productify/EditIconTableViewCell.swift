@@ -18,7 +18,6 @@ class EditIconTableViewCell: UITableViewCell {
     var imageUrl: URL? {
         didSet {
             
-            // self.iconImage.image = nil
             
             // start a task on a second thread, go to the imageUrl and extracts image data
             let task = URLSession.shared.dataTask(with: imageUrl!) { (data, response, error) in

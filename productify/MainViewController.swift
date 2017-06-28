@@ -325,13 +325,13 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         // Deselect the previos selection if any
         if self.selectedItem != nil {
             let cell1 = collectionView.cellForItem(at: self.selectedItem!) as! SelectActivitieIconCollectionViewCell
-            cell1.iconImage.backgroundColor = UIColor.clear
+            cell1.iconImage?.backgroundColor = UIColor.clear
         }
         
         // select the touched cell
         let cell = collectionView.cellForItem(at: indexPath) as! SelectActivitieIconCollectionViewCell
         activity.iconLabel = cell.iconLabel.text!
-        cell.iconImage.backgroundColor = UIColor.blue
+        cell.iconImage?.backgroundColor = UIColor.blue
         self.selectedItem = indexPath
         
 
