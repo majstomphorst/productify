@@ -170,7 +170,7 @@ class MainViewController: UIViewController {
             NotificationCenter.default.removeObserver(self,
                                                       name: .UIApplicationWillResignActive,
                                                       object: nil)
-            
+            // kill all notifications
             UNUserNotificationCenter.current().removeAllDeliveredNotifications()
             
             // pauze's the timer
@@ -201,7 +201,6 @@ class MainViewController: UIViewController {
                                                    title: "Title",
                                                    body: "Body")
             
-            
             // update UI
             startButton.setTitle("Pauze", for: UIControlState .normal)
         }
@@ -211,6 +210,7 @@ class MainViewController: UIViewController {
     
     @IBAction func cancelButton(_ sender: Any) {
         
+        // kill all observers
         NotificationCenter.default.removeObserver(self,
                                                   name: .UIApplicationDidBecomeActive,
                                                   object: nil)
@@ -218,7 +218,7 @@ class MainViewController: UIViewController {
         NotificationCenter.default.removeObserver(self,
                                                   name: .UIApplicationWillResignActive,
                                                   object: nil)
-        
+        // stops the timer
         self.timer.invalidate()
         self.timer = Timer()
         
@@ -230,9 +230,9 @@ class MainViewController: UIViewController {
         
     }
     
+    
     @IBAction func conformationSegue(_ sender: Any) {
         performSegue(withIdentifier: "conformationSegue", sender: nil)
-        
     }
     
     // MARK: - Functions
@@ -240,21 +240,23 @@ class MainViewController: UIViewController {
     /// if a timer is running this wil get called when app becomes active
     @objc func applicationDidBecomeActive() {
         
-        
         // retrieving stored information
         let timeStampResign = UserDefaults.standard.double(forKey: "resignTime")
         let countseconds = UserDefaults.standard.double(forKey: "countseconds")
         let timeStampActive = Date().timeIntervalSince1970
         
-        
+        // calculate new time
         let newCountDownTime = countseconds - (timeStampActive - timeStampResign)
         
+        // if timer is greater than 0 update it to the new time
         if newCountDownTime >= 0  {
             
             self.countseconds = Int(newCountDownTime)
             print("time not up")
             
         } else {
+            // if time is up set time to 0
+            
             self.countseconds = 0
             print("time up")
             
@@ -269,13 +271,14 @@ class MainViewController: UIViewController {
         // getting the current time
         let timeStamp = Date().timeIntervalSince1970
         
+        // saving current time and timer time for when the app returns
         UserDefaults.standard.set(timeStamp, forKey: "resignTime")
         UserDefaults.standard.set(countseconds, forKey: "countseconds")
         
     }
     
     /// this updates the timer every second and checks if the timer is done
-    @objc func updateTimer() -> String {
+    @objc func updateTimer() {
         
         // if time is up
         if countseconds < 1 {
@@ -289,12 +292,13 @@ class MainViewController: UIViewController {
             // send user to the conformation screen
             self.performSegue(withIdentifier: "conformationSegue", sender: nil)
             
-            return "00:00:00"
         } else {
+            // if time is not up
             
+            // update timer minus 1
             self.countseconds -= 1
+            // update the time label
             self.timeLabel.text = self.timeString(time: TimeInterval(self.countseconds))
-            return self.timeString(time: TimeInterval(self.countseconds))
             
         }
         

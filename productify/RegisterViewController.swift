@@ -27,7 +27,6 @@ class RegisterViewController: UIViewController {
         
     }
     
-    
     // MARK: - Actions
     
     @IBAction func registerButton(_ sender: Any) {
@@ -46,7 +45,6 @@ class RegisterViewController: UIViewController {
         if passwordField.text! == passwordField.text! {
             print("i need same password!")
         }
-        
         
         
         // registerting the user

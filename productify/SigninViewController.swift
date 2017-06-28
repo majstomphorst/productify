@@ -24,7 +24,6 @@ class SigninViewController: UIViewController {
         passwordField.isEnabled = true
         
     }
-    
 
     // MARK: - Actions
     @IBAction func signinButton(_ sender: Any) {

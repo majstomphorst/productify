@@ -78,7 +78,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Ia-Gk-JIl" id="wEW-rp-cbR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S5w-Ya-JKc">
@@ -268,7 +268,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KHt-hw-WIA" id="TLx-KN-Sgh">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cff-a6-w1I">
@@ -1033,7 +1033,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ao1-yc-NZh" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="Pf9-Ff-0b6"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hlz-4z-g4f">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Hlz-4z-g4f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1052,7 +1052,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kss-kM-gjp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="recents" id="Fqh-Zq-Gq5"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VvY-HF-xg3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VvY-HF-xg3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1071,7 +1071,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VHu-kk-sfO" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="more" id="U1c-0B-chP"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AOu-9u-b2v">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AOu-9u-b2v">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
