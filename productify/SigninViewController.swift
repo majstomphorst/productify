@@ -27,7 +27,7 @@ class SigninViewController: UIViewController {
     // MARK: - Actions
     @IBAction func signinButton(_ sender: Any) {
         
-        setLoadingView(onOff: true, message: "Signin...")
+        setLoadingView(message: "Signin...")
         
         // collecting info
         let email = emailField.text!
@@ -56,9 +56,15 @@ class SigninViewController: UIViewController {
                 // save the userId
                 Fire.share.userId = "\(user!)"
                 
-                self.setLoadingView(onOff: false)
-                // send user to mainViewController
-                self.dismiss(animated: true, completion: nil)
+                // save the presenting ViewController
+                let presentingViewController: UIViewController = self.presentingViewController!
+                
+                self.dismiss(animated: true) {
+                    // go back to MainMenuView as the eyes of the user
+                    presentingViewController.dismiss(animated: true, completion: nil)
+                }
+                
+                
             }
             
             

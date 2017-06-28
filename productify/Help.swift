@@ -91,37 +91,28 @@ extension UIViewController {
     }
     
     /// Display's a loading screen which you can trun on/off
-    func setLoadingView(onOff: Bool, message: String? = nil) {
+    func setLoadingView(message: String) {
         
-        // if true aka loading: on
-        if onOff {
-            
-            // set up alert view
-            let alert = UIAlertController(title: nil,
-                                          message: message,
-                                          preferredStyle: .alert)
+        // set up alert view
+        let alert = UIAlertController(title: nil,
+                                      message: message,
+                                      preferredStyle: .alert)
 
+        
+        // give view constraints and property's
+        let alertView = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5,
+                                                              width: 50,
+                                                              height: 50))
+        alertView.hidesWhenStopped = true
+        alertView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        alertView.startAnimating();
+        
+        // create a subview to overlay current view
+        alert.view.addSubview(alertView)
+        
+        // display laoding view
+        present(alert, animated: true, completion: nil)
             
-            // give view constraints and property's
-            let alertView = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5,
-                                                                  width: 50,
-                                                                  height: 50))
-            alertView.hidesWhenStopped = true
-            alertView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-            alertView.startAnimating();
-            
-            // create a subview to overlay current view
-            alert.view.addSubview(alertView)
-            
-            // display laoding view
-            present(alert, animated: true, completion: nil)
-            
-        } else {
-            // if false aka loading: off
-            
-            dismiss(animated: false, completion: nil)
-        }
-    
     }
     
     
