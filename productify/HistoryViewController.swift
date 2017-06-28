@@ -104,8 +104,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.iconLabel.text = filterdActivities[indexPath.row]["iconLabel"] as? String
         cell.imagName = filterdActivities[indexPath.row]["iconLabel"] as? String
-        cell.timeLabel.text = timeString(time: filterdActivities[indexPath.row]["time"]! as! Int)
-        print(filterdActivities[indexPath.row]["time"]!)
+        cell.timeLabel.text = timeString(time: TimeInterval(filterdActivities[indexPath.row]["time"]! as! Int))
         
         return cell
     }
@@ -133,17 +132,6 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         indexSend = indexPath.row
-    }
-    
-    /// Creating a time stamp voor the timer to display
-    func timeString(time:Int) -> String {
-        
-        let hours = Int(time) / 3600
-        let minutes = Int(time) / 60 % 60
-        let seconds = Int(time) % 60
-        
-        return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
-        
     }
     
     

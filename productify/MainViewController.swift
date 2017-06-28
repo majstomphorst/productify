@@ -11,6 +11,7 @@ import Firebase
 import NotificationCenter
 import UserNotifications
 
+
 class MainViewController: UIViewController {
     
     //MARK: - Outlets
@@ -279,22 +280,10 @@ class MainViewController: UIViewController {
             // update timer minus 1
             self.countseconds -= 1
             // update the time label
-            self.timeLabel.text = self.timeString(time: TimeInterval(self.countseconds))
+            self.timeLabel.text = timeString(time: TimeInterval(self.countseconds))
             
         }
         
-        
-    }
-    
-    
-    /// Creating a time stamp voor the timer to display
-    func timeString(time:TimeInterval) -> String {
-        
-        let hours = Int(time) / 3600
-        let minutes = Int(time) / 60 % 60
-        let seconds = Int(time) % 60
-        
-        return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
         
     }
     

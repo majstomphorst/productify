@@ -25,7 +25,6 @@ struct ActivityInfo {
         self.key = Int()
     }
     
-    
     /// for firebase to create a dictionary
     func getDictonary() -> [String : Any] {
         

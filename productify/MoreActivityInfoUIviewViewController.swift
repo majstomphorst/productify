@@ -24,7 +24,7 @@ class MoreActivityInfoUIviewViewController: UIViewController {
         super.viewDidLoad()
         
         iconLabel.text = activityInfo["iconLabel"] as? String
-        time.text = timeString(time: activityInfo["time"] as! Int)
+        time.text = timeString(time: TimeInterval(activityInfo["time"] as! Int))
         todoField.text = activityInfo["todo"] as? String
         haveDoneField.text = activityInfo["haveDone"] as? String
         
@@ -48,21 +48,6 @@ class MoreActivityInfoUIviewViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    /// Creating a time stamp voor the timer to display
-    func timeString(time:Int) -> String {
-        
-        let hours = Int(time) / 3600
-        let minutes = Int(time) / 60 % 60
-        let seconds = Int(time) % 60
-        
-        return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
-        
-    }
 
 
 }

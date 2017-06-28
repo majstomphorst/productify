@@ -18,6 +18,7 @@ class SelectActivitieIconCollectionViewCell: UICollectionViewCell {
     // if the value of imageUrl changes to the folowing
     var imageUrl: URL? {
         didSet {
+            
             self.iconImage.image = nil
             
             // start a task on a second thread, go to the imageUrl and extracts image data
