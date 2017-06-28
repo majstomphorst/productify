@@ -49,12 +49,15 @@ class ConformationViewController: UIViewController {
         
         // making it a int because firebase doesnt want '.' value's in the key
         let timeStamp = Int(Date().timeIntervalSince1970)
+        
         activity.key = timeStamp
         
-        let reff = Database.database().reference().child(Fire.shared.userId).child(String(timeStamp))
+        
+        
+        var reff = Database.database().reference()
+        reff = reff.child(Fire.shared.userId).child(String(timeStamp))
     
         let activityDict = activity.getDictonary()
-        
         
         reff.updateChildValues(activityDict) { (error, DatabaseReference) in
             

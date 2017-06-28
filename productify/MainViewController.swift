@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var activitySelector: UICollectionView!
     @IBOutlet weak var todoField: UITextView!
     
-    //
+    // save what itme is selected (for the UI) to that i can be de hiligted
     var selectedItem: IndexPath?
     
     // timer requirements
