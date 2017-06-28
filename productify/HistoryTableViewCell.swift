@@ -19,6 +19,10 @@ class HistoryTableViewCell: UITableViewCell {
     // if the value of imageUrl changes to the folowing
     var imagName: String? {
         didSet {
+            
+            self.iconImage.image = nil
+            
+            
             // Create a reference to the file you want to download
             let refStore = Storage.storage().reference().child(Fire.shared.userId).child("\(imagName!).png")
             
