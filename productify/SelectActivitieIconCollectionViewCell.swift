@@ -19,8 +19,7 @@ class SelectActivitieIconCollectionViewCell: UICollectionViewCell {
     var imageUrl: URL? {
         didSet {
             
-            let url = URL(string: (imageUrl?.absoluteString)!)
-            self.iconImage.kf.setImage(with: url)
+            self.iconImage.kf.setImage(with: imageUrl)
             
             
             

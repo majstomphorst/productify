@@ -20,21 +20,19 @@ class HistoryTableViewCell: UITableViewCell {
     var imagName: String? {
         didSet {
             
-            self.iconImage.image = nil
-            
-            
             // Create a reference to the file you want to download
             let refStore = Storage.storage().reference().child(Fire.shared.userId).child("\(imagName!).png")
             
-            // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-            refStore.getData(maxSize: 1 * 1024 * 1024) { data, error in
-                if error != nil {
-                    // Uh-oh, an error occurred!
-                } else {
-                    // Data for "images/island.jpg" is returned
-                    self.iconImage.image = UIImage(data: data!)
+            refStore.getMetadata { (metadata, error) in
+                
+                DispatchQueue.main.async {
+
+                    self.iconImage.kf.setImage(with: metadata?.downloadURL())
+                    
+                    
                 }
             }
+            
             
         }
     }
