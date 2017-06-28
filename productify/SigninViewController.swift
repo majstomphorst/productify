@@ -28,11 +28,9 @@ class SigninViewController: UIViewController {
     // MARK: - Actions
     @IBAction func signinButton(_ sender: Any) {
         
-        
         // collecting info
         let email = emailField.text!
         let password = passwordField.text!
-        
         
         // chaning UI
         headerLabel.text = "Signin please wait."
@@ -40,7 +38,6 @@ class SigninViewController: UIViewController {
         emailField.isEnabled = false
         passwordField.text = ""
         passwordField.isEnabled = false
-        
         
         // signing the user
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in

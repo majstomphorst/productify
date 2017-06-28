@@ -43,9 +43,8 @@ class RegisterViewController: UIViewController {
         
         // check user input
         if passwordField.text! == passwordField.text! {
-            print("i need same password!")
+            alertUser(title: "no password", message: "Give me password!")
         }
-        
         
         // registerting the user
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
