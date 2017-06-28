@@ -18,13 +18,12 @@ import UserNotifications
 
 extension UIViewController {
     
-    
-    /// this sets up a notification that wil be scheduled
+    /// this sets up a notification on a scheduled
     func setNotification(countDown: Double, title: String, body: String) {
         
         // define action for notifications
-        let timesUp = UNNotificationAction(identifier: "timesUp",
-                                           title: "Let's save you're work!",
+        let timesUp = UNNotificationAction(identifier: "title",
+                                           title: "body",
                                            options: [])
         
         // add action to timesUp category
@@ -47,10 +46,15 @@ extension UIViewController {
         content.sound = UNNotificationSound.default()
         content.categoryIdentifier = "timesUp"
         
-        let request = UNNotificationRequest(identifier: "time is up notification", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "time is up",
+                                            content: content,
+                                            trigger: trigger)
         
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-        UNUserNotificationCenter.current().add(request) { (error) in
+        
+        UNUserNotificationCenter.current().add(request) {
+            (error) in
+            
             if let error = error {
                 print(error.localizedDescription)
             }
@@ -60,10 +64,9 @@ extension UIViewController {
     }
 
     
-    /*
-     This creates a alert message for the user to give them feedback to tel them,
-     what is happening in the background especially our messages
-    */
+    
+    /// This creates a alert message for the user to give them feedback to tel them,
+    /// what is happening in the background especially our messages
     func alertUser(title: String, message: String) {
         
         // create the alert
@@ -88,20 +91,35 @@ extension UIViewController {
         
     }
     
-    func loading(onOff: Bool, message: String) {
+    /// Display's a loading screen which you can trun on/off
+    func loadingView(onOff: Bool, message: String) {
         
+        // if true aka loading: on
         if onOff {
-            let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
             
-            let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-            loadingIndicator.hidesWhenStopped = true
-            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-            loadingIndicator.startAnimating();
+            // set up alert view
+            let alert = UIAlertController(title: nil,
+                                          message: message,
+                                          preferredStyle: .alert)
+
             
-            alert.view.addSubview(loadingIndicator)
+            // give view constraints and property's
+            let alertView = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5,
+                                                                  width: 50,
+                                                                  height: 50))
+            alertView.hidesWhenStopped = true
+            alertView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+            alertView.startAnimating();
+            
+            // create a subview to overlay current view
+            alert.view.addSubview(alertView)
+            
+            // display laoding view
             present(alert, animated: true, completion: nil)
             
         } else {
+            // if false aka loading: off
+            
             dismiss(animated: false, completion: nil)
         }
     

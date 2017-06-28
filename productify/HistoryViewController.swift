@@ -59,7 +59,7 @@ class HistoryViewController: UIViewController {
         
         filterdActivities = [NSDictionary]()
         
-        Database.database().reference().child(Fire.shared.userId).observeSingleEvent(of: .value, with: { (snapshot) in
+        Database.database().reference().child(Fire.share.userId).observeSingleEvent(of: .value, with: { (snapshot) in
             
             guard let keys = snapshot.value as? NSDictionary else {
                 return
@@ -126,7 +126,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
             // bad ass type casting for reason
             let deletekey = "\(filterdActivities[indexPath.row]["key"] as! Int)"
             
-            let reff = Database.database().reference().child(Fire.shared.userId).child(deletekey)
+            let reff = Database.database().reference().child(Fire.share.userId).child(deletekey)
             
             reff.removeValue()
             filterdActivities = [NSDictionary]()

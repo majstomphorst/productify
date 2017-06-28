@@ -44,10 +44,10 @@ class MainViewController: UIViewController {
         if let userId = Auth.auth().currentUser?.uid {
             
             // save userId for later use
-            Fire.shared.userId = userId
+            Fire.share.userId = userId
             
             // this load's all the user's activity icons and labels
-            Database.database().reference().child("pref/\(Fire.shared.userId)")
+            Database.database().reference().child("pref/\(Fire.share.userId)")
                 .queryOrderedByKey().observe(DataEventType.value, with:
                     { (snapshot) in
                 
