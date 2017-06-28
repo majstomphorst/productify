@@ -345,7 +345,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let cell1 = collectionView.cellForItem(at: self.selectedItem!)
                                        as! SelectActivitieIconCollectionViewCell
             
-            
+            cell1.iconLabel.backgroundColor = UIColor.clear
             cell1.iconImage?.backgroundColor = UIColor.clear
         }
         
@@ -356,6 +356,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         activity.iconLabel = cell.iconLabel.text!
         cell.iconImage?.backgroundColor = UIColor.blue
+        cell.iconLabel.backgroundColor = UIColor.blue
         self.selectedItem = index
     
         

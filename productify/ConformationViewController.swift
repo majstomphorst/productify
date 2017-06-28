@@ -58,7 +58,6 @@ class ConformationViewController: UIViewController {
         
         activity.key = timeStamp
         
-        
         var dataRef = Fire.share.dataRef
         dataRef = dataRef.child(Fire.share.userId).child(String(timeStamp))
         
