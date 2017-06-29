@@ -1,5 +1,5 @@
 # Readme - Proposal -  Productify
-[![BCH compliance](https://bettercodehub.com/edge/badge/majstomphorst/productify?branch=master)]
+![BCH compliance](https://bettercodehub.com/edge/badge/majstomphorst/productify?branch=master)
 
 ## Programmeerproject - Maxim Stomphorst - 11436727
 
@@ -49,7 +49,6 @@ Het hoger doel is om iemand te stimuleren productiever of gerichter zijn of haar
 2. Het maken van een bar chart en of pie chart.
 4. Een manier om activiteiten nader hand aan te passen. 
 
-
 ### A sketch. <a name="sketch"></a>
 ![proposal sketch](https://github.com/majstomphorst/producitfy/blob/master/doc/proposal_sketch.jpg?raw=true)
 
@@ -70,8 +69,9 @@ Hier kan je de instellingen van de app aanpassen.
 
 ### External components <a name="components"></a>
 - [Firebase](https://firebase.google.com/)
+Firebase is gekozen als database en storage voor haar gebruiksvriendelijkheid en haar uitgebreiden documentatie. 
 - [Kingfisher](https://github.com/onevcat/Kingfisher)
-
+Ik ben zelf menig uur bezig geweest een image cache ta maken om alle afbeeldingen op te slaan. dit werkten tot op een redelijke niveau maar de kingfisher pod maakt de implementatie stabieler en kinderachter makenlijk voor geafanceerde functionalieteit.
 
 ### Technical limitations. <a name="limitations"></a>
 1. De visualisatie van de activiteiten in bar charts of pie chart. [optional]
@@ -182,6 +182,253 @@ En een online database is toch veel stoerder dan een suffe SQL database ;)
  
 # Git hub commits 
 ## much better representation of what I have done.
+commit f888bbde1650db9c9da0b3cea0fdf1b90be2e73d
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Thu Jun 29 13:22:06 2017 +0200
+
+    readme
+
+commit 40f53be5123da5233c2dc109c33abc4f1f74531d
+Merge: cc09a83 9f41563
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Thu Jun 29 13:07:53 2017 +0200
+
+    doc
+
+commit cc09a8315a2303e9cebd6e72177de0d794ed3d7e
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Thu Jun 29 13:02:22 2017 +0200
+
+    screenshots
+
+commit 9f4156340a2a3f2078507d2665c5c1abea444a6a
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Thu Jun 29 12:42:23 2017 +0200
+
+    Licence.md
+
+commit b1ab7ecb844d71a6c4fc90027a1a3134ba358f63
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Thu Jun 29 12:19:41 2017 +0200
+
+    code updating
+
+commit c41b4419cf29609e31c7f32653593354b4117513
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Thu Jun 29 12:06:52 2017 +0200
+
+    removed var henk
+
+commit f1a81e682c7339a0771556bde1d4de433b7df959
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Thu Jun 29 12:04:49 2017 +0200
+
+    func to make code smaller
+
+commit 181716139b0e8a319695302d6210127348baa5e8
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Thu Jun 29 11:53:00 2017 +0200
+
+    small update
+
+commit 39c2de07c63c52036950501010125e092c3d886c
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Thu Jun 29 11:09:47 2017 +0200
+
+    notification update
+
+commit adba20e9f4c2a9afea0f67eadec3ba9fb2a56896
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Thu Jun 29 10:41:58 2017 +0200
+
+    small
+
+commit 04bd1c1baf31869a9b7ab8336d97374ecb158d13
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Thu Jun 29 08:03:23 2017 +0200
+
+    Fix notification bug
+
+commit 7620f56bf0f916c8b690249cfd5254b4e8fc8d0d
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Thu Jun 29 00:24:00 2017 +0200
+
+    Fix a bit of notification.
+
+commit ff49e1de88e5b103aa7aa5e3d8aafc661927661c
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 23:47:49 2017 +0200
+
+    fix BIG timer bug  Origin: while I was cleaning code
+
+commit 99dc3fe0caa59cb0a2471edec41c85262d20470b
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 23:21:30 2017 +0200
+
+    Icon highlighting in mainVC
+
+commit badcf6ab4d87accba7bd3dd123418acf5dd11d4c
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 23:03:39 2017 +0200
+
+    Updating readme making it a bit nicer
+
+commit b0e5f8e261f18af3612ab24e88849598a73e291d
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 22:36:11 2017 +0200
+
+    test markdown table of contents
+
+commit a3c15689b738546e46b93a9b7696d0e0bc34e3a9
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 22:32:59 2017 +0200
+
+    test markdown table of contents
+
+commit e0ae1a62de174cbcfb1c0bee29e59ddbb846ee92
+Author: Maj <majstomphorst@users.noreply.github.com>
+Date:   Wed Jun 28 22:22:47 2017 +0200
+
+    Update .bettercodehub.yml
+
+commit 3a4985aaf4b154c89bba5ea0c6bc3adb709fb096
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 22:01:57 2017 +0200
+
+    Big big big code clearing its GREAT.
+
+commit f11637758437943846e10125346e78d0332bcfcc
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 18:01:32 2017 +0200
+
+    commenting
+
+commit 1d2461d33f499d344cc14eaa93d50fa003ed89df
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 17:40:49 2017 +0200
+
+    loading screen for sigin
+
+commit 8feef2e266289add644dc095e0e6de5b5b867183
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 17:26:12 2017 +0200
+
+    shared = share
+
+commit 446102679acd14d295b95020abda5d8a2dd6a193
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 17:19:21 2017 +0200
+
+    code updating
+
+commit 102ad131b3ccae03b18e71e27270721542c91789
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 16:52:24 2017 +0200
+
+    replaced setNotification to a better place
+
+commit 49cef263881d665c496b36db885f580e44f35970
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 16:48:57 2017 +0200
+
+    Cleaing up
+
+commit 6147e828b776e17891637dbe93151fd1e3ab9079
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 15:45:39 2017 +0200
+
+    Making the coder nice
+
+commit 726d2b5c810e5795bdd0d663183741990fc82533
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 15:45:13 2017 +0200
+
+    Making the code nice'er
+
+commit 749176d8e1843ba050a5abcea2c8aeadaf7b2f54
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 15:40:26 2017 +0200
+
+    making function making it readable and nicer
+
+commit fbf7336fd53b8163606517daa95a7b3de6b2deca
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 15:32:24 2017 +0200
+
+    making function making it readable
+
+commit 8fc2debffe6ec7266369e843432712c5a6a59f5a
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 14:20:18 2017 +0200
+
+    new cocopod for loading image's
+
+commit ca1c8aec1ddd2037ad745beeea52e7a2477be578
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 14:08:11 2017 +0200
+
+    image loading cocopod
+
+commit 029eabf8b20f70e22f52b08e73cf0d6fde7f1598
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 13:59:50 2017 +0200
+
+    bug
+
+commit 93cfe445ea3d8c046d2e99dcfc90911e58410d54
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 13:26:07 2017 +0200
+
+    small update
+
+commit 76914d624bbfe5b23dc58dcf0cc5941059c82163
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 12:29:46 2017 +0200
+
+    Loading screen function
+
+commit bd4fe381f1e6a81132551b5aebde15b38fd70cbd
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 12:21:53 2017 +0200
+
+    UI improvements
+
+commit 45ea09d9deecfc439ae616e37c81e1d14850d6db
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 11:41:17 2017 +0200
+
+    removed duplicate code
+
+commit b71b3ed3ba42f87dabeef6a2e5f90ea231c8dcf8
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 11:20:18 2017 +0200
+
+    created activity info class
+
+commit eadb465756f953c3b6266b59cc284ccfc7c786c8
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 11:01:10 2017 +0200
+
+    cleaning code
+
+commit 3276774b8189857ce3fbbde3967e313387d392d5
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 10:24:07 2017 +0200
+
+    created a struct function to create a dictionary
+
+commit c5da268853afcc856d00a90a98458b110799a606
+Author: majstomphorst <maxim.stomphorst@student.uva.nl>
+Date:   Wed Jun 28 10:14:21 2017 +0200
+
+    delete some useless code
+
+commit c91ea5d157b956a78c9d46711008f64a4950b4c4
+Author: Maj <maxim.stomphorst@student.uva.nl>
+Date:   Tue Jun 27 11:25:22 2017 +0200
+
+    update .md files
+
 commit 1805de038523a688f60c2523d4f7ef1c215fdad7
 Author: Maj <maxim.stomphorst@student.uva.nl>
 Date:   Tue Jun 27 10:56:31 2017 +0200
@@ -606,3 +853,6 @@ Date:   Fri Jun 16 12:21:58 2017 +0200
 
     Initial Commit
 
+<br><br>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.<br>
+<br>Copyright © 2017 Maxim Stomphorst.
