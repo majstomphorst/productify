@@ -31,45 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         
-        // Define Actions
-        let fruitAction = UNNotificationAction(identifier: "addFruit", title: "Add a piece of fruit", options: [])
-        let vegiAction = UNNotificationAction(identifier: "addVegetable", title: "Add a piece of vegetable", options: [])
-        
-        
-        // Add actions to a foodCategeroy
-        let category = UNNotificationCategory(identifier: "foodCategory", actions: [fruitAction, vegiAction], intentIdentifiers: [], options: [])
-        
-        // Add the foodCategory to Notification Framwork
-        UNUserNotificationCenter.current().setNotificationCategories([category])
-        
         return true
     }
-    
-    func scheduleNotification(timeinterval: Int) {
-        
-        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(timeinterval), repeats: false)
-        
-        let content = UNMutableNotificationContent()
-        content.title = "Awesome you are done!"
-        content.body = "let log that activitie"
-        content.sound = UNNotificationSound.default()
-        content.categoryIdentifier = "foodCategory"
-        
-        
-        let request = UNNotificationRequest(identifier: "foodNotification", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        UNUserNotificationCenter.current().add(request) { (error:Error?) in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-            }
-        }
-        
-    }
-
-
 
 
 }

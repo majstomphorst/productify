@@ -34,7 +34,8 @@ Het hoger doel is om iemand te stimuleren productiever of gerichter zijn of haar
 - Registreren van studie activiteiten. 
 - Verwijderen van studie activiteiten.
 - Toevoegen van studie activiteiten met een icoon.(Wiskunde met een plaatje)
-- verwijderen van icoontjes.
+- Verwijderen van icoontjes.
+- Activiteiten opvragen via begin en eind datum
 
 #### Minimum features
 1. Het selecteren van een activiteit.<br> 
@@ -44,14 +45,12 @@ Het hoger doel is om iemand te stimuleren productiever of gerichter zijn of haar
  - Met een notitie.
 3. Een manier om een overzicht te krijgen van de afgelopen activiteiten per dag.
  - Het zien van de notitie.
- - Het zien vah het activiteit's plaatje.
-4. Het uploaden van activiteit's plaatjes.
+ - Het zien vah het activiteits plaatje.
+4. Het uploaden van activiteits plaatjes.
 
 #### Optional features
-
 2. Het maken van een bar chart en of pie chart.
-3. Syncronisatie mogenlijkheid.
-4. Een Manier om activiteiten na der hand aan te passen. 
+4. Een manier om activiteiten nader hand aan te passen. 
 
 
 ### A sketch. <a name="sketch"></a>

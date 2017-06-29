@@ -18,7 +18,7 @@ class EditIconViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var iconEditTableView: UITableView!
     
-    var henk = [NSDictionary]()
+    var icons = [NSDictionary]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +29,13 @@ class EditIconViewController: UIViewController {
         dataRef.queryOrderedByKey().observe(DataEventType.value, with:
             { (snapshot) in
             
-            self.henk = [NSDictionary]()
+            self.icons = [NSDictionary]()
             
             if let value = snapshot.value as? NSDictionary {
                 
                 for key in value.allKeys {
                     
-                    self.henk.append(value[key] as! NSDictionary)
+                    self.icons.append(value[key] as! NSDictionary)
                     
                 }
                 
@@ -56,38 +56,38 @@ class EditIconViewController: UIViewController {
 
 
 /*
-//
+ Handels the tableview options
 */
 extension EditIconViewController: UITableViewDelegate, UITableViewDataSource {
     
     
-    // returns the amount of cels needed
+    /// returns the amount of cels needed
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return henk.count
+        return icons.count
     }
     
-    // returns what is displayed in the cell
+    /// returns what is displayed in the cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EditIconTableViewCell
         
-        cell.nameLabel?.text = (henk[indexPath.row]["label"] as! String)
-        cell.imageUrl = URL(string: henk[indexPath.row]["iconUrl"] as! String)
+        cell.nameLabel?.text = (icons[indexPath.row]["label"] as! String)
+        cell.imageUrl = URL(string: icons[indexPath.row]["iconUrl"] as! String)
         
         return cell
         
     }
     
-    // tels the table that every cell can de deleted
+    /// tels the table that every cell can de deleted
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    // handels the delete actions
+    /// handels the delete actions
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             
-            Fire.share.deleteIconStorage(name: henk[indexPath.row]["label"] as! String)
+            Fire.share.deleteIconStorage(name: icons[indexPath.row]["label"] as! String)
             
         }
     }

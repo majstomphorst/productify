@@ -37,21 +37,23 @@ class UploadViewController: UIViewController {
 
     // MARK: - Actions
     
-    ///
+    /// store's the icon in the firebase storage (and database)
     @IBAction func SaveButtonPress(_ sender: Any) {
         
+        // check for a label text
         if iconNameLabel.text == "" {
             alertUser(title: "no icon label", message: "provide a label")
             return
         }
         
+        // collect information
         let icon = iconImage.image!
         let label = iconNameLabel.text!
         
+        // saves the information to the storage and places a record in database
         Fire.share.storeIcon(icon: icon, label: label)
         
-        
-        
+        // send user back to edit view
         self.dismiss(animated: true, completion: nil)
     
     }
@@ -70,6 +72,7 @@ class UploadViewController: UIViewController {
 extension UploadViewController: UIImagePickerControllerDelegate,
                                 UINavigationControllerDelegate {
     
+    /// creates upload options if user presses on icon
     @IBAction func handleTap(recognizer: UITapGestureRecognizer) {
         
         // Create the action sheet
@@ -77,7 +80,7 @@ extension UploadViewController: UIImagePickerControllerDelegate,
                                       message: "How would you like to upload?",
                             preferredStyle: UIAlertControllerStyle.actionSheet)
         
-        // blue action button
+        // upload from camerarol button
         let upload = UIAlertAction(title: "Upload From Camararoll",
                                    style: UIAlertActionStyle.default) {
             (action) in
@@ -90,7 +93,7 @@ extension UploadViewController: UIImagePickerControllerDelegate,
             self.present(picker, animated: true, completion: nil)
         }
         
-        // red action button
+        // upload from app button
         let storages = UIAlertAction(title: "Pick one from the app",
                                      style: UIAlertActionStyle.default) {
             (action) in
@@ -98,7 +101,7 @@ extension UploadViewController: UIImagePickerControllerDelegate,
             self.performSegue(withIdentifier: "uploadFromApp", sender: nil)
         }
         
-        // cancel action button
+        // cancel button
         let cancel = UIAlertAction(title: "Cancel",
                                    style: UIAlertActionStyle.cancel) {
             (action) in
@@ -109,7 +112,7 @@ extension UploadViewController: UIImagePickerControllerDelegate,
         sheet.addAction(storages)
         sheet.addAction(cancel)
         
-        // send user to the uiImage picerk view
+        // pressent the created action sheet
         self.present(sheet, animated: true, completion: nil)
     }
     
@@ -119,10 +122,9 @@ extension UploadViewController: UIImagePickerControllerDelegate,
                                didFinishPickingMediaWithInfo info:
         [String : Any]) {
         
+        
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            
             self.iconImage.image = image
-            
         }
         
         picker.dismiss(animated: true, completion: nil)
@@ -132,7 +134,8 @@ extension UploadViewController: UIImagePickerControllerDelegate,
 
 
 /*
- This provides a way to recieve information from the YploadFromAppViewController
+ This provides a way to recieve information from the UploadFromAppViewController
+ The other part of is functon is locaede in pick from app view
 */
 extension UploadViewController: DataSendDelegate {
     

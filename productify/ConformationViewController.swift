@@ -26,26 +26,19 @@ class ConformationViewController: UIViewController {
     
     /// saves user's feeling and update's the UI
     @IBAction func mwaPress(_ sender: Any) {
-        activity.feeling = -1
-        mwaButton.isSelected = true
-        fineButton.isSelected = false
-        goodButton.isSelected = false
+        selectButton(mwa: true, fine: false, good: false)
     }
     
     @IBAction func FinePress(_ sender: Any) {
-        activity.feeling = 1
-        mwaButton.isSelected = false
-        fineButton.isSelected = true
-        goodButton.isSelected = false
+        selectButton(mwa: false, fine: true, good: false)
     }
     
     @IBAction func goodPress(_ sender: Any) {
-        activity.feeling = 2
-        mwaButton.isSelected = false
-        fineButton.isSelected = false
-        goodButton.isSelected = true
+        selectButton(mwa: false, fine: false, good: true)
     }
     
+    
+    // MARK: - Actions
     ///
     @IBAction func savePress(_ sender: Any) {
         
@@ -71,6 +64,26 @@ class ConformationViewController: UIViewController {
         }
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Function
+    
+    func selectButton(mwa: Bool, fine: Bool, good: Bool) {
+        if mwa {
+            activity.feeling = -1
+        }
+        
+        if fine {
+            activity.feeling = 1
+        }
+        
+        if good {
+            activity.feeling = 2
+        }
+        
+        mwaButton.isSelected = mwa
+        fineButton.isSelected = fine
+        goodButton.isSelected = good
     }
     
 
