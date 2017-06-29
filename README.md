@@ -18,9 +18,6 @@
 5. [Screen shots](#screenshots)
 6. [Proces book ](#proces)
 
-
- 
-
 ## introduction <a name="introduction"></a>
 
 
@@ -94,6 +91,14 @@ Is en app die enkel een timer bied om je te helpen met werken wel zitten er meer
 Deze app geeft je enkele functies om een bepaalde tijdseenheid gefocust te werken maar heeft geen functie om bij te houden wat je hebt gedaan.
 
 # Screen shots <a name="screenshots"></a>
+<img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3554_iphone7plusjetblack_portrait.png" width="200"/>
+<img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3555_iphone7plusjetblack_portrait.png" width="200"/><img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3556_iphone7plusjetblack_portrait.png" width="200"/>
+<img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3557_iphone7plusjetblack_portrait.png" width="200"/>
+<img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3558_iphone7plusjetblack_portrait.png" width="200"/>
+<img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3559_iphone7plusjetblack_portrait.png" width="200"/>
+<img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3560_iphone7plusjetblack_portrait.png" width="200"/>
+<img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3561_iphone7plusjetblack_portrait.png" width="200"/>
+
 
 # Proces book <a name="proces"></a>
 
