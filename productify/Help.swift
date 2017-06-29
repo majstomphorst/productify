@@ -23,46 +23,37 @@ import UserNotificationsUI
 extension UIViewController {
     
     /// this sets up a notification on a scheduled
-    func setNotification(countDown: Double, title: String, body: String) {
+    func scheduleNotification(timeinterval: Int) {
         
-        // define action for notifications
-        let up = UNNotificationAction(identifier: "time",
-                                           title: "body",
-                                           options: [])
         
-        // add action to timesUp category
-        let category = UNNotificationCategory(identifier: "time",
-                                              actions: [up],
-                                              intentIdentifiers: [],
-                                              options: [])
+        // Define Actions
+        let fruitAction = UNNotificationAction(identifier: "addFruit", title: "Add a piece of fruit", options: [])
+        let vegiAction = UNNotificationAction(identifier: "addVegetable", title: "Add a piece of vegetable", options: [])
         
-        // add the timesUp category to the notification framework
+        // Add actions to a foodCategeroy
+        let category = UNNotificationCategory(identifier: "foodCategory", actions: [fruitAction, vegiAction], intentIdentifiers: [], options: [])
+        
+        // Add the foodCategory to Notification Framwork
         UNUserNotificationCenter.current().setNotificationCategories([category])
         
-        // Alerts user after timeInterval (in seconds)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5,
-                                                        repeats: false)
+        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
         
-        // creating content of notification
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(timeinterval), repeats: false)
+        
         let content = UNMutableNotificationContent()
-        content.title = title
-        content.body =  body
+        content.title = "Awesome you are done!"
+        content.body = "let log that activitie"
         content.sound = UNNotificationSound.default()
-        content.categoryIdentifier = "time"
+        content.categoryIdentifier = "foodCategory"
         
         
-        let request = UNNotificationRequest(identifier: "time", content: content, trigger: trigger)
-        
+        let request = UNNotificationRequest(identifier: "foodNotification", content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        
-        UNUserNotificationCenter.current().add(request) {
-            (error) in
-            
+        UNUserNotificationCenter.current().add(request) { (error:Error?) in
             if let error = error {
-                print(error.localizedDescription)
+                print("Error: \(error.localizedDescription)")
             }
-            
         }
         
     }
