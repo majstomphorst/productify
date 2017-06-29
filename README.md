@@ -174,8 +174,17 @@ En een online database is toch veel stoerder dan een suffe SQL database ;)
 - made a way to upload image to firebase
 - updated the collection view to import a users specifik images and label!
 ### Day 10/19 - 14/06/17
+1. Meeting
+- see mail.
+2. App develpment
+- Played with the idea of rebuilding the app.
+- lots of bug fixing
+- Recreated the UI on paper (somewhere at home in a bin)
 
 ### Day 11/19 - 15/06/17
+1. App develpment
+- Started rebuilding the app
+- Thought about the app flow
 
 ### Day 12/19 16/06/17
 1. Created a new project 
