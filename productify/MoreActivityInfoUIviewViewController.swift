@@ -25,9 +25,7 @@ class MoreActivityInfoUIviewViewController: UIViewController {
     @IBOutlet weak var haveDoneField: UITextView!
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewWillAppear(_ animated: Bool) {
         iconLabel.text = activityInfo["iconLabel"] as? String
         time.text = timeString(time: TimeInterval(activityInfo["time"] as! Int))
         todoField.text = activityInfo["todo"] as? String
@@ -36,6 +34,7 @@ class MoreActivityInfoUIviewViewController: UIViewController {
         
         // Create a reference to the file you want to download
         let storRef = Fire.share.storRef
+        
         
         storRef.child(Fire.share.userId).child("\(iconLabel.text!).png")
         
@@ -49,8 +48,9 @@ class MoreActivityInfoUIviewViewController: UIViewController {
             }
             
         }
-        
     }
+    
+
 
 
 
