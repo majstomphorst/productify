@@ -17,6 +17,7 @@
 4. [similar mobile apps.](#review)
 5. [Screen shots](#screenshots)
 6. [Proces book ](#proces)
+7. [Process](#process)
 
 ## introduction <a name="introduction"></a>
 
@@ -91,12 +92,13 @@ Is en app die enkel een timer bied om je te helpen met werken wel zitten er meer
 Deze app geeft je enkele functies om een bepaalde tijdseenheid gefocust te werken maar heeft geen functie om bij te houden wat je hebt gedaan.
 
 # Screen shots <a name="screenshots"></a>
-<img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3554_iphone7plusjetblack_portrait.png" width="200"/><img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3555_iphone7plusjetblack_portrait.png" width="200"/><img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3556_iphone7plusjetblack_portrait.png" width="200"/>
-<img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3557_iphone7plusjetblack_portrait.png" width="200"/>
-<img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3558_iphone7plusjetblack_portrait.png" width="200"/>
-<img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3559_iphone7plusjetblack_portrait.png" width="200"/>
-<img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3560_iphone7plusjetblack_portrait.png" width="200"/>
-<img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3561_iphone7plusjetblack_portrait.png" width="200"/>
+<img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3554_iphone7plusjetblack_portrait.png" width="300"/><img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3555_iphone7plusjetblack_portrait.png" width="300"/><img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3556_iphone7plusjetblack_portrait.png" width="300"/>
+<img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3557_iphone7plusjetblack_portrait.png" width="300"/>
+<img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3558_iphone7plusjetblack_portrait.png" width="300"/>
+<img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3559_iphone7plusjetblack_portrait.png" width="300"/>
+<img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3560_iphone7plusjetblack_portrait.png" width="300"/>
+<img src="https://raw.githubusercontent.com/majstomphorst/productify/master/doc/IMG_3561_iphone7plusjetblack_portrait.png" width="300"/>
+
 
 
 # Proces book <a name="proces"></a>
@@ -851,6 +853,54 @@ Author: Maj <maxim.stomphorst@student.uva.nl>
 Date:   Fri Jun 16 12:21:58 2017 +0200
 
     Initial Commit
+    
+# Process <a name="process"></a>
+
+## An overview of your application
+![Design document](https://github.com/majstomphorst/producitfy/blob/master/doc/desingScreens.jpeg)
+
+### main
+Je selecteerd aan welke taak je gaat werken (wiskunde), wat je gaat studeren (h1 en h2) en voor welke tijd je dit gaat doen (25min). 
+
+Als je klaar bent vul je in hoe goed de activiteit ging (slecht, medium, goed) en wat je daadwerkenlijk hebt gedaan. 
+
+Dit word verstuurd naar firbase. 
+ 
+
+#### A diagram of modules, classes and functions that you’ve decided to implement, in appropriate detail
+##### modules
+##### classes
+**Class Timer()** {  
+Deze class zorgt er voor dat de timer loopt en geeft een melding als de tijd op 0 staat.  
+}
+
+**Class Firbase()** {  
+Moet zorgen voor inlog functionaliteit en een manier om te lezen/ schrijven/ en mutaties door te geven aan de database.   
+}  
+**Class Helper()** {  
+Voor debuggen.  
+}
+##### Functions
+Ik weet nog niet goed of ik nog meer speciefieken functies kan benoemen, ik denk dat de meeste functies wel in de Firbase class kunnen omdat hier alle info uit zal worden opgehaald.  
+Daarnaast zijn er nog wat functies die ik in mijn hoofd heb maar dit zijn meer opties voor als er tijd over is. 
+
+#### Advanced sketches of your UI that clearly explain which features are connected to which underlying part of the code. 
+In de MainViewController wordt alle informatie verzammeld dit wordt verstuurd naar fibase. vervolgens wordt het in de History view opgevraagd en aan de user terug gegeven. 
+
+#### A list of APIs and frameworks or plugins that you will be using to provide functionality in your app
+- The fibase API
+
+#### A list of data sources if you will get data from an external source
+- History view krijgt dat data van FireBase.
+
+#### A list of database tables and fields (and their types) if you will use a database
+.userid  
+..timestamp (voor activiteit)  
+......activiteit  
+......wat ga je doen   
+......Hoelang is er gewerkt   
+......Wat heb je echt gedaan   
+......Hoe ging het   
 
 <br><br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.<br>
