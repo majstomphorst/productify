@@ -153,7 +153,7 @@ class MainViewController: UIViewController {
             // lissing for resign active and active
             observersOn()
             
-            self.appDelegate?.scheduleNotification()
+            self.appDelegate?.scheduleNotification(timeinterval: Int(timePicker.countDownDuration))
             
             // Scheduling location
 //            setNotification(countDown: timePicker.countDownDuration,
@@ -197,10 +197,7 @@ class MainViewController: UIViewController {
                                     selector: (#selector (self.updateTimer)),
                                     userInfo: nil, repeats: true)
             
-            // schedul new notification
-            setNotification(countDown: Double(self.countseconds),
-                            title: "You are done! with:",
-                            body: activity.iconLabel)
+            self.appDelegate?.scheduleNotification(timeinterval: self.countseconds)
             
             // update UI
             startButton.setTitle("Pauze", for: UIControlState .normal)

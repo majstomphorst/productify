@@ -45,15 +45,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func scheduleNotification() {
+    func scheduleNotification(timeinterval: Int) {
         
         UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(timeinterval), repeats: false)
         
         let content = UNMutableNotificationContent()
-        content.title = "Stay Health"
-        content.body = "Just a reminder to eat your favourtite healty food."
+        content.title = "Awesome you are done!"
+        content.body = "let log that activitie"
         content.sound = UNNotificationSound.default()
         content.categoryIdentifier = "foodCategory"
         
