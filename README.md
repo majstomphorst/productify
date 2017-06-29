@@ -15,7 +15,9 @@
  - [External components](#components)
  - [Technical limitations.](#limitations)
 4. [similar mobile apps.](#review)
-5. [Proces book ](#proces)
+5. [Screen shots](#screenshots)
+6. [Proces book ](#proces)
+
 
  
 
@@ -91,6 +93,8 @@ Is en app die enkel een timer bied om je te helpen met werken wel zitten er meer
 
 - [Miracle Timer](https://itunes.apple.com/us/app/miracle-timer-be-productive-perfect-for-work-study/id1083895559?mt=8)<br>
 Deze app geeft je enkele functies om een bepaalde tijdseenheid gefocust te werken maar heeft geen functie om bij te houden wat je hebt gedaan.
+
+# Screen shots <a name="screenshots"></a>
 
 # Proces book <a name="proces"></a>
 
