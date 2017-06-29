@@ -7,7 +7,16 @@
 //
 
 /*
-
+ This is the main view this house all the core functionaltie.
+ 
+ Functions
+ - setting a timer
+ - selecting a activitie icon and linked label
+   This is user specifiek?
+ - Tel the activie what you are going to do in selected time
+ -- it sets a notification for if you leave the app, so it call you back
+ -- if the timer is done it send you to the conformation screen where you can
+    compleet your activitie.
 */
 
 import UIKit
@@ -35,6 +44,7 @@ class MainViewController: UIViewController {
     var countseconds = Int()
     
     //
+    var iconInfoList = [IconInfo]()
     var usersIcons = [NSDictionary]()
     
     var activity = ActivityInfo()
@@ -69,6 +79,7 @@ class MainViewController: UIViewController {
                 // reload the activity selector on main thread
                 DispatchQueue.main.async {
                     self.activitySelector.reloadData()
+                    print(self.iconInfoList)
                 }
                 
                 
@@ -108,37 +119,6 @@ class MainViewController: UIViewController {
         
     }
     
-    /// Sets a observer on:
-    /// - UIApplicationDidBecomeActive and UIApplicationWillResignActive
-    func observersOn() {
-        
-        let notification = NotificationCenter.default
-        
-        // observs this view if actie it calls func didBecomeActive
-        notification.addObserver(self, selector: #selector(didBecomeActive),
-                                 name: .UIApplicationDidBecomeActive,
-                                 object: nil)
-        
-        // observs this view if Resign active it calls func willResignActive
-        notification.addObserver(self, selector: #selector(willResignActive),
-                                 name: .UIApplicationWillResignActive,
-                                 object: nil)
-        
-    }
-    
-    /// Turn a observer off: on
-    /// - UIApplicationDidBecomeActive and UIApplicationWillResignActive
-    func observersOff() {
-        
-        let notification = NotificationCenter.default
-        
-        notification.removeObserver(self, name: .UIApplicationDidBecomeActive,
-                                    object: nil)
-        
-        notification.removeObserver(self, name: .UIApplicationWillResignActive,
-                                    object: nil)
-    }
-    
     /// button has three states 1. Start 2. Pauze 3. Resume
     /// managing timer and notification with assistance from observers
     @IBAction func startButton(_ sender: Any) {
@@ -152,9 +132,9 @@ class MainViewController: UIViewController {
             
             // lissing for resign active and active
             observersOn()
-            
             scheduleNotification(timeinterval: Int(timePicker.countDownDuration))
             
+
             // running the timer
             timer = Timer.scheduledTimer(timeInterval: 1, target: self,
                                          selector: (#selector(self.updateTimer)),
@@ -224,6 +204,36 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Functions
+    /// Sets a observer on:
+    /// - UIApplicationDidBecomeActive and UIApplicationWillResignActive
+    func observersOn() {
+        
+        let notification = NotificationCenter.default
+        
+        // observs this view if actie it calls func didBecomeActive
+        notification.addObserver(self, selector: #selector(didBecomeActive),
+                                 name: .UIApplicationDidBecomeActive,
+                                 object: nil)
+        
+        // observs this view if Resign active it calls func willResignActive
+        notification.addObserver(self, selector: #selector(willResignActive),
+                                 name: .UIApplicationWillResignActive,
+                                 object: nil)
+        
+    }
+    
+    /// Turn a observer off: on
+    /// - UIApplicationDidBecomeActive and UIApplicationWillResignActive
+    func observersOff() {
+        
+        let notification = NotificationCenter.default
+        
+        notification.removeObserver(self, name: .UIApplicationDidBecomeActive,
+                                    object: nil)
+        
+        notification.removeObserver(self, name: .UIApplicationWillResignActive,
+                                    object: nil)
+    }
     
     /// if a timer is running this wil get called when app becomes active
     @objc func didBecomeActive() {
@@ -250,7 +260,6 @@ class MainViewController: UIViewController {
         }
         
     }
-    
     
     /// if a timer is running this wil get called when app resigns active
     @objc func willResignActive() {
@@ -287,9 +296,7 @@ class MainViewController: UIViewController {
             self.timeLabel.text = timeString(time: TimeInterval(self
                 .countseconds))
             
-            
         }
-        
         
     }
     

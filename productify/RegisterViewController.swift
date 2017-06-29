@@ -21,6 +21,7 @@ import Firebase
 class RegisterViewController: UIViewController {
     
     // MARK: - Outlets
+    
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
