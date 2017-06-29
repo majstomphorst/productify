@@ -56,17 +56,17 @@ class EditIconViewController: UIViewController {
 
 
 /*
-//
+ Handels the tableview options
 */
 extension EditIconViewController: UITableViewDelegate, UITableViewDataSource {
     
     
-    // returns the amount of cels needed
+    /// returns the amount of cels needed
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return icons.count
     }
     
-    // returns what is displayed in the cell
+    /// returns what is displayed in the cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EditIconTableViewCell
@@ -78,12 +78,12 @@ extension EditIconViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    // tels the table that every cell can de deleted
+    /// tels the table that every cell can de deleted
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    // handels the delete actions
+    /// handels the delete actions
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             
