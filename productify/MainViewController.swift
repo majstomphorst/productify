@@ -44,7 +44,6 @@ class MainViewController: UIViewController {
     var countseconds = Int()
     
     //
-    var iconInfoList = [IconInfo]()
     var usersIcons = [NSDictionary]()
     
     var activity = ActivityInfo()
@@ -79,7 +78,6 @@ class MainViewController: UIViewController {
                 // reload the activity selector on main thread
                 DispatchQueue.main.async {
                     self.activitySelector.reloadData()
-                    print(self.iconInfoList)
                 }
                 
                 
