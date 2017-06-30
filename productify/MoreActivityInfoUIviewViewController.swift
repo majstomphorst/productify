@@ -27,15 +27,15 @@ class MoreActivityInfoUIviewViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        print(activityInfo)
-        
         iconLabel.text = activityInfo["iconLabel"] as? String
         time.text = timeString(time: TimeInterval(activityInfo["time"] as! Int))
         todoField.text = activityInfo["todo"] as? String
         haveDoneField.text = activityInfo["haveDone"] as? String
         
+        let storRef = Fire.share.storRef
+        
         // Create a reference to the file you want to download
-        let refStore = Storage.storage().reference().child(Fire.share.userId).child("\(iconLabel.text!).png")
+        let refStore = storRef.child(Fire.share.userId).child("\(iconLabel.text!).png")
         
         refStore.getMetadata { (metadata, error) in
             
