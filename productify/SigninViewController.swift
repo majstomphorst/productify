@@ -39,8 +39,6 @@ class SigninViewController: UIViewController {
             
         }
 
-        
-        
     }
 
     // MARK: - Actions

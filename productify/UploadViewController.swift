@@ -7,7 +7,8 @@
 //
 
 /*
- 
+ This uploads a icon to the database and storage
+ the icon is provide by the camara rol or the icons that the app give the user
 */
 
 import UIKit

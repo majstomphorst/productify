@@ -7,7 +7,8 @@
 //
 
 /*
- 
+ Here you can select what history (start/end time) you want to see
+ if you press on one you see more information about the activity
 */
 
 import UIKit
@@ -15,6 +16,7 @@ import Firebase
 import DatePickerDialog
 
 class HistoryViewController: UIViewController {
+    
     
     var activity = [ActivityInfo]()
     var filterdActivities = [NSDictionary]()
@@ -110,14 +112,16 @@ class HistoryViewController: UIViewController {
     
 }
 /*
- 
+ table view properties
 */
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
+    // how many cell's needed
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filterdActivities.count
     }
     
+    // concent the cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HistoryTableViewCell

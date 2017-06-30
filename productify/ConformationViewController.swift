@@ -7,7 +7,7 @@
 //
 
 /*
- 
+ Here the activity info is collected and send to firebase databae
 */
 
 import UIKit
@@ -39,7 +39,8 @@ class ConformationViewController: UIViewController {
     
     
     // MARK: - Actions
-    ///
+    
+    /// sends data to the database
     @IBAction func savePress(_ sender: Any) {
         
         if haveDoneField.text != nil {
@@ -63,11 +64,13 @@ class ConformationViewController: UIViewController {
             
         }
         
+        // send user back to main view
         self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Function
     
+    /// store's the feeling info and changes the UI (selected or not)
     func selectButton(mwa: Bool, fine: Bool, good: Bool) {
         if mwa {
             activity.feeling = -1

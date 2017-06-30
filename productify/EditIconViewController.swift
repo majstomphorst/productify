@@ -7,7 +7,9 @@
 //
 
 /*
- 
+ Here you can see what your labels are
+ you can delete them 
+ and with the add button (+) you can add one.
 */
 
 import UIKit
@@ -18,32 +20,41 @@ class EditIconViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var iconEditTableView: UITableView!
     
+    // the icons that you have
     var icons = [NSDictionary]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         var dataRef = Fire.share.dataRef
+        
         dataRef = dataRef.child("pref/\(Fire.share.userId)")
         
+        
+        // collecting your icons from the database
         dataRef.queryOrderedByKey().observe(DataEventType.value, with:
             { (snapshot) in
+
             
-            self.icons = [NSDictionary]()
-            
-            if let value = snapshot.value as? NSDictionary {
+                // empty icons no dubplicates
+                self.icons = [NSDictionary]()
                 
+                guard let value = snapshot.value as? NSDictionary else {
+                    return
+                }
+                
+                // collect all you icons as dictionrys (iconUrl and IconLabel)
                 for key in value.allKeys {
                     
                     self.icons.append(value[key] as! NSDictionary)
                     
                 }
                 
-            }
-            
-            DispatchQueue.main.async {
-                self.iconEditTableView.reloadData()
-            }
+                
+                // done relaod table
+                DispatchQueue.main.async {
+                    self.iconEditTableView.reloadData()
+                }
             
             
         })

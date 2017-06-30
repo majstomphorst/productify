@@ -62,7 +62,6 @@ extension UploadFromAppViewController: UICollectionViewDelegate,
     /// if a icon is selected this sends the image via the protocal back to
     /// the upload view
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
 
         let cell = collectionView.cellForItem(at: indexPath) as! SelectIconCollectionViewCell
         

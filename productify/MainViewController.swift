@@ -43,7 +43,7 @@ class MainViewController: UIViewController {
     // timer is running? update every second (-1)
     var countseconds = Int()
     
-    //
+    // a way to keep track of what icons the user has
     var usersIcons = [NSDictionary]()
     
     var activity = ActivityInfo()
@@ -64,13 +64,14 @@ class MainViewController: UIViewController {
                 .queryOrderedByKey().observe(DataEventType.value, with:
                     { (snapshot) in
                 
+                // empty userIcons (no duplicates)
                 self.usersIcons = [NSDictionary]()
-                    
+                
                 guard let value = snapshot.value as? NSDictionary else {
                     return
                 }
                 
-                    
+                // scan every key (icon)
                 for key in value.allKeys {
                     self.usersIcons.append(value[key] as! NSDictionary)
                 }
@@ -79,7 +80,6 @@ class MainViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.activitySelector.reloadData()
                 }
-                
                 
             })
             
@@ -93,6 +93,8 @@ class MainViewController: UIViewController {
     
     
     // MARK: - Actions
+    
+    /// debug segu a qucik way to trigger a segu else waiting for timer
     @IBAction func next(_ sender: Any) {
         
         if todoField.text != nil {
@@ -144,7 +146,6 @@ class MainViewController: UIViewController {
             timePicker.isEnabled = false
             
             
-            
         } else if startButton.currentTitle == "Pauze" {
             
             // kill observers
@@ -179,6 +180,7 @@ class MainViewController: UIViewController {
         
     }
     
+    /// cancel the timer and sets it up for the next run
     @IBAction func cancelButton(_ sender: Any) {
         
         // kill all observers
@@ -202,6 +204,7 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Functions
+    
     /// Sets a observer on:
     /// - UIApplicationDidBecomeActive and UIApplicationWillResignActive
     func observersOn() {
@@ -330,7 +333,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
-                                                      for: index as IndexPath) as! SelectActivitieIconCollectionViewCell
+                                                      for: index as IndexPath) as!SelectActivitieIconCollectionViewCell
         
         cell.iconLabel.text = usersIcons[index.row]["label"] as? String
         cell.imageUrl = URL(string: usersIcons[index.row]["iconUrl"] as! String)

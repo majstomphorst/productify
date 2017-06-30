@@ -7,7 +7,7 @@
 //
 
 /*
- 
+ Displays more information about the activity
 */
 
 import UIKit
@@ -16,6 +16,8 @@ import Kingfisher
 
 class MoreActivityInfoUIviewViewController: UIViewController {
     
+    // the activity that is gowing to be displayed
+    // this info is send from HistoryVC to this view
     var activityInfo = NSDictionary()
     
     // Mark: - Outlets
@@ -27,10 +29,12 @@ class MoreActivityInfoUIviewViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
+        // setup UI
         iconLabel.text = activityInfo["iconLabel"] as? String
         time.text = timeString(time: TimeInterval(activityInfo["time"] as! Int))
         todoField.text = activityInfo["todo"] as? String
         haveDoneField.text = activityInfo["haveDone"] as? String
+        
         
         let storRef = Fire.share.storRef
         
@@ -40,40 +44,13 @@ class MoreActivityInfoUIviewViewController: UIViewController {
         refStore.getMetadata { (metadata, error) in
             
             DispatchQueue.main.async {
-                
+                // laods the image
                 self.iconImage.kf.setImage(with: metadata?.downloadURL())
-                
-                
+
             }
         }
         
-        
-        
     }
-
-        
-        
-        // Create a reference to the file you want to download
-//        var storRef = Storage.storage().reference()
-//        
-//        storRef = storRef.child("\(a as! String).png)")
-//        
-//        
-//        storRef.getMetadata {
-//            (metadata, error) in
-//            
-//            DispatchQueue.main.async {
-//                
-//                print(metadata)
-//                self.iconImage.kf.setImage(with: metadata?.downloadURL()!)
-//                
-//            }
-//            
-//        }
-//    }
-//    
-
-
 
 
 }
