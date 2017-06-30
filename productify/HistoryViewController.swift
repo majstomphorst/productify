@@ -29,6 +29,8 @@ class HistoryViewController: UIViewController {
 
     
     // MARK: - Actions
+    
+    /// displays a datapicker
     @IBAction func startFilterPress(_ sender: Any) {
         
         DatePickerDialog().show(title: "Picker", doneButtonTitle: "Done",
@@ -43,14 +45,16 @@ class HistoryViewController: UIViewController {
             }
         }
         
-        
     }
     
+    /// displays a dataPicker
     @IBAction func endFilterPress(_ sender: Any) {
         
         DatePickerDialog().show(title: "Picker", doneButtonTitle: "Done",
                                 cancelButtonTitle: "Cancel",
                                 datePickerMode: .date) { (date) in
+                                    
+                                    
             if let date = date {
                 self.endFilter = Int((date.timeIntervalSince1970))
                 self.endButton.setTitle(date.description, for: .normal)
@@ -58,7 +62,9 @@ class HistoryViewController: UIViewController {
         }
         
     }
-
+    
+    /// this looks a every activity that the user has and if its between
+    /// the start en end value it wil be saved
     @IBAction func lookUp(_ sender: Any) {
         
         filterdActivities = [NSDictionary]()
@@ -69,16 +75,19 @@ class HistoryViewController: UIViewController {
                 return
             }
             
+            // looking at every key
             for key in keys.allKeys {
                 
+                // casting for reason 42
                 let k = Int("\(key)")
-        
+                
+                // filtering activitys
                 if k! > self.startFilter && k! < self.endFilter {
                     
                     self.filterdActivities.append((keys[key] as? NSDictionary)!)
                 }
             }
-            
+            // done realoding the view
             self.historyTableView.reloadData()
             
             
@@ -100,8 +109,9 @@ class HistoryViewController: UIViewController {
     
     
 }
-
-
+/*
+ 
+*/
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -140,7 +150,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    
+    // tells what information has to be send to the next viecontroller
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         indexSend = indexPath.row
     }
