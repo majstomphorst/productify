@@ -32,6 +32,15 @@ class SigninViewController: UIViewController {
         emailField.isEnabled = true
         passwordField.isEnabled = true
         
+        // check if user is signin if yes send to main view
+        if ((Auth.auth().currentUser?.uid) != nil) {
+            
+            self.dismiss(animated: true, completion: nil)
+            
+        }
+
+        
+        
     }
 
     // MARK: - Actions
