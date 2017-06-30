@@ -153,6 +153,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     // tells what information has to be send to the next viecontroller
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         indexSend = indexPath.row
+        performSegue(withIdentifier: "moreInfoSegue", sender: nil)
     }
     
     
