@@ -34,7 +34,6 @@ class Fire {
     // creating frequently used reffrences (to the root database/storage)
     let dataRef = Database.database().reference()
     let storRef = Storage.storage().reference()
-
     
     /// saves a icon in storages and calls writeIconInfoDatabase
     func storeIcon(icon: UIImage, label: String) {

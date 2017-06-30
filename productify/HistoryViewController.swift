@@ -88,9 +88,10 @@ class HistoryViewController: UIViewController {
     
     // MARK: - Navigation
     
-    // sends the activity information to the conformation screen to be stored
+    /// sends the activity information to the conformation screen to be stored
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "moreInfoSegue" {
+            
             let moreInfoVC = segue.destination as! MoreActivityInfoUIviewViewController
 
             moreInfoVC.activityInfo = filterdActivities[indexSend]
@@ -127,7 +128,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             
-            // bad ass type casting for reason
+            // bad ass type casting for reasons
             let deletekey = "\(filterdActivities[indexPath.row]["key"] as! Int)"
             
             let reff = Database.database().reference().child(Fire.share.userId).child(deletekey)
@@ -138,6 +139,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
         }
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         indexSend = indexPath.row

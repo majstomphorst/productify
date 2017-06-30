@@ -12,6 +12,7 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 
 class MoreActivityInfoUIviewViewController: UIViewController {
     
@@ -24,32 +25,53 @@ class MoreActivityInfoUIviewViewController: UIViewController {
     @IBOutlet weak var todoField: UITextView!
     @IBOutlet weak var haveDoneField: UITextView!
     
-    
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
+        
+        print(activityInfo)
+        
         iconLabel.text = activityInfo["iconLabel"] as? String
         time.text = timeString(time: TimeInterval(activityInfo["time"] as! Int))
         todoField.text = activityInfo["todo"] as? String
         haveDoneField.text = activityInfo["haveDone"] as? String
         
-        
         // Create a reference to the file you want to download
-        let storRef = Fire.share.storRef
+        let refStore = Storage.storage().reference().child(Fire.share.userId).child("\(iconLabel.text!).png")
         
-        
-        storRef.child(Fire.share.userId).child("\(iconLabel.text!).png")
-        
-        storRef.getMetadata {
-            (metadata, error) in
+        refStore.getMetadata { (metadata, error) in
             
             DispatchQueue.main.async {
                 
                 self.iconImage.kf.setImage(with: metadata?.downloadURL())
                 
+                
             }
-            
         }
+        
+        
+        
     }
-    
+
+        
+        
+        // Create a reference to the file you want to download
+//        var storRef = Storage.storage().reference()
+//        
+//        storRef = storRef.child("\(a as! String).png)")
+//        
+//        
+//        storRef.getMetadata {
+//            (metadata, error) in
+//            
+//            DispatchQueue.main.async {
+//                
+//                print(metadata)
+//                self.iconImage.kf.setImage(with: metadata?.downloadURL()!)
+//                
+//            }
+//            
+//        }
+//    }
+//    
 
 
 
